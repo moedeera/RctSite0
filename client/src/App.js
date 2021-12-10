@@ -8,6 +8,14 @@ function App() {
     <Router>
     <div className="App">
       MERN app
+      <ul>
+        <li><a href='/navbar'>Navbar</a></li>
+        <li><a href='/homepage'>Homepage</a></li>
+      </ul>
+      <Routes>
+      <Route path='/navbar' element={<Navbar />} />
+      <Route path='/homepage' element={<Homepage />} />
+      </Routes>
     </div>
     </Router>
   );
