@@ -7,12 +7,12 @@ const path = require('path');
 app.use(express.json());
 app.use(express.urlencoded({extended: true})); 
 
-app.get('/', (req, res) => {
+// app.get('/', (req, res) => {
 
 
-res.send('its working')
+// res.send('its working')
 
-})
+// })
 
 
 if (process.env.NODE_ENV === 'production'){
