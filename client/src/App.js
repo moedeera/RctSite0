@@ -9,16 +9,17 @@ function App() {
   return (
     <Router>
     <div className="App">
-      MERN app
-      <ul>
+    <Navbar />
+
+      {/* <ul>
         <li><a href='/navbar'>Navbar</a></li>
         <li><a href='/homepage'>Homepage</a></li>
         <li><a href='/Table'>Table</a></li>
   
-      </ul>
+      </ul> */}
       <Routes>
-      <Route path='/navbar' element={<Navbar />} />
-      <Route path='/homepage' element={<Homepage />} />
+      
+      <Route path='/' element={<Homepage />} />
       <Route path='/Table' element={<Table />} />
 
       </Routes>
