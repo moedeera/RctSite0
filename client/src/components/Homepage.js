@@ -1,4 +1,6 @@
 import React from 'react'
+var image = require ('./test0.svg')
+
 
 export const Homepage = () => {
     return (

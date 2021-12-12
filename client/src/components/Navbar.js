@@ -4,7 +4,7 @@ export const Navbar = () => {
     return (
         <div className='Navbar'>
 
-            <h3>DeeraCode</h3>
+            <h1>DeeraCode</h1>
             <ul className="List">
 
 <li> <a href="/">Home</a>   </li>
