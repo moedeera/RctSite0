@@ -1,15 +1,28 @@
 import React from 'react'
-
+import { useState } from 'react';
 export const Navbar = () => {
+
+const [state,setState]=useState(0);
+console.log(state)
+const Change = (x) =>{
+
+
+    setState(x)
+
+    console.log(x)
+}
+
+
+
     return (
         <div className='Navbar'>
 
             <h1>DeeraCode</h1>
             <ul className="List">
 
-<li> <a href="/">Home</a>   </li>
-<li><a href="/Projects">Portfolio</a></li>
-<li>Contact</li>
+<li onClick={()=>Change(1)}> <a href="/" >Home</a>   </li>
+<li><a href="/Portfolio">Portfolio</a></li>
+<li><a href="/Contact">Contact</a></li>
 
 </ul>
 
