@@ -1,6 +1,50 @@
-import React from 'react'
+import React, { useState, useEffect}  from 'react'
+import axios from 'axios';
 
 export const QuizHouse = () => {
+    const [formData, setFormData] = useState({
+
+        name:'',
+        email:'',
+        password :'',
+        password2: ''
+        });
+        
+        const { name, email, password, password2 } = formData;
+        const onChange = e =>
+        setFormData({...formData, [e.target.name]:e.target.value})
+
+
+        const onSubmit = async e => {
+            e.preventDefault();
+            if (password !== password2){
+         
+                console.log('passwords do not match')
+            } else {
+            
+            const newUser = {
+            name,
+            email,
+            password
+            }
+            try {
+                const config = {
+                    headers:{
+                        'Content-Type':'application/json'
+                         } }
+             const body = JSON.stringify(newUser)
+             const res = await axios.post('http://localhost:9700/api/users',body, config)             
+                console.log(res)
+            } catch (err) {
+                console.error(err)
+            }
+            
+            }
+            }
+            
+
+              
+              
     return (
         <div>
 
@@ -8,31 +52,46 @@ export const QuizHouse = () => {
 
              <div className='SideCase'>
      
-              <h1>Welcome to QuizHouse <i class="fab fa-algolia "
-              
-              style={{transform:' rotate(20deg)'}}
-              
-              ></i> </h1> 
+              <h1 style={{lineHeight:'1.8em'}}>Are you up for the Challenge?</h1> 
                  
                  
-                 <form className='QuizForm'>
-     <label>Register today </label>            
+                 <form className='QuizForm'
+                  onSubmit = {e=>onSubmit(e)}
+                 >
+     <label>
+         <h2>Register today </h2></label>    
+     <input 
+          type="name" 
+          placeholder="Name" 
+          name="name"
+          value = {name}
+          onChange = {e =>onChange(e)}/> 
+
+
       <input 
           type="email" 
-          placeholder="email" 
-          name="name"/> 
+          placeholder="Email" 
+          name="email"
+          value = {email}
+          onChange = {e =>onChange(e)}/> 
         
       <label>password</label>
       <input 
           type="password" 
           placeholder="Enter a password" 
-          name="password"/>
+          name="password"
+          value = {password}
+          onChange = {e =>onChange(e)}
+          />
            
      <label>Re-enter password</label>
           <input 
           type="password" 
           placeholder="Enter a password" 
-          name="password2"/>
+          name="password2"
+          value = {password2}
+          onChange = {e =>onChange(e)}/>
+
       <input type='submit' value='Register' />
                   </form>
                   </div> 

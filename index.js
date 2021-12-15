@@ -7,12 +7,21 @@ const path = require('path');
 app.use(express.json());
 app.use(express.urlencoded({extended: true})); 
 
+var cors = require('cors')
+
+app.use(cors()) // Use this after the variable declaration
+
 // app.get('/', (req, res) => {
 
 
 // res.send('its working')
 
 // })
+app.use('/api/users', require('./routes/api/users'))
+
+
+
+
 
 
 if (process.env.NODE_ENV === 'production'){
