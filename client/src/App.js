@@ -4,6 +4,7 @@ import Portfolio from './pages/Portfolio';
 import Table from './components/Table';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import QuizHouse from './pages/Portfolio/QuizHouse';
 import { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import './App.css';
@@ -41,6 +42,7 @@ function App() {
       <Route path='/Portfolio' element={<Portfolio />} />
       <Route path='/About' element={<About />} />
       <Route path='/Contact' element={<Contact />} />
+      <Route path='/QuizHouse' element={<QuizHouse />} />
 
       </Routes>
     </div>
