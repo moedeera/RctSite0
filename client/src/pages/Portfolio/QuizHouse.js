@@ -4,7 +4,7 @@ export const QuizHouse = () => {
     return (
         <div>
  Welcome to QuizHouse
-            <div>
+            <div className=''>
 
              <div></div>
 
