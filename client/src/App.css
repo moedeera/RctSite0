@@ -215,9 +215,44 @@ width: 20rem;
   max-width: 900px;
 }
 /*---------------------QuizHouse-------------------*/
+.Quiz{
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  color: white;
+  
+}
+.SideCase{
+
+  border: 1px solid white;
+  padding: 5px;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  letter-spacing: 2px;
+  line-height: 1.6em;
+}
+.QuizForm{
+display: flex;
+flex-direction: column;
+align-items: center;
+
+text-align: left;
+gap:20px
+}
+
+.QuizForm input, .QuizForm label{
+
+width: 15rem;
+height: 2rem;
+font-size: 18px;
+}
+
+.SideCase{
 
 
-
+}
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
@@ -250,4 +285,14 @@ grid-template-columns: 1fr;
 .image{
   display: none;
 }
+
+.Quiz{
+
+  display: grid;
+  grid-template-columns: 1fr;
+ 
+}
+
+
+
 }
