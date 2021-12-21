@@ -100,6 +100,9 @@ navigate("profile")
           onChange = {e =>onChange(e)}/>
 
       <input type='submit' value='Register' />
+
+  <small>Have an account already? </small>
+      <input type='submit' value='Login' />
                   </form>
                   </div> 
                  
@@ -110,10 +113,11 @@ navigate("profile")
                        style={{transform:' rotate(20deg)'}}
                         ></i> <h1>QuizHouse</h1> </div> 
                         <div className='SideText'> 
-                        What is Lorem Ipsum?
-Lorem Ipsum is simply dummy text of the printing 
-and typesetting industry. Lorem Ipsum has been the
- industry's standard dummy text ever since the 1500s,
+                        What is QuizHouse?
+QuizHouse is a social website that allows you to  
+compete against other via fun puzzles and quizes
+. QuizHouse been the
+ industry's standard dummy quiz game ever since the 1990s,
   when an unknown printer took a galley of type and 
   scrambled it to make a type specimen book. It has
   survived not only five centuries, but also the leap
