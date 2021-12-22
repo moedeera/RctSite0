@@ -3,7 +3,7 @@ import React, { useState, useEffect}  from 'react'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-export const QuizHouse = () => {
+export const Login = () => {
    
 
 
@@ -70,13 +70,7 @@ navigate("profile")
                   onSubmit = {e=>onSubmit(e)}
                  >
      <label>
-         <h2>Register today </h2></label>    
-     <input 
-          type="name" 
-          placeholder="Name" 
-          name="name"
-          value = {name}
-          onChange = {e =>onChange(e)}/> 
+         <h2>Login</h2></label>    
 
 
       <input 
@@ -94,23 +88,13 @@ navigate("profile")
           value = {password}
           onChange = {e =>onChange(e)}
           />
-           
-     <label>Re-enter password</label>
-          <input 
-          type="password" 
-          placeholder="Enter a password" 
-          name="password2"
-          value = {password2}
-          onChange = {e =>onChange(e)}/>
 
-      <input type='submit' value='Register' />
-
-
-     
                   </form>
 
-       <small>Have an account already?  <a href="/Login">Login</a>   </small>       
-         
+
+                  <small>Don't have an account? <a href="/Register">Register</a>     </small>       
+        
+                  
                   </div> 
                  
                                  
@@ -139,4 +123,4 @@ compete against other via fun puzzles and quizes
     )
 }
 
-export default QuizHouse
+export default Login

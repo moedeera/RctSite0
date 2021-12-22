@@ -7,22 +7,14 @@ import Contact from './pages/Contact';
 import QuizHouse from './pages/Portfolio/QuizHouse';
 import Profile from './pages/Portfolio/Profile';
 import RT from './components/RT';
+import Login from './pages/Portfolio/Login';
+import {userSelector} from "react-redux"
 
 import { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import './App.css';
 
 function App() {
-  // const [state,setState]=useState(0);
-  // console.log(state)
-  // const Change = (x) =>{
-  
-  
-  //     setState(x)
-  
-  //     console.log(x)
-  // }
-  
 
 
 
@@ -46,8 +38,11 @@ function App() {
       <Route path='/About' element={<About />} />
       <Route path='/Contact' element={<Contact />} />
       <Route path='/QuizHouse' element={<QuizHouse />} />
+      <Route path='/Register' element={<QuizHouse />} />
+      <Route path='/Login' element={<Login />} />
       <Route path='/Profile' element={<Profile />} />
       <Route path='/RT' element={<RT />} />
+      <Route path='*' element={<RT />} />
    
       </Routes>
     </div>
