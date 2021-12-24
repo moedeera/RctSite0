@@ -9,13 +9,20 @@ import Profile from './pages/Portfolio/Profile';
 import RT from './components/RT';
 import Login from './pages/Portfolio/Login';
 import {useSelector} from "react-redux"
-
+import { bindActionCreators } from 'redux';
+import { actionCreators } from './State/index';
+import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import './App.css';
 
+
 function App() {
 const account = useSelector((state)=>state.account);
+ const dispatch = useDispatch();
+
+ const {depositMoney, withDrawMoney} = bindActionCreators(actionCreators,dispatch)
+
 
 console.log(account)
 
@@ -31,7 +38,7 @@ console.log(account)
         <li><a href='/Table'>Table</a></li>
   
       </ul> */}
-      <button>Hello</button>
+     
       <Routes>
       
       <Route path='/' element={<Homepage />} />
@@ -49,7 +56,9 @@ console.log(account)
    
 
       </Routes>
-
+      <h>{account}</h>
+ <button onClick={()=>depositMoney(1000)}>Add</button>
+ <button onClick={()=>withDrawMoney(1000)}>Subtract</button>
 
     </div>
     </Router>
