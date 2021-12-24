@@ -8,14 +8,16 @@ import QuizHouse from './pages/Portfolio/QuizHouse';
 import Profile from './pages/Portfolio/Profile';
 import RT from './components/RT';
 import Login from './pages/Portfolio/Login';
-import {userSelector} from "react-redux"
+import {useSelector} from "react-redux"
 
 import { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import './App.css';
 
 function App() {
+const account = useSelector((state)=>state.account);
 
+console.log(account)
 
 
   return (
@@ -29,6 +31,7 @@ function App() {
         <li><a href='/Table'>Table</a></li>
   
       </ul> */}
+      <button>Hello</button>
       <Routes>
       
       <Route path='/' element={<Homepage />} />
@@ -46,6 +49,8 @@ function App() {
    
 
       </Routes>
+
+
     </div>
     </Router>
   );
