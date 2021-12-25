@@ -1,5 +1,5 @@
 import axios from "axios"
-var number = 0 
+
 
 
 // const getNumber = async () =>{
@@ -24,8 +24,8 @@ var number = 0
 // }
 
 // }
-const getNumber = async (x) =>{
-
+const getNumber = async () =>{
+var x 
   const newUser = {
     name:'johnnyu'
   }
@@ -45,15 +45,16 @@ x = res.data.id
   console.log(error)
 }
 
-
+return x
 
 }
 
 console.log('hello')
+var y =  getNumber();
+console.log(y)
+var number = 120 
 
 
-
-getNumber(number);
 const reducer = (state = number
   
   
