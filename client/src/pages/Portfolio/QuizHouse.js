@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 export const QuizHouse = () => {
    
-
+var j = ''
 
 
 
@@ -42,7 +42,9 @@ export const QuizHouse = () => {
                          } }
              const body = JSON.stringify(newUser)
              const res = await axios.post('http://localhost:9700/api/users',body, config)             
-                console.log(res)
+             j = res;   
+             console.log(res)
+
             } catch (err) {
                 console.error(err)
             }
@@ -70,7 +72,7 @@ navigate("profile")
                   onSubmit = {e=>onSubmit(e)}
                  >
      <label>
-         <h2>Register today </h2></label>    
+         <h2>Register today {j}</h2></label>    
      <input 
           type="name" 
           placeholder="Name" 
