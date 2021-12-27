@@ -16,7 +16,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import './App.css';
-import { GetData } from './State/actions-creators';
+import { GetData, PostData } from './State/actions-creators';
 
 
 function App() {
@@ -30,6 +30,8 @@ dispatch(GetData());
 console.log('hey')
 },[]);
 
+
+dispatch(PostData(5))
 console.log(account)
 
 

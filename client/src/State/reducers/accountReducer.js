@@ -7,7 +7,7 @@ const number =  120
 
 const reducer = (state = number, action )=>{
 switch(action.type){
-case "FETCH_POSTS":
+case "FETCH_GET":
   return action.payload
   case "deposit":
  return state + action.payload;
