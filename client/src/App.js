@@ -12,9 +12,11 @@ import {useSelector} from "react-redux"
 import { bindActionCreators } from 'redux';
 import { actionCreators } from './State/index';
 import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 import { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import './App.css';
+import { GetData } from './State/actions-creators';
 
 
 function App() {
@@ -22,7 +24,11 @@ const account = useSelector((state)=>state.account);
  const dispatch = useDispatch();
 
  const {depositMoney, withDrawMoney} = bindActionCreators(actionCreators,dispatch)
+useEffect(()=>{
 
+dispatch(GetData());
+console.log('hey')
+},[]);
 
 console.log(account)
 
@@ -56,7 +62,9 @@ console.log(account)
    
 
       </Routes>
-      <h>{account}</h>
+      <h3>{account}</h3>
+      
+
  <button onClick={()=>depositMoney(1000)}>Add</button>
  <button onClick={()=>withDrawMoney(1000)}>Subtract</button>
 
