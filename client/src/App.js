@@ -16,23 +16,23 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import './App.css';
-import { GetData, PostData } from './State/actions-creators';
+import {  PostData, Dummy } from './State/actions-creators';
 
 
 function App() {
 const account = useSelector((state)=>state.account);
  const dispatch = useDispatch();
-
+console.log(account)
  const {depositMoney, withDrawMoney} = bindActionCreators(actionCreators,dispatch)
 useEffect(()=>{
 
-dispatch(GetData());
+dispatch(Dummy());
 console.log('hey')
 },[]);
 
 
-dispatch(PostData(5))
-console.log(account)
+
+
 
 
   return (
@@ -66,9 +66,11 @@ console.log(account)
       </Routes>
       <h3>{account}</h3>
       
+      
 
  <button onClick={()=>depositMoney(1000)}>Add</button>
  <button onClick={()=>withDrawMoney(1000)}>Subtract</button>
+ <button onClick={()=>PostData(0)}>Reset</button>
 
     </div>
     </Router>

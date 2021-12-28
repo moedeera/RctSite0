@@ -32,7 +32,25 @@ dispatch({
 
 } 
 
+export const Dummy = ()=>{
+return async (dispatch,getState)=>{
+console.log('hello Dummy')
+try {
+   const response = await axios.get('http://localhost:9700/api/users') 
+   console.log(response)
+} catch (error) {
+    console.log(error)
+}
 
+    dispatch({
+type:"LOAD-NUM",
+payload:570
+
+    })
+}
+
+
+}
 
 /// FETCH DATA
 export const GetData = () =>{
@@ -43,8 +61,8 @@ const response = await axios.get('http://localhost:9700/api/users')
 console.log('it worked ', response.data.id)
 dispatch({
 
-type:"FETCH_GET",
-payload: response.data.id
+type:"FETCH_DATA",
+payload: 170
 
 })
 
@@ -56,8 +74,7 @@ payload: response.data.id
 
 
 export const PostData = (num) =>{
-
-    return async (dispatch, getState) =>{
+return async  (dispatch, getState) =>{
 
         const newUser ={
             id:num,
@@ -77,14 +94,14 @@ const response= await axios.post('http://localhost:9700/api/users', body, config
     console.log('it worked ', response.data.id)
     dispatch({
     
-    type:"FETCH_POSTS",
+    type:"POST_DATA",
     payload: response.data.id
     
     })
     
-    }
+    }};
     
     
     
-    }
+    
     
