@@ -25,7 +25,7 @@ function App() {
   const dispatch = useDispatch();
 
   console.log(account);
-  const { depositMoney, withDrawMoney } = bindActionCreators(
+  const { depositMoney, withDrawMoney, PostData } = bindActionCreators(
     actionCreators,
     dispatch
   );
@@ -55,7 +55,9 @@ function App() {
           <Route path="/RT" element={<RT />} />
           <Route path="*" element={<RT />} />
         </Routes>
-        <h3>{account}</h3>
+
+        <h3>{account.count}</h3>
+        <h3>{account.name}</h3>
 
         <button onClick={() => depositMoney(1000)}>Add</button>
         <button onClick={() => withDrawMoney(1000)}>Subtract</button>
