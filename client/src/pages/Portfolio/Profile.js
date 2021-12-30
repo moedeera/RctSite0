@@ -1,10 +1,7 @@
-import React from 'react'
+import React from "react";
 
-export const Profile = () => {
-    return (
-        <div>
-            Hello to your Profile
-        </div>
-    )
-}
-export default Profile
+export const Profile = ({ isAuth }) => {
+  console.log(isAuth);
+  return <div>Hello {isAuth.name}</div>;
+};
+export default Profile;
