@@ -246,7 +246,7 @@ a:visited {
 
 .Profile-Pic {
   width: 300px;
-  margin-top: -40px;
+  margin-top: -50px;
   position: relative;
   transition: 600ms ease-in-out;
   cursor: pointer;
@@ -254,6 +254,7 @@ a:visited {
 
 img {
   width: 100%;
+  box-shadow: 0.24em 0.24em 0.33em rgba(128, 128, 128, 0.39);
 }
 
 .Info-Section {
