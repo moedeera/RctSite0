@@ -34,7 +34,7 @@ export const Login = ({ setAuth }) => {
       console.error(err);
     }
 
-    navigate("profile");
+    navigate("../profile");
   };
   const testAuthLog = () => {
     setAuth({ isLoggedin: true, name: "Sam" });
