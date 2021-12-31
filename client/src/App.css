@@ -233,7 +233,7 @@ a:visited {
   max-width: 900px;
   margin: 20px auto;
   background: white;
-  padding: 10px;
+  padding: 30px;
   font-family: "Roboto", sans-serif;
 }
 
@@ -247,6 +247,9 @@ a:visited {
 .Profile-Pic {
   width: 300px;
   margin-top: -40px;
+  position: relative;
+  transition: 600ms ease-in-out;
+  cursor: pointer;
 }
 
 img {
@@ -295,10 +298,45 @@ img {
 .Game-Feed i {
   color: rgb(73, 20, 220);
 }
+.PhotoEdit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: 600ms ease-in-out;
+  background: rgba(240, 255, 240, 0.5);
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.PhotoEdit:hover {
+  opacity: 1;
+}
 /* Extra small devices (phones, 768px and down) */
 @media only screen and (max-width: 768px) {
   /* Navbar*/
+  .MainCard {
+    padding: 5px;
+  }
 
+  .Info-Section {
+    padding: 0;
+    width: 100%;
+  }
+  .Profile-Pic {
+    width: 250px;
+  }
+  .Game-Score {
+    display: none;
+  }
+  .Info-Section {
+    font-size: 13px;
+    padding: 5px;
+    overflow-x: none;
+
+    margin: 0;
+  }
   .List {
     display: none;
   }
@@ -327,5 +365,21 @@ img {
   }
   .Lower-Half {
     grid-template-columns: 1fr;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .Follow,
+  .Posts {
+    cursor: pointer;
+    transition: 500ms smooth ease-in-out;
+  }
+  .Follow:hover,
+  .Posts:hover {
+    opacity: 0.8;
+    transform: scale(1.01);
+  }
+  .Profile-Pic img:hover {
+    opacity: 0.9;
   }
 }
