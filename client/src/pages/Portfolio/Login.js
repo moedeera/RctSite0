@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Navbar from '../../components/Navbar'
 
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -42,7 +43,8 @@ export const Login = ({ setAuth }) => {
 
   return (
     <div>
-      <h2 onClick={() => testAuthLog()}>Set to True</h2>
+      <Navbar />
+      {/* <h2 onClick={() => testAuthLog()}>Set to True</h2> */}
       <div className="Showcase Quiz">
         <div className="SideCase">
           <h1 style={{ lineHeight: "1.8em" }}>Are you up for the Challenge?</h1>

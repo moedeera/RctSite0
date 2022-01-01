@@ -1,4 +1,5 @@
 import React, { useState, useEffect}  from 'react'
+import Navbar from '../../components/Navbar'
 
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -60,7 +61,7 @@ navigate("profile")
               
     return (
         <div>
-
+<Navbar />
             <div className='Showcase Quiz'>
 
              <div className='SideCase'>

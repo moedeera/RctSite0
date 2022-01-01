@@ -1,10 +1,14 @@
 import React from 'react'
+import Navbar from './Navbar'
 
 
 
 export const Homepage = () => {
     return (
-        <div className='Main'>
+        
+        <div>
+              <Navbar />
+            <div className='Main'>
 
         <div className='showcase'>
             <div className='image'></div>
@@ -38,7 +42,8 @@ My projects mainly involve HTML, CSS,
         </div>
 
         
-              </div>
+              </div></div>
+        
     )
 }
 
