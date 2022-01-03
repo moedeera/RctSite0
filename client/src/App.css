@@ -276,7 +276,7 @@ a:visited {
   border: 1px solid white;
   width: 100%;
   max-width: 900px;
-  margin: 20px auto;
+  margin: 50px auto;
   background: white;
   padding: 30px;
   font-family: "Roboto", sans-serif;
@@ -292,8 +292,9 @@ a:visited {
 .Profile-Pic {
   width: 300px;
   margin-top: -50px;
+
   position: relative;
-  transition: 600ms ease-in-out;
+  transition: 1s ease-in-out;
   cursor: pointer;
 }
 
@@ -305,8 +306,10 @@ img {
 .Info-Section {
   display: flex;
   justify-content: space-between;
+
   padding: 10px;
   align-items: center;
+  width: 85%;
 }
 
 .Info-Section > div {
@@ -350,7 +353,7 @@ img {
   left: 50%;
   transform: translate(-50%, -50%);
   opacity: 0;
-  transition: 600ms ease-in-out;
+  transition: 1s ease-in-out;
   background: rgba(240, 255, 240, 0.5);
   border: 1px solid black;
   padding: 10px;
@@ -363,6 +366,26 @@ img {
 .mobileImage {
   display: none;
 }
+/*Bottom Card*/
+.Feed {
+  border-top: 1px solid black;
+}
+.GameScores {
+  border: 1px solid black;
+  width: 80%;
+  margin: 10px auto;
+}
+.Friends {
+  border: 1px solid black;
+  width: 80%;
+  margin: 10px auto;
+}
+.Interests {
+  border: 1px solid black;
+  width: 80%;
+  margin: 10px auto;
+}
+
 /* Extra small devices (phones, 768px and down) */
 @media only screen and (max-width: 768px) {
   /* Navbar*/
@@ -383,9 +406,13 @@ img {
   .Info-Section {
     font-size: 13px;
     padding: 5px;
+    max-width: 85%;
     overflow-x: none;
-
     margin: 0;
+  }
+
+  .Profile-Feed {
+    max-width: 80%;
   }
   .List {
     display: none;

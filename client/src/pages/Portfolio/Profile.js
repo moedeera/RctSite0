@@ -1,6 +1,34 @@
 import React from "react";
 import logo from "./profile-pic.jpeg";
+import pic0 from "./pic0.jpeg";
+import { useEffect } from "react";
+import { useState } from "react";
 export const Profile = ({ isAuth }) => {
+
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     MoveSlide();
+  //   }, 5000);
+  //   return () => clearInterval(interval);
+  // }, []);
+
+const [slide, setSLide] = useState(1)
+const MoveSlide = () =>{
+
+if (slide === 1){
+  console.log('its at 1')
+  setSLide(2)
+} else if (slide ===2){
+  console.log('its at 2')
+  setSLide(3)
+} else if (slide ===3){
+  console.log('its at 3')
+  setSLide(2)
+}
+
+}
+
+
   console.log(isAuth);
   return (
     <div className="main-prof">
@@ -61,7 +89,26 @@ export const Profile = ({ isAuth }) => {
               <i class="fas fa-gamepad fa-2x"></i>
             </div>
           </div>
+
+<div className="Feed">
+
+<div className="GameScores"> 
+<div> <img src={logo} alt="" /></div>
+<div> <img src={pic0} alt="" /></div>
+
+ </div>
+
+<div className="Friends"> Hello </div>
+
+<div className="Interests">Hello </div>
+
+
+</div>
+
+
         </div>
+       
+        
       ) : (
         <div className="MainCard">
           <div className="Upper-Half">
@@ -69,7 +116,7 @@ export const Profile = ({ isAuth }) => {
               <img src={logo} alt="" />
             </div>
             <div className="Info-Section">
-              <div className="Name"> {isAuth.name}</div>
+              <div className="Name"> {isAuth.name} Smith</div>
               <div className="Scores">
                 {" "}
                 <i class="far fa-heart"></i> 56 followers{" "}
@@ -102,6 +149,8 @@ export const Profile = ({ isAuth }) => {
           </div>
         </div>
       )}
+
+
     </div>
   );
 };
