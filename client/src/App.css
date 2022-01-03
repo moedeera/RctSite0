@@ -184,17 +184,16 @@ a:visited {
 }
 /*----------------Portfolio------------------*/
 .Showcase {
-  margin: 200px auto;
+  margin: 0px auto;
 
   width: 100%;
   max-width: 900px;
-  height: 100%;
 }
 /*---------------------QuizHouse-------------------*/
 .Container {
   background: url(./bgpic.jpeg);
-
-  padding: 10px;
+  height: 100vh;
+  padding: 0px 0px 100px;
 }
 .Quiz {
   display: grid;
@@ -269,13 +268,15 @@ a:visited {
 .main-prof {
   border: 1px solid green;
   background: black;
-  height: 100vh;
+  height: auto;
+  padding: 10px;
 }
 
 .MainCard {
   border: 1px solid white;
   width: 100%;
   max-width: 900px;
+  height: 100%;
   margin: 50px auto;
   background: white;
   padding: 30px;
@@ -451,7 +452,7 @@ img {
   .mobileImage {
     margin-top: -30px;
     display: block;
-    color: #1c8be3;
+    color: white;
     opacity: 1;
   }
 }
