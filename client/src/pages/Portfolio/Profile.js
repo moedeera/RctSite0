@@ -3,7 +3,7 @@ import logo from "./profile-pic.jpeg";
 export const Profile = ({ isAuth }) => {
   console.log(isAuth);
   return (
-    <div>
+    <div className="main-prof">
       {isAuth.isLoggedin ? (
         <div className="MainCard">
           <div className="Upper-Half">

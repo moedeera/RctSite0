@@ -185,26 +185,51 @@ a:visited {
 /*----------------Portfolio------------------*/
 .Showcase {
   margin: 200px auto;
-  border: 1px solid grey;
+
   width: 100%;
   max-width: 900px;
+  height: 100%;
 }
 /*---------------------QuizHouse-------------------*/
+.Container {
+  background: url(./bgpic.jpeg);
+
+  padding: 10px;
+}
 .Quiz {
   display: grid;
   grid-template-columns: 1fr 1fr;
+
   color: white;
 }
 .SideCase {
-  border: 1px solid white;
   padding: 5px;
-  height: 600px;
+
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   letter-spacing: 2px;
   line-height: 1.8em;
+  border-radius: 10px;
 }
+
+.upper {
+  background-image: linear-gradient(
+    to bottom,
+    rgba(79, 120, 235, 0.5),
+    rgb(234, 238, 237)
+  );
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  color: white;
+  opacity: 1;
+}
+.lower {
+  background: #1c8be3;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
 .QuizForm {
   display: flex;
   flex-direction: column;
@@ -222,10 +247,30 @@ a:visited {
   border: none;
   border-radius: 3px;
 }
+.QuizForm button {
+  width: 60%;
+  height: 3rem;
+  border: none;
+  border-radius: 5px;
+  background: #1c8be3;
+  color: white;
+  font-size: 18px;
+}
 
+.social-media {
+  display: flex;
+  margin-top: 20px;
+  justify-content: space-evenly;
+}
 .SideCase {
 }
 /*------------------Profile---------------------*/
+
+.main-prof {
+  border: 1px solid green;
+  background: black;
+  height: 100vh;
+}
 
 .MainCard {
   border: 1px solid white;
@@ -314,6 +359,10 @@ img {
 .PhotoEdit:hover {
   opacity: 1;
 }
+
+.mobileImage {
+  display: none;
+}
 /* Extra small devices (phones, 768px and down) */
 @media only screen and (max-width: 768px) {
   /* Navbar*/
@@ -366,6 +415,17 @@ img {
   }
   .Lower-Half {
     grid-template-columns: 1fr;
+  }
+
+  .lower {
+    display: none;
+  }
+
+  .mobileImage {
+    margin-top: -30px;
+    display: block;
+    color: #1c8be3;
+    opacity: 1;
   }
 }
 

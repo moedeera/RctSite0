@@ -4,7 +4,8 @@ import Portfolio from "./pages/Portfolio";
 import Table from "./components/Table";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
-import QuizHouse from "./pages/Portfolio/QuizHouse";
+
+import { Econnect } from "./pages/Portfolio/Econnect";
 import Profile from "./pages/Portfolio/Profile";
 import RT from "./components/RT";
 import Login from "./pages/Portfolio/Login";
@@ -38,16 +39,14 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Navbar />
-
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/Table" element={<Table />} />
           <Route path="/Portfolio" element={<Portfolio />} />
           <Route path="/About" element={<About />} />
           <Route path="/Contact" element={<Contact />} />
-          <Route path="/QuizHouse" element={<QuizHouse />} />
-          <Route path="/Register" element={<QuizHouse />} />
+          <Route path="/Econnect" element={<Econnect />} />
+          <Route path="/Register" element={<Econnect />} />
 
           <Route path="/Login" element={<Login setAuth={SetAuth} />} />
 
@@ -56,12 +55,12 @@ function App() {
           <Route path="*" element={<RT />} />
         </Routes>
 
-        <h3>{account.count}</h3>
+        {/* <h3>{account.count}</h3>
         <h3>{account.name}</h3>
 
         <button onClick={() => depositMoney(1000)}>Add</button>
         <button onClick={() => withDrawMoney(1000)}>Subtract</button>
-        <button onClick={() => PostData(0)}>Reset</button>
+        <button onClick={() => PostData(0)}>Reset</button> */}
       </div>
     </Router>
   );

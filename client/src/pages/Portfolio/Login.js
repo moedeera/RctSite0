@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import Navbar from "../../components/Navbar";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -41,12 +41,17 @@ export const Login = ({ setAuth }) => {
   };
 
   return (
-    <div>
-      <h2 onClick={() => testAuthLog()}>Set to True</h2>
-      <div className="Showcase Quiz">
-        <div className="SideCase">
-          <h1 style={{ lineHeight: "1.8em" }}>Are you up for the Challenge?</h1>
+    <div className="Container">
+      {/* <h2 onClick={() => testAuthLog()}>Set to True</h2> */}
+      <Navbar />
 
+      <div className="Showcase Quiz">
+        <div className="SideCase upper">
+          <i
+            class="fab fa-algolia fa-8x"
+            style={{ transform: " rotate(20deg)" }}
+          ></i>{" "}
+          <h1 style={{ lineHeight: "1.8em" }}>Are you up for the Challenge?</h1>
           <form className="QuizForm" onSubmit={(e) => onSubmit(e)}>
             <label>
               <h2 onClick={() => testAuthLog()}>Login</h2>
@@ -71,30 +76,38 @@ export const Login = ({ setAuth }) => {
 
             <button type="submit">Login</button>
           </form>
-
-          <small>
-            Don't have an account? <a href="/Register">Register</a>{" "}
+          <small style={{ color: "black" }}>
+            Don't have an account?{" "}
+            <a href="/Register" style={{ color: "black" }}>
+              Register
+            </a>{" "}
           </small>
         </div>
 
-        <div className="SideCase">
-          <div className="SideImage">
+        <div className="SideCase lower">
+          <div className="SideImage lower">
             {" "}
             <i
-              class="fab fa-algolia fa-8x"
+              class="fas fa-users fa-8x"
               style={{ transform: " rotate(20deg)" }}
             ></i>{" "}
-            <h1>QuizHouse</h1>{" "}
+            <h1>EConnect</h1>{" "}
+            <div className="SideText">
+              What is QuizHouse? QuizHouse is a social website that allows you
+              to compete against other via fun puzzles and quizes . QuizHouse
+              been the industry's standard dummy quiz game ever since the 1990s,
+              when an unknown printer took a galley of type and scrambled it to
+              make a type specimen book. It has survived not only five
+              centuries, but also the leap into electronic typesetting,
+              remaining essentially unchanged.
+              <div className="social-media">
+                <i class="fab fa-facebook-f fa-2x"></i>
+                <i class="fab fa-google-plus-g fa-2x"></i>
+                <i class="fab fa-twitter fa-2x"></i>
+                <i class="fab fa-behance fa-2x"></i>
+              </div>
+            </div>{" "}
           </div>
-          <div className="SideText">
-            What is QuizHouse? QuizHouse is a social website that allows you to
-            compete against other via fun puzzles and quizes . QuizHouse been
-            the industry's standard dummy quiz game ever since the 1990s, when
-            an unknown printer took a galley of type and scrambled it to make a
-            type specimen book. It has survived not only five centuries, but
-            also the leap into electronic typesetting, remaining essentially
-            unchanged.
-          </div>{" "}
         </div>
       </div>
     </div>
