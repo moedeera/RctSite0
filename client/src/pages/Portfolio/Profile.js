@@ -2,32 +2,32 @@ import React from "react";
 import logo from "./profile-pic.jpeg";
 import pic0 from "./pic0.jpeg";
 import { useEffect } from "react";
-import { useState } from "react";
+import { useState, useCallback } from "react";
+
 export const Profile = ({ isAuth }) => {
+  const [slide, setSLide] = useState(1);
 
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     MoveSlide();
-  //   }, 5000);
-  //   return () => clearInterval(interval);
-  // }, []);
+  const MoveSlide = useCallback(() => {
+    setSLide((previous) => {
+      if (previous === 1) {
+        console.log("its at 1");
+        setSLide(2);
+      } else if (previous === 2) {
+        console.log("its at 2");
+        setSLide(3);
+      } else if (previous === 3) {
+        console.log("its at 3");
+        setSLide(1);
+      }
+    });
+  }, []);
 
-const [slide, setSLide] = useState(1)
-const MoveSlide = () =>{
-
-if (slide === 1){
-  console.log('its at 1')
-  setSLide(2)
-} else if (slide ===2){
-  console.log('its at 2')
-  setSLide(3)
-} else if (slide ===3){
-  console.log('its at 3')
-  setSLide(2)
-}
-
-}
-
+  useEffect(() => {
+    const interval = setInterval(() => {
+      MoveSlide();
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [MoveSlide]);
 
   console.log(isAuth);
   return (
@@ -90,25 +90,23 @@ if (slide === 1){
             </div>
           </div>
 
-<div className="Feed">
+          <div className="Feed">
+            <div className="GameScores">
+              <div>
+                {" "}
+                <img src={logo} alt="" />
+              </div>
+              <div>
+                {" "}
+                <img src={pic0} alt="" />
+              </div>
+            </div>
 
-<div className="GameScores"> 
-<div> <img src={logo} alt="" /></div>
-<div> <img src={pic0} alt="" /></div>
+            <div className="Friends"> Hello </div>
 
- </div>
-
-<div className="Friends"> Hello </div>
-
-<div className="Interests">Hello </div>
-
-
-</div>
-
-
+            <div className="Interests">Hello </div>
+          </div>
         </div>
-       
-        
       ) : (
         <div className="MainCard">
           <div className="Upper-Half">
@@ -149,8 +147,6 @@ if (slide === 1){
           </div>
         </div>
       )}
-
-
     </div>
   );
 };

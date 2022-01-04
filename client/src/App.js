@@ -3,7 +3,6 @@ import Portfolio from "./pages/Portfolio";
 import Table from "./components/Table";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
-
 import { Econnect } from "./pages/Portfolio/Econnect";
 import Profile from "./pages/Portfolio/Profile";
 import RT from "./components/RT";
@@ -22,6 +21,10 @@ import { useAuth } from "./utils/AuthLogin";
 function App() {
   const account = useSelector((state) => state.account);
   const { IsAuth, SetAuth } = useAuth();
+  const [profile, updateProfile] = useState({
+    name: "james",
+  });
+
   const dispatch = useDispatch();
 
   console.log(account);
