@@ -1,6 +1,7 @@
 import React from "react";
 import logo from "./profile-pic.jpeg";
 import pic0 from "./pic0.jpeg";
+import pic1 from "./pic1.jpeg";
 import { useEffect } from "react";
 import { useState, useCallback } from "react";
 
@@ -91,15 +92,17 @@ export const Profile = ({ isAuth }) => {
           </div>
 
           <div className="Feed">
+             
             <div className="GameScores">
-              <div>
-                {" "}
-                <img src={logo} alt="" />
-              </div>
-              <div>
-                {" "}
-                <img src={pic0} alt="" />
-              </div>
+
+              <div className="ImageFeed"><img src={logo} alt="" /></div>
+              <div ><img src={pic0} alt="" /></div>
+              <div><img src={pic1} alt="" /></div>
+               
+               
+            
+
+            
             </div>
 
             <div className="Friends"> Hello </div>

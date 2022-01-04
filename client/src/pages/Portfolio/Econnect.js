@@ -66,6 +66,7 @@ export const Econnect = () => {
 
           <h1 style={{ lineHeight: "1.8em" }}>Connect and Share</h1>
           <h2>Register today {j}</h2>
+          <small>Site is currently undergoing changes</small>
           <form className="QuizForm" onSubmit={(e) => onSubmit(e)}>
             <label></label>
             <input
