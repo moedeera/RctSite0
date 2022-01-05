@@ -269,6 +269,7 @@ a:visited {
   border: 1px solid green;
   background: black;
   height: auto;
+  min-height: 100vh;
   padding: 10px;
 }
 
@@ -376,7 +377,7 @@ img {
   width: 80%;
   margin: 10px auto;
   display: grid;
-  grid-template-columns: 1fr 1fr ;
+  grid-template-columns: 1fr 1fr;
 }
 .Friends {
   border: 1px solid black;

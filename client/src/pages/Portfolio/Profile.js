@@ -7,11 +7,14 @@ import { useState, useCallback } from "react";
 import { UserContext } from "../../UserContext";
 
 export const Profile = ({ isAuth }) => {
-
-
-  const {user,setUser} = useContext(UserContext)
+  const { user, setUser } = useContext(UserContext);
   const [slide, setSLide] = useState(1);
-
+  var Posts = user.Feed;
+  const names = [
+    { name: "Bruce", type: "like" },
+    { name: "Clark", type: "like" },
+    { name: "Diana", type: "request" },
+  ];
   const MoveSlide = useCallback(() => {
     setSLide((previous) => {
       if (previous === 1) {
@@ -26,7 +29,7 @@ export const Profile = ({ isAuth }) => {
       }
     });
   }, []);
-
+  console.log(user.Feed);
   // useEffect(() => {
   //   const interval = setInterval(() => {
   //     MoveSlide();
@@ -36,11 +39,8 @@ export const Profile = ({ isAuth }) => {
 
   console.log(isAuth, user.name);
   return (
-
-
     <div className="main-prof">
-      
-      {isAuth.isLoggedin ? (
+      {user.login ? (
         <div className="MainCard">
           <div className="Upper-Half">
             <div className="Profile-Pic Logged-in">
@@ -87,6 +87,27 @@ export const Profile = ({ isAuth }) => {
                   <i class="fas fa-gamepad "></i> Jane Smith challenged you to a
                   game of Chess{" "}
                 </p>
+                {Posts.map((person) =>
+                  person.type === "like" ? (
+                    <h2>{person.name} liked your post</h2>
+                  ) : person.type === "request" ? (
+                    <h2>{person.name} is following you</h2>
+                  ) : (
+                    person.type ===
+                    "Challenge"(<h2>{person.name} Challenged you to a game</h2>)
+                  )
+                )}
+                {/* {Feed.map((feed) =>
+                  feed.type === "like" ? (
+                    <p>{feed.name} liked a post</p>
+                  ) : feed.type === "request" ? (
+                    <p>{feed.name} made request</p>
+                  ) : feed.type === "Challenge" ? (
+                    <p>{feed.name} challenged you</p>
+                  ) : (
+                    ""
+                  )
+                )} */}
               </div>
             </div>
 
@@ -99,17 +120,16 @@ export const Profile = ({ isAuth }) => {
           </div>
 
           <div className="Feed">
-             
             <div className="GameScores">
-
-              <div className="ImageFeed"><img src={logo} alt="" /></div>
-              <div className="ImageFeed"><img src={pic0} alt="" /></div>
-              <div className="ImageFeed"><img src={pic1} alt="" /></div>
-               
-               
-            
-
-            
+              <div className="ImageFeed">
+                <img src={logo} alt="" />
+              </div>
+              <div className="ImageFeed">
+                <img src={pic0} alt="" />
+              </div>
+              <div className="ImageFeed">
+                <img src={pic1} alt="" />
+              </div>
             </div>
 
             <div className="Friends"> Hello </div>
@@ -127,7 +147,7 @@ export const Profile = ({ isAuth }) => {
               <div className="Name"> {user.name}</div>
               <div className="Scores">
                 {" "}
-                <i class="far fa-heart"></i> 56 followers{" "}
+                <i class="far fa-heart"></i> {user.followerCount} followers{" "}
               </div>
               <div className="Follow">
                 <i class="fas fa-user-circle"></i>Follow
@@ -137,11 +157,11 @@ export const Profile = ({ isAuth }) => {
           <div className="Lower-Half">
             <div className="Profile-Feed">
               <div>
-                <h3> {isAuth.name}</h3>
+                <h3> {user.name}</h3>
                 <p>
-                  {isAuth.name} is a 35-year-old trainee doctor who enjoys
-                  charity work, eating out and theatre. He is currently single.
-                  His most recent romance was with a chef called Deborah Marnie
+                  {user.name} is a 35-year-old trainee doctor who enjoys charity
+                  work, eating out and theatre. He is currently single. His most
+                  recent romance was with a chef called Deborah Marnie
                   Macdonald, who was 16 years older than him. They broke up
                   because Deborah wanted somebody less dastardly.
                 </p>

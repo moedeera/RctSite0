@@ -17,7 +17,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
 import { PostData, GetData } from "./State/actions-creators";
 import { useAuth } from "./utils/AuthLogin";
-import {UserContext} from "./UserContext"
+import { UserContext } from "./UserContext";
 
 function App() {
   const account = useSelector((state) => state.account);
@@ -40,40 +40,40 @@ function App() {
 
   console.log(IsAuth);
 
-const [user, setUser] = useState({msg:'hello world man',
-name:'James Johnson', 
-age:35,
-posts:['jen','Conner'],
-followerCount:56,
-login: true
-
-});
-
-
+  const [user, setUser] = useState({
+    msg: "hello world man",
+    name: "James Johnson",
+    age: 35,
+    Feed: [
+      { name: "Jen Smith", type: "like" },
+      { name: "Connie Smith", type: "request" },
+      { name: "James Santos", type: "request" },
+      { name: "Jane Smith", type: "Challenge" },
+    ],
+    followerCount: 56,
+    login: false,
+  });
 
   return (
     <Router>
       <div className="App">
-        <UserContext.Provider value={{user,setUser}}>
-        <Routes>
+        <UserContext.Provider value={{ user, setUser }}>
+          <Routes>
+            <Route path="/" element={<Homepage />} />
+            <Route path="/Table" element={<Table />} />
+            <Route path="/Portfolio" element={<Portfolio />} />
+            <Route path="/About" element={<About />} />
+            <Route path="/Contact" element={<Contact />} />
+            <Route path="/Econnect" element={<Econnect />} />
+            <Route path="/Register" element={<Econnect />} />
 
-          
-          <Route path="/" element={<Homepage />} />
-          <Route path="/Table" element={<Table />} />
-          <Route path="/Portfolio" element={<Portfolio />} />
-          <Route path="/About" element={<About />} />
-          <Route path="/Contact" element={<Contact />} />
-          <Route path="/Econnect" element={<Econnect />} />
-          <Route path="/Register" element={<Econnect />} />
+            <Route path="/Login" element={<Login setAuth={SetAuth} />} />
 
-          <Route path="/Login" element={<Login setAuth={SetAuth} />} />
-
-          <Route path="/Profile" element={<Profile isAuth={IsAuth} />} />
-          <Route path="/RT" element={<RT />} />
-          <Route path="*" element={<RT />} />
-          
-        </Routes>
-</UserContext.Provider>
+            <Route path="/Profile" element={<Profile isAuth={IsAuth} />} />
+            <Route path="/RT" element={<RT />} />
+            <Route path="*" element={<RT />} />
+          </Routes>
+        </UserContext.Provider>
         {/* <h3>{account.count}</h3>
         <h3>{account.name}</h3>
 
