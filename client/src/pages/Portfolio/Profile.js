@@ -2,10 +2,14 @@ import React from "react";
 import logo from "./profile-pic.jpeg";
 import pic0 from "./pic0.jpeg";
 import pic1 from "./pic1.jpeg";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useState, useCallback } from "react";
+import { UserContext } from "../../UserContext";
 
 export const Profile = ({ isAuth }) => {
+
+
+  const {user,setUser} = useContext(UserContext)
   const [slide, setSLide] = useState(1);
 
   const MoveSlide = useCallback(() => {
@@ -23,16 +27,19 @@ export const Profile = ({ isAuth }) => {
     });
   }, []);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      MoveSlide();
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [MoveSlide]);
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     MoveSlide();
+  //   }, 5000);
+  //   return () => clearInterval(interval);
+  // }, [MoveSlide]);
 
-  console.log(isAuth);
+  console.log(isAuth, user.name);
   return (
+
+
     <div className="main-prof">
+      
       {isAuth.isLoggedin ? (
         <div className="MainCard">
           <div className="Upper-Half">
@@ -42,7 +49,7 @@ export const Profile = ({ isAuth }) => {
             </div>
 
             <div className="Info-Section">
-              <div className="Name"> {isAuth.name}</div>
+              <div className="Name"> {user.name}</div>
               <div className="Scores">
                 {" "}
                 <i class="far fa-heart"></i> 56 followers{" "}
@@ -96,8 +103,8 @@ export const Profile = ({ isAuth }) => {
             <div className="GameScores">
 
               <div className="ImageFeed"><img src={logo} alt="" /></div>
-              <div ><img src={pic0} alt="" /></div>
-              <div><img src={pic1} alt="" /></div>
+              <div className="ImageFeed"><img src={pic0} alt="" /></div>
+              <div className="ImageFeed"><img src={pic1} alt="" /></div>
                
                
             
@@ -117,7 +124,7 @@ export const Profile = ({ isAuth }) => {
               <img src={logo} alt="" />
             </div>
             <div className="Info-Section">
-              <div className="Name"> {isAuth.name} Smith</div>
+              <div className="Name"> {user.name}</div>
               <div className="Scores">
                 {" "}
                 <i class="far fa-heart"></i> 56 followers{" "}

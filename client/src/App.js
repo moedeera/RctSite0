@@ -17,6 +17,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
 import { PostData, GetData } from "./State/actions-creators";
 import { useAuth } from "./utils/AuthLogin";
+import {UserContext} from "./UserContext"
 
 function App() {
   const account = useSelector((state) => state.account);
@@ -38,10 +39,25 @@ function App() {
   }, []);
 
   console.log(IsAuth);
+
+const [user, setUser] = useState({msg:'hello world man',
+name:'James Johnson', 
+age:35,
+posts:['jen','Conner'],
+followerCount:56,
+login: true
+
+});
+
+
+
   return (
     <Router>
       <div className="App">
+        <UserContext.Provider value={{user,setUser}}>
         <Routes>
+
+          
           <Route path="/" element={<Homepage />} />
           <Route path="/Table" element={<Table />} />
           <Route path="/Portfolio" element={<Portfolio />} />
@@ -55,8 +71,9 @@ function App() {
           <Route path="/Profile" element={<Profile isAuth={IsAuth} />} />
           <Route path="/RT" element={<RT />} />
           <Route path="*" element={<RT />} />
+          
         </Routes>
-
+</UserContext.Provider>
         {/* <h3>{account.count}</h3>
         <h3>{account.name}</h3>
 

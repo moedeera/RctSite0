@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Navbar from "../../components/Navbar";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { set } from "express/lib/application";
+import { UserContext } from "../../UserContext";
 
 export const Econnect = () => {
   var j = "";
-
+  const {user,setUser} = useContext(UserContext)
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
@@ -27,7 +29,11 @@ export const Econnect = () => {
         name,
         email,
         password,
+        posts:'',
+        followerCount:2,
+        login:true
       };
+    
       try {
         const config = {
           headers: {
@@ -36,18 +42,20 @@ export const Econnect = () => {
         };
         const body = JSON.stringify(newUser);
         const res = await axios.post(
-          "http://localhost:9700/api/users",
+          "http://localhost:9700/api/users/register",
           body,
           config
         );
         j = res;
         console.log(res);
+        setUser(newUser);
+
       } catch (err) {
         console.error(err);
       }
     }
 
-    navigate("profile");
+    navigate("../profile");
   };
 
   return (
