@@ -7,7 +7,7 @@ import { UserContext } from "../../UserContext";
 
 export const Econnect = () => {
   var j = "";
-  const {user,setUser} = useContext(UserContext)
+  const { user, setUser } = useContext(UserContext);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
@@ -29,11 +29,11 @@ export const Econnect = () => {
         name,
         email,
         password,
-        posts:'',
-        followerCount:2,
-        login:true
+        posts: "",
+        followerCount: 2,
+        login: true,
       };
-    
+
       try {
         const config = {
           headers: {
@@ -49,7 +49,6 @@ export const Econnect = () => {
         j = res;
         console.log(res);
         setUser(newUser);
-
       } catch (err) {
         console.error(err);
       }
@@ -60,8 +59,6 @@ export const Econnect = () => {
 
   return (
     <div className="Container">
-      <Navbar />
-
       <div className="Showcase Quiz">
         <div className="SideCase upper">
           <div className="mobileImage">

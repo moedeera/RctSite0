@@ -43,7 +43,6 @@ export const Login = ({ setAuth }) => {
   return (
     <div className="Container">
       {/* <h2 onClick={() => testAuthLog()}>Set to True</h2> */}
-      <Navbar />
 
       <div className="Showcase Quiz">
         <div className="SideCase upper">

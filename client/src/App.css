@@ -185,14 +185,15 @@ a:visited {
 /*----------------Portfolio------------------*/
 .Showcase {
   margin: 0px auto;
-
+  padding-top: 50px;
   width: 100%;
   max-width: 900px;
 }
 /*---------------------QuizHouse-------------------*/
 .Container {
   background: url(./bgpic.jpeg);
-  height: 100vh;
+  height: auto;
+  min-height: 100vh;
   padding: 0px 0px 100px;
 }
 .Quiz {
