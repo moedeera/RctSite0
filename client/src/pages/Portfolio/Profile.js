@@ -5,39 +5,47 @@ import pic1 from "./pic1.jpeg";
 import { useContext, useEffect } from "react";
 import { useState, useCallback } from "react";
 import { UserContext } from "../../UserContext";
+import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const Profile = ({ isAuth }) => {
   const { user, setUser } = useContext(UserContext);
   const [slide, setSLide] = useState(1);
+  const navigate = useNavigate();
   var Posts = user.Feed;
   const names = [
     { name: "Bruce", type: "like" },
     { name: "Clark", type: "like" },
     { name: "Diana", type: "request" },
   ];
-  const MoveSlide = useCallback(() => {
-    setSLide((previous) => {
-      if (previous === 1) {
-        console.log("its at 1");
-        setSLide(2);
-      } else if (previous === 2) {
-        console.log("its at 2");
-        setSLide(3);
-      } else if (previous === 3) {
-        console.log("its at 3");
-        setSLide(1);
-      }
-    });
-  }, []);
+  const MoveSlide = () => {
+    if (slide === 1) {
+      console.log("its at 1 and now set to 2");
+      setSLide(2);
+    } else if (slide === 2) {
+      console.log("its at 2 and now set to 3 ");
+      setSLide(3);
+    }
+    if (slide === 3) {
+      console.log("its at 3 and now set back to 1");
+      setSLide(1);
+    }
+  };
+
+  const FriendsProfile = (friend) => {
+    navigate("../Friends");
+  };
+
   console.log(user.Feed);
   // useEffect(() => {
   //   const interval = setInterval(() => {
   //     MoveSlide();
   //   }, 5000);
   //   return () => clearInterval(interval);
-  // }, [MoveSlide]);
+  // }, []);
 
-  console.log(isAuth, user.name);
+  console.log(user.login, user.name, user.Feed);
   return (
     <div className="main-prof">
       {user.login ? (
@@ -67,7 +75,7 @@ export const Profile = ({ isAuth }) => {
             <div className="Profile-Feed ">
               <div>
                 <h3> Welcome back {isAuth.name}</h3>
-                <p className="Posts">
+                {/* <p className="Posts">
                   {" "}
                   <i class="fas fa-heart" style={{ color: "crimson" }}></i> Jane
                   Smith liked your Post!{" "}
@@ -86,15 +94,21 @@ export const Profile = ({ isAuth }) => {
                   {" "}
                   <i class="fas fa-gamepad "></i> Jane Smith challenged you to a
                   game of Chess{" "}
-                </p>
+                </p> */}
                 {Posts.map((person) =>
                   person.type === "like" ? (
-                    <h2>{person.name} liked your post</h2>
+                    <Link to="/Friends">
+                      {" "}
+                      <p style={{ color: "black" }}>
+                        {person.name} Liked your post bbb
+                      </p>
+                    </Link>
                   ) : person.type === "request" ? (
-                    <h2>{person.name} is following you</h2>
+                    <p>{person.name} is following you</p>
                   ) : (
-                    person.type ===
-                    "Challenge"(<h2>{person.name} Challenged you to a game</h2>)
+                    person.type === "Challenge" && (
+                      <p>{person.name} Challenged you to a game</p>
+                    )
                   )
                 )}
                 {/* {Feed.map((feed) =>
@@ -109,6 +123,7 @@ export const Profile = ({ isAuth }) => {
                   )
                 )} */}
               </div>
+              {user.login && <p>True</p>}
             </div>
 
             <div className="Game-Feed">

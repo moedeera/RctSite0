@@ -29,7 +29,12 @@ export const Econnect = () => {
         name,
         email,
         password,
-        posts: "",
+        Feed: [
+          { name: "Jen Smith", type: "like" },
+          { name: "Connie Smith", type: "request" },
+          { name: "James Santos", type: "request" },
+          { name: "Jane Smith", type: "Challenge" },
+        ],
         followerCount: 2,
         login: true,
       };

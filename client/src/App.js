@@ -18,6 +18,7 @@ import "./App.css";
 import { PostData, GetData } from "./State/actions-creators";
 import { useAuth } from "./utils/AuthLogin";
 import { UserContext } from "./UserContext";
+import { Friends } from "./pages/Portfolio/Friends";
 
 function App() {
   const account = useSelector((state) => state.account);
@@ -52,6 +53,8 @@ function App() {
     ],
     followerCount: 56,
     login: false,
+
+    Friends: [{ name: "Jane" }],
   });
 
   return (
@@ -72,6 +75,7 @@ function App() {
             <Route path="/Profile" element={<Profile isAuth={IsAuth} />} />
             <Route path="/RT" element={<RT />} />
             <Route path="*" element={<RT />} />
+            <Route path="/Friends" element={<Friends />} />
           </Routes>
         </UserContext.Provider>
         {/* <h3>{account.count}</h3>
