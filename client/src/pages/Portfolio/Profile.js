@@ -75,55 +75,39 @@ export const Profile = ({ isAuth }) => {
             <div className="Profile-Feed ">
               <div>
                 <h3> Welcome back {isAuth.name}</h3>
-                {/* <p className="Posts">
-                  {" "}
-                  <i class="fas fa-heart" style={{ color: "crimson" }}></i> Jane
-                  Smith liked your Post!{" "}
-                </p>
-                <p className="Posts">
-                  {" "}
-                  <i class="far fa-user-circle"></i> Amanda Stevens requested to
-                  follow you!{" "}
-                </p>
-                <p className="Posts">
-                  {" "}
-                  <i class="far fa-user-circle"></i> Blake Wise requested to
-                  follow you!{" "}
-                </p>
-                <p className="Posts">
-                  {" "}
-                  <i class="fas fa-gamepad "></i> Jane Smith challenged you to a
-                  game of Chess{" "}
-                </p> */}
+
                 {Posts.map((person) =>
                   person.type === "like" ? (
                     <Link to="/Friends">
                       {" "}
                       <p style={{ color: "black" }}>
-                        {person.name} Liked your post bbb
+                        <i
+                          class="fas fa-heart"
+                          style={{ color: "crimson" }}
+                        ></i>{" "}
+                        {person.name} Liked your post
                       </p>
                     </Link>
                   ) : person.type === "request" ? (
-                    <p>{person.name} is following you</p>
+                    <Link to="/Friends">
+                      <p style={{ color: "black" }}>
+                        <i class="far fa-user-circle"></i>
+                        {person.name} requested to follow you
+                      </p>
+                    </Link>
                   ) : (
                     person.type === "Challenge" && (
-                      <p>{person.name} Challenged you to a game</p>
+                      <Link to="/Friends">
+                        <p style={{ color: "black" }}>
+                          {" "}
+                          <i class="fas fa-gamepad "></i>
+                          {person.name} Challenged you to a game
+                        </p>
+                      </Link>
                     )
                   )
                 )}
-                {/* {Feed.map((feed) =>
-                  feed.type === "like" ? (
-                    <p>{feed.name} liked a post</p>
-                  ) : feed.type === "request" ? (
-                    <p>{feed.name} made request</p>
-                  ) : feed.type === "Challenge" ? (
-                    <p>{feed.name} challenged you</p>
-                  ) : (
-                    ""
-                  )
-                )} */}
               </div>
-              {user.login && <p>True</p>}
             </div>
 
             <div className="Game-Feed">
