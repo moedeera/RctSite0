@@ -133,10 +133,17 @@ export const Econnect = () => {
             <h1>EConnect</h1>{" "}
           </div>
           <div className="SideText">
-            What is Lorem Ipsum? Lorem Ipsum is simply dummy text of the
-            printing and typesetting industry. Lorem Ipsum has been the
-            industry's standard dummy text ever since the 1500s, when an unknown
-            .
+            What is EConnect? EConnect is a platform designed to connect 
+            people in a more interactive sense. EConnect 
+            understands you socialize differently with people based on their
+            relationship with you.
+            Your social energy is limited and you dont
+            socialize with family the same way you socialize with coworkers. As a result, 
+            our website adjust your feed accordingly and encourages you to socialize 
+            with people in a timely fashion. Challenge your coworkers with games, setup
+            events with your friends, and the occasional video call with family to keep tabs.
+            EConnect helps you manage your online experience by making sure you never lose 
+            sight of the important things in life.
             <div className="social-media">
               <i class="fab fa-facebook-f fa-2x"></i>
               <i class="fab fa-google-plus-g fa-2x"></i>
