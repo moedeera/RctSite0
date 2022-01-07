@@ -5,19 +5,19 @@ const { Router } = require("express");
 const router = express.Router();
 const number = { count: 2150, name: "James Smith" };
 
-var JamesAccount= {
-
-  name:'James Johnson', email:'JJ@g',password:'123',
-  posts:'',likes:''
-  
-  }
-
+var JamesAccount = {
+  name: "James Johnson",
+  email: "JJ@g",
+  password: "123",
+  posts: "",
+  likes: "",
+};
 
 var User = {
-
-name:'', email:'',password:'',
-
-}
+  name: "",
+  email: "",
+  password: "",
+};
 
 router.get("/", async (req, res) => {
   console.log("a GET request was made", req.body);
@@ -38,16 +38,17 @@ router.post("/update", async (req, res) => {
 });
 
 router.post("/register", async (req, res) => {
-  console.log("a register POST request was made", 
-  req.body.name, req.body.email,req.body.password);
+  console.log(
+    "a register POST request was made",
+    req.body.name,
+    req.body.email,
+    req.body.password
+  );
   User.name = req.body.name;
   User.email = req.body.email;
   User.password = req.body.password;
-  
-  res.send('Server message');
+
+  res.send("Server message");
 });
-
-
-
 
 module.exports = router;
