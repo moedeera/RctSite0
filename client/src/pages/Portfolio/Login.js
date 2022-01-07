@@ -92,13 +92,17 @@ export const Login = ({ setAuth }) => {
             ></i>{" "}
             <h1>EConnect</h1>{" "}
             <div className="SideText">
-              What is QuizHouse? QuizHouse is a social website that allows you
-              to compete against other via fun puzzles and quizes . QuizHouse
-              been the industry's standard dummy quiz game ever since the 1990s,
-              when an unknown printer took a galley of type and scrambled it to
-              make a type specimen book. It has survived not only five
-              centuries, but also the leap into electronic typesetting,
-              remaining essentially unchanged.
+            What is EConnect? EConnect is a platform designed to connect 
+            people in a more interactive sense. EConnect 
+            understands you socialize differently with people based on their
+            relationship with you.
+            Your social energy is limited and you dont
+            socialize with family the same way you socialize with coworkers. As a result, 
+            our website adjust your feed accordingly and encourages you to socialize 
+            with people in a timely fashion. Challenge your coworkers with games, setup
+            events with your friends, and the occasional video call with family to keep tabs.
+            EConnect helps you manage your online experience by making sure you never lose 
+            sight of the important things in life.
               <div className="social-media">
                 <i class="fab fa-facebook-f fa-2x"></i>
                 <i class="fab fa-google-plus-g fa-2x"></i>
