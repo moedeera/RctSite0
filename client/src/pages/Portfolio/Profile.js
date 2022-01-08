@@ -60,11 +60,8 @@ export const Profile = ({ isAuth }) => {
               <div className="Name"> {user.name}</div>
               <div className="Scores">
                 {" "}
-                <i class="far fa-heart"></i> 56 followers{" "}
-                <div className="Game-Score">
-                  {" "}
-                  <i class="fas fa-gamepad"></i> 578 Score
-                </div>
+                <i class="far fa-heart"></i> <div>56 followers</div>{" "}
+                <i class="fas fa-gamepad"></i> 578 Score
               </div>
               <div className="Follow">
                 <i class="fas fa-user-circle"></i>Account
@@ -74,7 +71,7 @@ export const Profile = ({ isAuth }) => {
           <div className="Lower-Half">
             <div className="Profile-Feed ">
               <div>
-                <h3> Welcome back {isAuth.name}</h3>
+                <h3> Welcome back {user.name}</h3>
 
                 {Posts.map((person) =>
                   person.type === "like" ? (

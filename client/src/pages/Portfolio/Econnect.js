@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import Navbar from "../../components/Navbar";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { set } from "express/lib/application";
+
 import { UserContext } from "../../UserContext";
 
 export const Econnect = () => {
@@ -30,10 +30,10 @@ export const Econnect = () => {
         email,
         password,
         Feed: [
-          { name: "Jen Smith", type: "like" },
-          { name: "Connie Smith", type: "request" },
+          { name: "Jen Smith", type: "request" },
+          { name: "Connie Williams", type: "request" },
           { name: "James Santos", type: "request" },
-          { name: "Jane Smith", type: "Challenge" },
+          { name: "Jen Smith", type: "Challenge" },
         ],
         followerCount: 2,
         login: true,
@@ -132,18 +132,20 @@ export const Econnect = () => {
             ></i>{" "}
             <h1>EConnect</h1>{" "}
           </div>
+          {/* <img
+            src="https://images.pexels.com/photos/20787/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350"
+            alt="new"
+          /> */}
           <div className="SideText">
-            What is EConnect? EConnect is a platform designed to connect 
-            people in a more interactive sense. EConnect 
-            understands you socialize differently with people based on their
-            relationship with you.
-            Your social energy is limited and you dont
-            socialize with family the same way you socialize with coworkers. As a result, 
-            our website adjust your feed accordingly and encourages you to socialize 
-            with people in a timely fashion. Challenge your coworkers with games, setup
-            events with your friends, and the occasional video call with family to keep tabs.
-            EConnect helps you manage your online experience by making sure you never lose 
-            sight of the important things in life.
+            EConnect is a platform designed to connect people in a more
+            interactive sense. Your social energy is limited and you dont
+            socialize with family the same way you socialize with coworkers. As
+            a result, our website adjusts your feed accordingly and encourages
+            you to socialize with people in a timely fashion. Challenge your
+            coworkers with games, setup events with your friends, and the
+            occasional video call with family to keep tabs. EConnect helps you
+            manage your online experience by making sure you never lose sight of
+            the important things in life.
             <div className="social-media">
               <i class="fab fa-facebook-f fa-2x"></i>
               <i class="fab fa-google-plus-g fa-2x"></i>

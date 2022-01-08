@@ -15,7 +15,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
-import { PostData, GetData } from "./State/actions-creators";
+
 import { useAuth } from "./utils/AuthLogin";
 import { UserContext } from "./UserContext";
 import { Friends } from "./pages/Portfolio/Friends";
@@ -30,31 +30,24 @@ function App() {
   const dispatch = useDispatch();
 
   console.log(account);
-  const { depositMoney, withDrawMoney, PostData } = bindActionCreators(
-    actionCreators,
-    dispatch
-  );
-
-  useEffect(() => {
-    dispatch(GetData());
-  }, []);
 
   console.log(IsAuth);
 
   const [user, setUser] = useState({
-    msg: "hello world man",
+    id: 5,
     name: "James Johnson",
     age: 35,
     Feed: [
       { name: "Jen Smith", type: "like" },
-      { name: "Connie Smith", type: "request" },
+      { name: "Connie Williams", type: "request" },
       { name: "James Santos", type: "request" },
-      { name: "Jane Smith", type: "Challenge" },
+      { name: "Jen Smith", type: "Challenge" },
     ],
+    profilePic: "",
     followerCount: 56,
     login: false,
 
-    Friends: [{ name: "Jane" }],
+    Friends: [1, 2, 3],
   });
 
   return (

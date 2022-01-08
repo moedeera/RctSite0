@@ -1,43 +1,49 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Navbar from "../../components/Navbar";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../UserContext";
 
 export const Login = ({ setAuth }) => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    name: "",
     email: "",
     password: "",
-    password2: "",
   });
-
-  const { name, email, password, password2 } = formData;
+  const { user, setUser } = useContext(UserContext);
+  const { email, password } = formData;
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onSubmit = async (e) => {
     e.preventDefault();
-
+    var Data;
     try {
       const config = {
         headers: {
           "Content-Type": "application/json",
         },
       };
-
-      const res = await axios.post("http://localhost:9700/api/users");
-
+      const body = JSON.stringify(formData);
+      const res = await axios.post(
+        "http://localhost:9700/api/users",
+        body,
+        config
+      );
       console.log(res.data);
-      setAuth({ isLoggedin: true, name: res.data.name });
+      Data = res.data;
+      // if (res.data){}
     } catch (err) {
       console.error(err);
     }
-
-    navigate("../profile");
-  };
-  const testAuthLog = () => {
-    setAuth({ isLoggedin: true, name: "Sam" });
+    if (Data === "Incorrect Password") {
+      console.log("password issue");
+    } else if (Data === "No User with that Email") {
+      console.log("user issue");
+    } else {
+      setUser(Data);
+      navigate("../profile");
+    }
   };
 
   return (
@@ -52,10 +58,6 @@ export const Login = ({ setAuth }) => {
           ></i>{" "}
           <h1 style={{ lineHeight: "1.8em" }}>Are you up for the Challenge?</h1>
           <form className="QuizForm" onSubmit={(e) => onSubmit(e)}>
-            <label>
-              <h2 onClick={() => testAuthLog()}>Login</h2>
-            </label>
-
             <input
               type="email"
               placeholder="Email"
@@ -92,17 +94,17 @@ export const Login = ({ setAuth }) => {
             ></i>{" "}
             <h1>EConnect</h1>{" "}
             <div className="SideText">
-            What is EConnect? EConnect is a platform designed to connect 
-            people in a more interactive sense. EConnect 
-            understands you socialize differently with people based on their
-            relationship with you.
-            Your social energy is limited and you dont
-            socialize with family the same way you socialize with coworkers. As a result, 
-            our website adjust your feed accordingly and encourages you to socialize 
-            with people in a timely fashion. Challenge your coworkers with games, setup
-            events with your friends, and the occasional video call with family to keep tabs.
-            EConnect helps you manage your online experience by making sure you never lose 
-            sight of the important things in life.
+              What is EConnect? EConnect is a platform designed to connect
+              people in a more interactive sense. EConnect understands you
+              socialize differently with people based on their relationship with
+              you. Your social energy is limited and you dont socialize with
+              family the same way you socialize with coworkers. As a result, our
+              website adjust your feed accordingly and encourages you to
+              socialize with people in a timely fashion. Challenge your
+              coworkers with games, setup events with your friends, and the
+              occasional video call with family to keep tabs. EConnect helps you
+              manage your online experience by making sure you never lose sight
+              of the important things in life.
               <div className="social-media">
                 <i class="fab fa-facebook-f fa-2x"></i>
                 <i class="fab fa-google-plus-g fa-2x"></i>
