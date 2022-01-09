@@ -8,17 +8,13 @@ import { UserContext } from "../../UserContext";
 import { Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
-export const Profile = ({ isAuth }) => {
+export const Profile = ({ isAuth, setAuth }) => {
   const { user, setUser } = useContext(UserContext);
   const [slide, setSLide] = useState(1);
   const navigate = useNavigate();
-  var Posts = user.Feed;
-  const names = [
-    { name: "Bruce", type: "like" },
-    { name: "Clark", type: "like" },
-    { name: "Diana", type: "request" },
-  ];
+
   const MoveSlide = () => {
     if (slide === 1) {
       console.log("its at 1 and now set to 2");
@@ -32,12 +28,30 @@ export const Profile = ({ isAuth }) => {
       setSLide(1);
     }
   };
+  console.log(user.profilePic);
+  const FriendsProfile = async (id) => {
+    console.log("hey");
 
-  const FriendsProfile = (friend) => {
-    navigate("../Friends");
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+
+      const string = `http://localhost:9700/api/users/profiles/${id}`;
+      console.log(string);
+      const res = await axios.get(string);
+      console.log(res.data);
+      setAuth(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+
+    // navigate("../Friends");
   };
 
-  console.log(user.Feed);
+  console.log(user);
   // useEffect(() => {
   //   const interval = setInterval(() => {
   //     MoveSlide();
@@ -52,7 +66,7 @@ export const Profile = ({ isAuth }) => {
         <div className="MainCard">
           <div className="Upper-Half">
             <div className="Profile-Pic Logged-in">
-              <img src={logo} alt="" />
+              <img src={user.profilePic} alt="new" />
               <div className="PhotoEdit">Change Photo</div>
             </div>
 
@@ -60,7 +74,8 @@ export const Profile = ({ isAuth }) => {
               <div className="Name"> {user.name}</div>
               <div className="Scores">
                 {" "}
-                <i class="far fa-heart"></i> <div>56 followers</div>{" "}
+                <i class="far fa-heart"></i>{" "}
+                <div>{user.followerCount} followers</div>{" "}
                 <i class="fas fa-gamepad"></i> 578 Score
               </div>
               <div className="Follow">
@@ -73,9 +88,9 @@ export const Profile = ({ isAuth }) => {
               <div>
                 <h3> Welcome back {user.name}</h3>
 
-                {Posts.map((person) =>
+                {user.Feed.map((person) =>
                   person.type === "like" ? (
-                    <Link to="/Friends">
+                    <Link to="/Friends" onClick={() => FriendsProfile(user.id)}>
                       {" "}
                       <p style={{ color: "black" }}>
                         <i

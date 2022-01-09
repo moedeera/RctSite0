@@ -47,6 +47,23 @@ var DataBase = [
 
     Friends: [1, 2, 5],
   },
+  {
+    id: 5,
+    name: "James Johnson",
+    age: 35,
+    Feed: [
+      { name: "Jen Smith", type: "like" },
+      { name: "Connie Williams", type: "request" },
+      { name: "James Santos", type: "request" },
+      { name: "Jen Smith", type: "Challenge" },
+    ],
+    profilePic:
+      "https://images.pexels.com/photos/1693085/pexels-photo-1693085.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+    followerCount: 56,
+    login: false,
+
+    Friends: [1, 2, 3],
+  },
 ];
 
 var Users = [

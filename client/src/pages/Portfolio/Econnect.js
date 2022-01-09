@@ -33,9 +33,10 @@ export const Econnect = () => {
           { name: "Jen Smith", type: "request" },
           { name: "Connie Williams", type: "request" },
           { name: "James Santos", type: "request" },
-          { name: "Jen Smith", type: "Challenge" },
         ],
-        followerCount: 2,
+        profilePic:
+          "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
+        followerCount: 0,
         login: true,
       };
 
@@ -132,10 +133,6 @@ export const Econnect = () => {
             ></i>{" "}
             <h1>EConnect</h1>{" "}
           </div>
-          {/* <img
-            src="https://images.pexels.com/photos/20787/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350"
-            alt="new"
-          /> */}
           <div className="SideText">
             EConnect is a platform designed to connect people in a more
             interactive sense. Your social energy is limited and you dont

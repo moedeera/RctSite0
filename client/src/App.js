@@ -23,9 +23,7 @@ import { Friends } from "./pages/Portfolio/Friends";
 function App() {
   const account = useSelector((state) => state.account);
   const { IsAuth, SetAuth } = useAuth();
-  const [profile, updateProfile] = useState({
-    name: "james",
-  });
+  const [profile, updateProfile] = useState();
 
   const dispatch = useDispatch();
 
@@ -34,20 +32,21 @@ function App() {
   console.log(IsAuth);
 
   const [user, setUser] = useState({
-    id: 5,
-    name: "James Johnson",
-    age: 35,
+    id: 4,
+    name: "James Santos",
+    age: 19,
     Feed: [
       { name: "Jen Smith", type: "like" },
       { name: "Connie Williams", type: "request" },
-      { name: "James Santos", type: "request" },
+      { name: "James Johnson", type: "request" },
       { name: "Jen Smith", type: "Challenge" },
     ],
-    profilePic: "",
+    profilePic:
+      "https://images.pexels.com/photos/1693085/pexels-photo-1693085.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
     followerCount: 56,
     login: false,
 
-    Friends: [1, 2, 3],
+    Friends: [1, 4],
   });
 
   return (
@@ -65,10 +64,13 @@ function App() {
 
             <Route path="/Login" element={<Login setAuth={SetAuth} />} />
 
-            <Route path="/Profile" element={<Profile isAuth={IsAuth} />} />
+            <Route
+              path="/Profile"
+              element={<Profile isAuth={IsAuth} setAuth={SetAuth} />}
+            />
             <Route path="/RT" element={<RT />} />
             <Route path="*" element={<RT />} />
-            <Route path="/Friends" element={<Friends />} />
+            <Route path="/Friends" element={<Friends isAuth={IsAuth} />} />
           </Routes>
         </UserContext.Provider>
         {/* <h3>{account.count}</h3>

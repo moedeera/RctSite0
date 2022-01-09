@@ -55,4 +55,23 @@ router.post("/register", async (req, res) => {
   res.send("Server message");
 });
 
+router.post("/search", async (req, res) => {
+  console.log(req.body);
+
+  res.send("request was received");
+});
+
+router.get("/profiles/:user_id", async (req, res) => {
+  console.log(req.params.user_id);
+  try {
+    const profile = DataBase.find(
+      (profile) => profile.id == req.params.user_id
+    );
+    console.log(profile);
+    res.send(profile);
+  } catch (error) {
+    res.send(error);
+  }
+});
+
 module.exports = router;
