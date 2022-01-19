@@ -24,7 +24,7 @@ export const Profile = ({ isAuth, setAuth }) => {
       setSLide(3);
     }
     if (slide === 3) {
-      console.log("its at 3 and now set back to 1");
+      console.log("its at 3 and now set back to 1 ok");
       setSLide(1);
     }
   };
