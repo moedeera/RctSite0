@@ -4,9 +4,9 @@ var DataBase = [
     name: "Jen Smith",
     age: 25,
     Feed: [
-      { name: "Connie Williams", type: "like" },
-      { name: "Baker Smith", type: "request" },
-      { name: "James Santos", type: "request" },
+      { name: "Connie Williams", type: "like", id:2 },
+      { name: "Matt Russo", type: "request", id:3},
+      { name: "James Santos", type: "request", id:4 },
     ],
     profilePic:
       "https://images.pexels.com/photos/1090387/pexels-photo-1090387.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
@@ -20,9 +20,9 @@ var DataBase = [
     name: "Connie Williams",
     age: 21,
     Feed: [
-      { name: "Jen Smith", type: "like" },
-      { name: "James Johnson", type: "request" },
-      { name: "Jen Smith", type: "Challenge" },
+      { name: "Jen Smith", type: "like", id:1 },
+      { name: "James Johnson", type: "request", id:5 },
+      { name: "Jen Smith", type: "Challenge", id:1 },
     ],
     profilePic:
       "https://images.pexels.com/photos/762020/pexels-photo-762020.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
@@ -36,9 +36,9 @@ var DataBase = [
     name: "Matt Russo",
     age: 32,
     Feed: [
-      { name: "Connie Williams", type: "like" },
-      { name: "James Johnson", type: "request" },
-      { name: "Jen Smith", type: "Challenge" },
+      { name: "Connie Williams", type: "like", id:2 },
+      { name: "James Johnson", type: "request", id:5 },
+      { name: "Jen Smith", type: "Challenge", id:1 },
     ],
     profilePic:
       "https://images.pexels.com/photos/1819483/pexels-photo-1819483.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
@@ -46,16 +46,32 @@ var DataBase = [
     login: false,
 
     Friends: [1, 2, 5],
+  },{
+    id: 4,
+    name: "James Santos",
+    age: 19,
+    Feed: [
+      { name: "Jen Smith", type: "like", id:1 },
+      { name: "Connie Williams", type: "request", id:2 },
+      { name: "James Johnson", type: "request", id:5 },
+      { name: "Jen Smith", type: "Challenge", id:1 },
+    ],
+    profilePic:
+      "https://images.pexels.com/photos/1693085/pexels-photo-1693085.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+    followerCount: 56,
+    login: false,
+
+    Friends: [1, 4],
   },
   {
     id: 5,
     name: "James Johnson",
     age: 35,
     Feed: [
-      { name: "Jen Smith", type: "like" },
-      { name: "Connie Williams", type: "request" },
-      { name: "James Santos", type: "request" },
-      { name: "Jen Smith", type: "Challenge" },
+      { name: "Jen Smith", type: "like", id:1 },
+      { name: "Connie Williams", type: "request", id:2 },
+      { name: "James Santos", type: "request", id:4 },
+      { name: "Jen Smith", type: "Challenge", id:1 },
     ],
     profilePic:
       "https://images.pexels.com/photos/1693085/pexels-photo-1693085.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",

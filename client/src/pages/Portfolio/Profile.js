@@ -40,7 +40,7 @@ export const Profile = ({ isAuth, setAuth }) => {
       };
 
       const string = `http://localhost:9700/api/users/profiles/${id}`;
-      console.log(string);
+      console.log(string, id);
       const res = await axios.get(string);
       console.log(res.data);
       setAuth(res.data);
@@ -90,7 +90,7 @@ export const Profile = ({ isAuth, setAuth }) => {
 
                 {user.Feed.map((person) =>
                   person.type === "like" ? (
-                    <Link to="/Friends" onClick={() => FriendsProfile(user.id)}>
+                    <Link to="/Friends" onClick={() => FriendsProfile(person.id)}>
                       {" "}
                       <p style={{ color: "black" }}>
                         <i
@@ -101,7 +101,7 @@ export const Profile = ({ isAuth, setAuth }) => {
                       </p>
                     </Link>
                   ) : person.type === "request" ? (
-                    <Link to="/Friends">
+                    <Link to="/Friends"  onClick={() => FriendsProfile(person.id)}>
                       <p style={{ color: "black" }}>
                         <i class="far fa-user-circle"></i>
                         {person.name} requested to follow you
@@ -109,7 +109,7 @@ export const Profile = ({ isAuth, setAuth }) => {
                     </Link>
                   ) : (
                     person.type === "Challenge" && (
-                      <Link to="/Friends">
+                      <Link to="/Friends"  onClick={() => FriendsProfile(person.id)}>
                         <p style={{ color: "black" }}>
                           {" "}
                           <i class="fas fa-gamepad "></i>
