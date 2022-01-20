@@ -2,6 +2,7 @@ import React from "react";
 import logo from "./profile-pic.jpeg";
 import pic0 from "./pic0.jpeg";
 import pic1 from "./pic1.jpeg";
+import pic from "../../blank-avatar.png";
 import { useContext, useEffect } from "react";
 import { useState, useCallback } from "react";
 import { UserContext } from "../../UserContext";
@@ -130,6 +131,15 @@ export const Profile = ({ isAuth, setAuth }) => {
                     )
                   )
                 )}
+                <div className="Create-Post">
+                  {" "}
+                  <img src={pic} alt="" />
+                  <input
+                    type="textarea"
+                    name="textValue"
+                    placeholder="Create a Post"
+                  />
+                </div>
               </div>
             </div>
 
@@ -142,19 +152,37 @@ export const Profile = ({ isAuth, setAuth }) => {
           </div>
 
           <div className="Feed">
-            <div className="GameScores">
-              <div className="ImageFeed">
+            <div className="Post-Feed">
+              <div>
                 <img src={logo} alt="" />
+                <p>James was just enjoying the view</p>
+                <div className="Create-Post">
+                  {" "}
+                  <img src={pic} alt="" />
+                  <input
+                    type="textarea"
+                    name="textValue"
+                    placeholder="Comment"
+                  />
+                </div>
               </div>
-              <div className="ImageFeed">
+              <div className="Posts">
                 <img src={pic0} alt="" />
+                <p>Piece and Quite</p>
+                <div className="Create-Post">
+                  {" "}
+                  <img src={pic} alt="" />
+                  <input
+                    type="textarea"
+                    name="textValue"
+                    placeholder="Comment"
+                  />
+                </div>
               </div>
-              <div className="ImageFeed">
+              <div>
                 <img src={pic1} alt="" />
               </div>
             </div>
-
-            <div className="Friends"> Hello </div>
 
             <div className="Interests">Hello </div>
           </div>

@@ -376,15 +376,22 @@ img {
 }
 /*Bottom Card*/
 .Feed {
-  border-top: 1px solid black;
+  width: 100%;
 }
-.GameScores {
-  border: 1px solid black;
-  width: 80%;
+.Feed img {
+  width: 100%;
+}
+.Post-Feed {
+  border: 1px solid grey;
+  width: 100%;
   margin: 10px auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  justify-content: center;
+  align-items: center;
 }
+
 .Friends {
   border: 1px solid black;
   width: 80%;
@@ -445,6 +452,33 @@ img {
   height: 30px;
   width: 30px;
   border-radius: 50%;
+}
+
+.Create-Post {
+  border-bottom: 1px solid rgba(128, 128, 128, 0.521);
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 1fr 6fr;
+
+  max-width: 400px;
+  justify-content: center;
+  align-items: center;
+}
+
+.Create-Post input {
+  font-size: 16px;
+  border: none;
+  background: rgba(128, 128, 128, 0.519);
+  border-radius: 10px;
+  color: red !important;
+  padding: 10px;
+}
+.Create-Post img {
+  width: 25px;
+  height: 25px;
+  border: 1px solid black;
+  border-radius: 50%;
+  padding: 5px;
 }
 /* Extra small devices (phones, 768px and down) */
 @media only screen and (max-width: 768px) {
