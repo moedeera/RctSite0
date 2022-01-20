@@ -9,6 +9,7 @@ import { Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Searchbar from "../../components/Searchbar";
 
 export const Profile = ({ isAuth, setAuth }) => {
   const { user, setUser } = useContext(UserContext);
@@ -62,6 +63,7 @@ export const Profile = ({ isAuth, setAuth }) => {
   console.log(user.login, user.name, user.Feed);
   return (
     <div className="main-prof">
+      <Searchbar setAuth={setAuth} />
       {user.login ? (
         <div className="MainCard">
           <div className="Upper-Half">
@@ -90,7 +92,10 @@ export const Profile = ({ isAuth, setAuth }) => {
 
                 {user.Feed.map((person) =>
                   person.type === "like" ? (
-                    <Link to="/Friends" onClick={() => FriendsProfile(person.id)}>
+                    <Link
+                      to="/Friends"
+                      onClick={() => FriendsProfile(person.id)}
+                    >
                       {" "}
                       <p style={{ color: "black" }}>
                         <i
@@ -101,7 +106,10 @@ export const Profile = ({ isAuth, setAuth }) => {
                       </p>
                     </Link>
                   ) : person.type === "request" ? (
-                    <Link to="/Friends"  onClick={() => FriendsProfile(person.id)}>
+                    <Link
+                      to="/Friends"
+                      onClick={() => FriendsProfile(person.id)}
+                    >
                       <p style={{ color: "black" }}>
                         <i class="far fa-user-circle"></i>
                         {person.name} requested to follow you
@@ -109,7 +117,10 @@ export const Profile = ({ isAuth, setAuth }) => {
                     </Link>
                   ) : (
                     person.type === "Challenge" && (
-                      <Link to="/Friends"  onClick={() => FriendsProfile(person.id)}>
+                      <Link
+                        to="/Friends"
+                        onClick={() => FriendsProfile(person.id)}
+                      >
                         <p style={{ color: "black" }}>
                           {" "}
                           <i class="fas fa-gamepad "></i>

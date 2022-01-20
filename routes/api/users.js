@@ -15,7 +15,7 @@ var User = {
 router.get("/", async (req, res) => {
   console.log("a GET request was made", req.body);
 
-  res.send(number);
+  res.send(DataBase);
 });
 
 router.post("/", async (req, res) => {

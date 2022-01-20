@@ -301,6 +301,7 @@ a:visited {
   position: relative;
   transition: 1s ease-in-out;
   cursor: pointer;
+  z-index: 0;
 }
 
 img {
@@ -394,7 +395,57 @@ img {
   width: 80%;
   margin: 10px auto;
 }
+/* SearchBar*/
+.Search {
+  display: grid;
+  grid-template-columns: 5fr 1fr 1fr;
+  border: 1px solid grey;
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 900px;
+  margin: 0 auto;
+  margin-bottom: 100px;
+  background: white;
+}
+.searchBar {
+  display: grid;
+  grid-template-columns: 1fr 6fr;
+  background: white;
+}
 
+.searchBar input {
+  width: 95%;
+  border: none;
+  outline: none;
+  font-size: 14px;
+}
+
+.searchBar input:focus {
+  border: none;
+  outline: none;
+}
+
+.options {
+  width: 100%;
+  padding: 5px 10px;
+  color: black;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+
+  background: white;
+  cursor: pointer;
+}
+
+.options:hover {
+  background: rgba(255, 255, 255, 0.445);
+  color: #1c8be3;
+}
+.images {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+}
 /* Extra small devices (phones, 768px and down) */
 @media only screen and (max-width: 768px) {
   /* Navbar*/
@@ -463,6 +514,12 @@ img {
     color: white;
     opacity: 1;
   }
+  .Search {
+    grid-template-columns: 5fr 1fr;
+  }
+  .filter {
+    display: none;
+  }
 }
 
 @media only screen and (min-width: 768px) {
@@ -478,5 +535,10 @@ img {
   }
   .Profile-Pic img:hover {
     opacity: 0.9;
+  }
+}
+@media only screen and (max-width: 625px) {
+  .fa-chevron-down {
+    display: none;
   }
 }
