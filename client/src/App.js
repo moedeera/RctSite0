@@ -42,14 +42,14 @@ function App() {
   });
 
   React.useEffect(() => {
-    const data = localStorage.getItem("user-info");
+    const data = sessionStorage.getItem("user-info");
     if (data) {
       setUser(JSON.parse(data));
     }
   }, []);
 
   React.useEffect(() => {
-    localStorage.setItem("user-info", JSON.stringify(user));
+    sessionStorage.setItem("user-info", JSON.stringify(user));
   });
 
   const dispatch = useDispatch();
