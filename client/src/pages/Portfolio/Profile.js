@@ -17,19 +17,6 @@ export const Profile = ({ isAuth, setAuth }) => {
   const [slide, setSLide] = useState(1);
   const navigate = useNavigate();
 
-  const MoveSlide = () => {
-    if (slide === 1) {
-      console.log("its at 1 and now set to 2");
-      setSLide(2);
-    } else if (slide === 2) {
-      console.log("its at 2 and now set to 3 ");
-      setSLide(3);
-    }
-    if (slide === 3) {
-      console.log("its at 3 and now set back to 1 ok");
-      setSLide(1);
-    }
-  };
   console.log(user.profilePic);
   const FriendsProfile = async (id) => {
     console.log("hey");
@@ -41,7 +28,7 @@ export const Profile = ({ isAuth, setAuth }) => {
         },
       };
 
-      const string = `http://localhost:9700/api/users/profiles/${id}`;
+      const string = `/api/users/profiles/${id}`;
       console.log(string, id);
       const res = await axios.get(string);
       console.log(res.data);
@@ -61,7 +48,6 @@ export const Profile = ({ isAuth, setAuth }) => {
   //   return () => clearInterval(interval);
   // }, []);
 
-  console.log(user.login, user.name, user.Feed);
   return (
     <div className="main-prof">
       <Searchbar setAuth={setAuth} />

@@ -11,7 +11,7 @@ import { useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
 import { actionCreators } from "./State/index";
 import { useDispatch } from "react-redux";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
@@ -23,14 +23,6 @@ import { Friends } from "./pages/Portfolio/Friends";
 function App() {
   const account = useSelector((state) => state.account);
   const { IsAuth, SetAuth } = useAuth();
-  const [profile, updateProfile] = useState();
-
-  const dispatch = useDispatch();
-
-  console.log(account);
-
-  console.log(IsAuth);
-
   const [user, setUser] = useState({
     id: 4,
     name: "James Santos",
@@ -48,6 +40,23 @@ function App() {
 
     Friends: [1, 4],
   });
+
+  React.useEffect(() => {
+    const data = localStorage.getItem("user-info");
+    if (data) {
+      setUser(JSON.parse(data));
+    }
+  }, []);
+
+  React.useEffect(() => {
+    localStorage.setItem("user-info", JSON.stringify(user));
+  });
+
+  const dispatch = useDispatch();
+
+  console.log(account);
+
+  console.log(IsAuth);
 
   return (
     <Router>

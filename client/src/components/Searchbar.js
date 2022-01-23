@@ -10,7 +10,7 @@ const Searchbar = ({ setAuth }) => {
 
   useEffect(() => {
     const LoadUsers = async () => {
-      const response = await axios.get("http://localhost:9700/api/users");
+      const response = await axios.get("/api/users");
       setUsers(response.data);
       console.log(response.data);
     };
@@ -39,7 +39,7 @@ const Searchbar = ({ setAuth }) => {
         },
       };
 
-      const string = `http://localhost:9700/api/users/profiles/${id}`;
+      const string = `/api/users/profiles/${id}`;
       console.log(string, id);
       const res = await axios.get(string);
       console.log(res.data);
