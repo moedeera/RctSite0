@@ -1,36 +1,38 @@
 import React from "react";
-
+import Searchbar from "../../components/Searchbar";
+import { useAuth } from "../../utils/AuthLogin";
 export const Friends = ({ isAuth }) => {
-  return (
-    <div className="main-prof" >
+  const { IsAuth, SetAuth } = useAuth();
 
+  return (
+    <div className="main-prof">
+      <Searchbar setAuth={SetAuth} />
 
       <div className="MainCard">
-          <div className="Upper-Half">
-            <div className="Profile-Pic Logged-in">
-              <img src={isAuth.profilePic} alt="new" />
-              
-            </div>
+        <div className="Upper-Half">
+          <div className="Profile-Pic Logged-in">
+            <img src={isAuth.profilePic} alt="new" />
+          </div>
 
-            <div className="Info-Section">
-              <div className="Name"> {isAuth.name}</div>
-              <div className="Scores">
-                {" "}
-                <i class="far fa-heart"></i>{" "}
-                <div>{isAuth.followerCount} followers</div>{" "}
-                <i class="fas fa-gamepad"></i> 178 Score
-              </div>
-              <div className="Follow" style={{ backgroundColor: "green" }}>
-                <i class="fas fa-user-circle"></i>Message
-              </div>
+          <div className="Info-Section">
+            <div className="Name"> {isAuth.name}</div>
+            <div className="Scores">
+              {" "}
+              <i class="far fa-heart"></i>{" "}
+              <div>{isAuth.followerCount} followers</div>{" "}
+              <i class="fas fa-gamepad"></i> 178 Score
+            </div>
+            <div className="Follow" style={{ backgroundColor: "green" }}>
+              <i class="fas fa-user-circle"></i>Message
             </div>
           </div>
-          <div className="Lower-Half">
-            <div className="Profile-Feed ">
-              <div>
-                <h3> {isAuth.name}'s latest activity</h3>
+        </div>
+        <div className="Lower-Half">
+          <div className="Profile-Feed ">
+            <div>
+              <h3> {isAuth.name}'s latest activity</h3>
 
-                {/* {user.Feed.map((person) =>
+              {/* {user.Feed.map((person) =>
                   person.type === "like" ? (
                     <Link to="/Friends" onClick={() => FriendsProfile(person.id)}>
                       {" "}
@@ -61,25 +63,20 @@ export const Friends = ({ isAuth }) => {
                     )
                   )
                 )} */}
-              </div>
-            </div>
-
-            <div className="Game-Feed">
-              <h3>Skills</h3>
-              <i class="fas fa-glass-cheers fa-2x"></i>
-              <i class="fas fa-running fa-2x"></i>
-              <i class="fas fa-motorcycle fa-2x"></i>
-              <i class="fas fa-gamepad fa-2x"></i>
             </div>
           </div>
 
-          <div className="Feed">
-        
+          <div className="Game-Feed">
+            <h3>Skills</h3>
+            <i class="fas fa-glass-cheers fa-2x"></i>
+            <i class="fas fa-running fa-2x"></i>
+            <i class="fas fa-motorcycle fa-2x"></i>
+            <i class="fas fa-gamepad fa-2x"></i>
           </div>
         </div>
 
-
-
+        <div className="Feed"></div>
+      </div>
     </div>
   );
 };
