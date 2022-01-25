@@ -25,11 +25,7 @@ export const Login = ({ setAuth }) => {
         },
       };
       const body = JSON.stringify(formData);
-      const res = await axios.post(
-        "http://localhost:9700/api/users",
-        body,
-        config
-      );
+      const res = await axios.post("/api/users", body, config);
       console.log(res.data);
       Data = res.data;
       // if (res.data){}
