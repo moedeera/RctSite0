@@ -15,6 +15,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
+import Searchbar from "./components/Searchbar";
 
 import { useAuth } from "./utils/AuthLogin";
 import { UserContext } from "./UserContext";
@@ -61,6 +62,7 @@ function App() {
   return (
     <Router>
       <div className="App">
+        {/* {IsAuth.Idle ? "" : <Searchbar setAuth={SetAuth} />} */}
         <UserContext.Provider value={{ user, setUser }}>
           <Routes>
             <Route path="/" element={<Homepage />} />

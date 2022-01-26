@@ -51,39 +51,61 @@ const Searchbar = ({ setAuth }) => {
     // navigate("../Friends");
   };
   return (
-    <div className="Search">
-      <div className="searchBar">
-        <i class="fas fa-search" style={{ color: "grey" }}></i>
+    <div>
+      <div className="upper-sect">
+        <div>
+          <i class="fas fa-home fa-2x"></i>
+        </div>
+        <div>
+          <i class="fas fa-users fa-2x"></i>
+        </div>
+        <div className="notifications">
+          <i class="fas fa-bell fa-2x"></i>
+          <div className="number">5</div>
+        </div>
 
         <div>
-          {" "}
-          <input
-            type="text"
-            placeholder="Search for people"
-            name="text"
-            onChange={(e) => onChangeText(e.target.value)}
-          />
-          {suggestions
-            ? suggestions.map((result, i) => (
-                <Link to="/Friends" onClick={() => FriendsProfile(result.id)}>
-                  <div className="options" key={i}>
-                    <div> {result.name}</div>
-                    <div>
-                      {" "}
-                      <img src={result.profilePic} alt="" className="images" />
-                    </div>
-                  </div>
-                </Link>
-              ))
-            : ""}
+          <i class="fas fa-chevron-circle-down fa-2x"></i>
         </div>
       </div>
-      <div className="friends">
-        Friends
-        <i class="fas fa-chevron-down"></i>
-      </div>
-      <div className="filter">
-        <i class="fas fa-sliders-h"></i>
+      <div className="Search">
+        <div className="searchBar">
+          <i class="fas fa-search" style={{ color: "grey" }}></i>
+
+          <div>
+            {" "}
+            <input
+              type="text"
+              placeholder="Search for people"
+              name="text"
+              onChange={(e) => onChangeText(e.target.value)}
+            />
+            {suggestions
+              ? suggestions.map((result, i) => (
+                  <Link to="/Friends" onClick={() => FriendsProfile(result.id)}>
+                    <div className="options" key={i}>
+                      <div> {result.name}</div>
+                      <div>
+                        {" "}
+                        <img
+                          src={result.profilePic}
+                          alt=""
+                          className="images"
+                        />
+                      </div>
+                    </div>
+                  </Link>
+                ))
+              : ""}
+          </div>
+        </div>
+        <div className="friends">
+          Friends
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div className="filter">
+          <i class="fas fa-sliders-h"></i>
+        </div>
       </div>
     </div>
   );

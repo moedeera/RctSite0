@@ -38,6 +38,11 @@ export const Login = ({ setAuth }) => {
       console.log("user issue");
     } else {
       setUser(Data);
+      setAuth({
+        isLoggedin: false,
+        name: "John",
+        Idle: false,
+      });
       navigate("../profile");
     }
   };
