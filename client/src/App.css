@@ -412,33 +412,36 @@ img {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
 }
-
+.upper-sect > div {
+}
 .notifications {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+
   width: 100%;
-  max-width: 70px;
 }
 .upper-sect > div {
   cursor: pointer;
 }
+
 .fa-bell {
-  background: grey;
+  background: white;
   border-radius: 50%;
   padding: 4px;
   max-width: 50px;
+  color: goldenrod;
+}
+
+.internal {
+  position: relative;
 }
 .number {
-  width: 50%;
-  height: 50%;
-  margin-left: -40%;
-  margin-top: -20%;
-  margin-top: 5%;
-  max-width: 20px;
-  border: 1px solid red;
-  border-radius: 50%;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  color: white;
   background: red;
-  padding: 1px;
+  border-radius: 50%;
+  padding: 0px 5px;
 }
 .Search {
   display: grid;
@@ -516,6 +519,21 @@ img {
   border: 1px solid black;
   border-radius: 50%;
   padding: 5px;
+}
+
+/*New Setup*/
+.Layout-Main {
+  border: 1px solid white;
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+}
+.Layout-Main > div {
+  border: 1px solid white;
+}
+.main-side {
+  background: honeydew;
+  padding: 5px;
+  border: 1px solid black;
 }
 /* Extra small devices (phones, 768px and down) */
 @media only screen and (max-width: 768px) {
@@ -614,5 +632,12 @@ img {
   }
   .notifications {
     display: grid;
+  }
+
+  .Layout-Main {
+    grid-template-columns: 1fr;
+  }
+  .main-side {
+    display: none;
   }
 }

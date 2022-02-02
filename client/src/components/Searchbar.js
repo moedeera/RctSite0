@@ -60,8 +60,10 @@ const Searchbar = ({ setAuth }) => {
           <i class="fas fa-users fa-2x"></i>
         </div>
         <div className="notifications">
-          <i class="fas fa-bell fa-2x"></i>
-          <div className="number">5</div>
+          <div className="internal">
+            <i class="fas fa-bell fa-2x"></i>
+            <div className="number">5</div>
+          </div>
         </div>
 
         <div>
