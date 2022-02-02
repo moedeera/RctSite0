@@ -63,12 +63,12 @@ export const Profile = ({ isAuth, setAuth }) => {
               <div className="Name"> {user.name}</div>
               <div className="Scores">
                 {" "}
-                <i class="far fa-heart"></i>{" "}
+                <i className="far fa-heart"></i>{" "}
                 <div>{user.followerCount} followers</div>{" "}
-                <i class="fas fa-gamepad"></i> 578 Score
+                <i className="fas fa-gamepad"></i> 578 Score
               </div>
               <div className="Follow">
-                <i class="fas fa-user-circle"></i>Account
+                <i className="fas fa-user-circle"></i>Account
               </div>
             </div>
           </div>
@@ -80,13 +80,14 @@ export const Profile = ({ isAuth, setAuth }) => {
                 {user.Feed.map((person) =>
                   person.type === "like" ? (
                     <Link
+                      key={person.id}
                       to="/Friends"
                       onClick={() => FriendsProfile(person.id)}
                     >
                       {" "}
                       <p style={{ color: "black" }}>
                         <i
-                          class="fas fa-heart"
+                          className="fas fa-heart"
                           style={{ color: "crimson" }}
                         ></i>{" "}
                         {person.name} Liked your post
@@ -94,23 +95,25 @@ export const Profile = ({ isAuth, setAuth }) => {
                     </Link>
                   ) : person.type === "request" ? (
                     <Link
+                      key={person.id}
                       to="/Friends"
                       onClick={() => FriendsProfile(person.id)}
                     >
                       <p style={{ color: "black" }}>
-                        <i class="far fa-user-circle"></i>
+                        <i className="far fa-user-circle"></i>
                         {person.name} requested to follow you
                       </p>
                     </Link>
                   ) : (
                     person.type === "Challenge" && (
                       <Link
+                        key={person.id}
                         to="/Friends"
                         onClick={() => FriendsProfile(person.id)}
                       >
                         <p style={{ color: "black" }}>
                           {" "}
-                          <i class="fas fa-gamepad "></i>
+                          <i className="fas fa-gamepad "></i>
                           {person.name} Challenged you to a game
                         </p>
                       </Link>
@@ -131,9 +134,9 @@ export const Profile = ({ isAuth, setAuth }) => {
 
             <div className="Game-Feed">
               <h3>Skills</h3>
-              <i class="fas fa-stethoscope fa-2x"></i>
-              <i class="fas fa-code fa-2x"></i>
-              <i class="fas fa-gamepad fa-2x"></i>
+              <i className="fas fa-stethoscope fa-2x"></i>
+              <i className="fas fa-code fa-2x"></i>
+              <i className="fas fa-gamepad fa-2x"></i>
             </div>
           </div>
 
@@ -183,10 +186,10 @@ export const Profile = ({ isAuth, setAuth }) => {
               <div className="Name"> {user.name}</div>
               <div className="Scores">
                 {" "}
-                <i class="far fa-heart"></i> {user.followerCount} followers{" "}
+                <i className="far fa-heart"></i> {user.followerCount} followers{" "}
               </div>
               <div className="Follow">
-                <i class="fas fa-user-circle"></i>Follow
+                <i className="fas fa-user-circle"></i>Follow
               </div>
             </div>
           </div>
@@ -206,9 +209,9 @@ export const Profile = ({ isAuth, setAuth }) => {
 
             <div className="Game-Feed">
               <h3>Skills</h3>
-              <i class="fas fa-stethoscope fa-2x"></i>
-              <i class="fas fa-code fa-2x"></i>
-              <i class="fas fa-gamepad fa-2x"></i>
+              <i className="fas fa-stethoscope fa-2x"></i>
+              <i className="fas fa-code fa-2x"></i>
+              <i className="fas fa-gamepad fa-2x"></i>
             </div>
           </div>
         </div>
@@ -227,12 +230,12 @@ export const Profile = ({ isAuth, setAuth }) => {
                 <div className="Name"> {user.name}</div>
                 <div className="Scores">
                   {" "}
-                  <i class="far fa-heart"></i>{" "}
+                  <i className="far fa-heart"></i>{" "}
                   <div>{user.followerCount} followers</div>{" "}
-                  <i class="fas fa-gamepad"></i> 578 Score
+                  <i className="fas fa-gamepad"></i> 578 Score
                 </div>
                 <div className="Follow">
-                  <i class="fas fa-user-circle"></i>Account
+                  <i className="fas fa-user-circle"></i>Account
                 </div>
               </div>
             </div>
@@ -244,13 +247,14 @@ export const Profile = ({ isAuth, setAuth }) => {
                   {user.Feed.map((person) =>
                     person.type === "like" ? (
                       <Link
+                        key={person.id}
                         to="/Friends"
                         onClick={() => FriendsProfile(person.id)}
                       >
                         {" "}
                         <p style={{ color: "black" }}>
                           <i
-                            class="fas fa-heart"
+                            className="fas fa-heart"
                             style={{ color: "crimson" }}
                           ></i>{" "}
                           {person.name} Liked your post
@@ -258,23 +262,25 @@ export const Profile = ({ isAuth, setAuth }) => {
                       </Link>
                     ) : person.type === "request" ? (
                       <Link
+                        key={person.id}
                         to="/Friends"
                         onClick={() => FriendsProfile(person.id)}
                       >
                         <p style={{ color: "black" }}>
-                          <i class="far fa-user-circle"></i>
+                          <i className="far fa-user-circle"></i>
                           {person.name} requested to follow you
                         </p>
                       </Link>
                     ) : (
                       person.type === "Challenge" && (
                         <Link
+                          key={person.id}
                           to="/Friends"
                           onClick={() => FriendsProfile(person.id)}
                         >
                           <p style={{ color: "black" }}>
                             {" "}
-                            <i class="fas fa-gamepad "></i>
+                            <i className="fas fa-gamepad "></i>
                             {person.name} Challenged you to a game
                           </p>
                         </Link>
@@ -295,9 +301,9 @@ export const Profile = ({ isAuth, setAuth }) => {
 
               <div className="Game-Feed">
                 <h3>Skills</h3>
-                <i class="fas fa-stethoscope fa-2x"></i>
-                <i class="fas fa-code fa-2x"></i>
-                <i class="fas fa-gamepad fa-2x"></i>
+                <i className="fas fa-stethoscope fa-2x"></i>
+                <i className="fas fa-code fa-2x"></i>
+                <i className="fas fa-gamepad fa-2x"></i>
               </div>
             </div>
 

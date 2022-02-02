@@ -1,12 +1,14 @@
 import React from "react";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import { UserContext } from "../UserContext";
 
 const Searchbar = ({ setAuth }) => {
   const [users, setUsers] = useState([]);
   const [text, setText] = useState([]);
   const [suggestions, setSuggestions] = useState([]);
+  const { user, setUser } = useContext(UserContext);
 
   useEffect(() => {
     const LoadUsers = async () => {
@@ -54,25 +56,27 @@ const Searchbar = ({ setAuth }) => {
     <div>
       <div className="upper-sect">
         <div>
-          <i class="fas fa-home fa-2x"></i>
+          <i className="fas fa-home fa-2x"></i>
         </div>
         <div>
-          <i class="fas fa-users fa-2x"></i>
+          <i className="fas fa-users fa-2x"></i>
         </div>
         <div className="notifications">
           <div className="internal">
-            <i class="fas fa-bell fa-2x"></i>
-            <div className="number">5</div>
+            <i className="fas fa-bell fa-2x"></i>
+            <div className="number">
+              {user.Notifications !== 0 ? user.Notifications : ""}
+            </div>
           </div>
         </div>
 
         <div>
-          <i class="fas fa-chevron-circle-down fa-2x"></i>
+          <i className="fas fa-chevron-circle-down fa-2x"></i>
         </div>
       </div>
       <div className="Search">
         <div className="searchBar">
-          <i class="fas fa-search" style={{ color: "grey" }}></i>
+          <i className="fas fa-search" style={{ color: "grey" }}></i>
 
           <div>
             {" "}
@@ -103,10 +107,10 @@ const Searchbar = ({ setAuth }) => {
         </div>
         <div className="friends">
           Friends
-          <i class="fas fa-chevron-down"></i>
+          <i className="fas fa-chevron-down"></i>
         </div>
         <div className="filter">
-          <i class="fas fa-sliders-h"></i>
+          <i className="fas fa-sliders-h"></i>
         </div>
       </div>
     </div>

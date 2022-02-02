@@ -18,12 +18,12 @@ export const Friends = ({ isAuth }) => {
             <div className="Name"> {isAuth.name}</div>
             <div className="Scores">
               {" "}
-              <i class="far fa-heart"></i>{" "}
+              <i className="far fa-heart"></i>{" "}
               <div>{isAuth.followerCount} followers</div>{" "}
-              <i class="fas fa-gamepad"></i> 178 Score
+              <i className="fas fa-gamepad"></i> 178 Score
             </div>
             <div className="Follow" style={{ backgroundColor: "green" }}>
-              <i class="fas fa-user-circle"></i>Message
+              <i className="fas fa-user-circle"></i>Message
             </div>
           </div>
         </div>
@@ -68,10 +68,10 @@ export const Friends = ({ isAuth }) => {
 
           <div className="Game-Feed">
             <h3>Skills</h3>
-            <i class="fas fa-glass-cheers fa-2x"></i>
-            <i class="fas fa-running fa-2x"></i>
-            <i class="fas fa-motorcycle fa-2x"></i>
-            <i class="fas fa-gamepad fa-2x"></i>
+            <i className="fas fa-glass-cheers fa-2x"></i>
+            <i className="fas fa-running fa-2x"></i>
+            <i className="fas fa-motorcycle fa-2x"></i>
+            <i className="fas fa-gamepad fa-2x"></i>
           </div>
         </div>
 

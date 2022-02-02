@@ -54,7 +54,7 @@ export const Login = ({ setAuth }) => {
       <div className="Showcase Quiz">
         <div className="SideCase upper">
           <i
-            class="fab fa-algolia fa-8x"
+            className="fab fa-algolia fa-8x"
             style={{ transform: " rotate(20deg)" }}
           ></i>{" "}
           <h1 style={{ lineHeight: "1.8em" }}>Are you up for the Challenge?</h1>
@@ -90,7 +90,7 @@ export const Login = ({ setAuth }) => {
           <div className="SideImage lower">
             {" "}
             <i
-              class="fas fa-users fa-8x"
+              className="fas fa-users fa-8x"
               style={{ transform: " rotate(20deg)" }}
             ></i>{" "}
             <h1>EConnect</h1>{" "}
@@ -107,10 +107,10 @@ export const Login = ({ setAuth }) => {
               manage your online experience by making sure you never lose sight
               of the important things in life.
               <div className="social-media">
-                <i class="fab fa-facebook-f fa-2x"></i>
-                <i class="fab fa-google-plus-g fa-2x"></i>
-                <i class="fab fa-twitter fa-2x"></i>
-                <i class="fab fa-behance fa-2x"></i>
+                <i className="fab fa-facebook-f fa-2x"></i>
+                <i className="fab fa-google-plus-g fa-2x"></i>
+                <i className="fab fa-twitter fa-2x"></i>
+                <i className="fab fa-behance fa-2x"></i>
               </div>
             </div>{" "}
           </div>
