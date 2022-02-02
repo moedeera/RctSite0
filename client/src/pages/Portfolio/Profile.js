@@ -344,7 +344,30 @@ export const Profile = ({ isAuth, setAuth }) => {
             </div>
           </div>
         </div>
-        <div className="main-side">Lovely Lady</div>
+        <div className="main-side">
+          <div className="promotions">
+            {" "}
+            <img src={pic0} alt="" />
+            Connect with local social groups in your area
+          </div>
+          <div className="friends-side">
+            <div className="header">
+              <i className="fas fa-user-friends fa-2x"></i>Online Friends
+            </div>
+            <div className="Friends-List">
+              <div className="friend">
+                Jenny{" "}
+                <div>
+                  {" "}
+                  <img src={user.profilePic} alt="" className="images" />
+                </div>
+              </div>
+            </div>
+            <div className="settings">
+              <i className="fas fa-cog fa-2x"></i>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

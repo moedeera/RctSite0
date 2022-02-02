@@ -534,6 +534,24 @@ img {
   background: honeydew;
   padding: 5px;
   border: 1px solid black;
+  margin: 10px auto;
+}
+.promotions {
+  margin: 0 auto 10px;
+  cursor: pointer;
+}
+.header {
+  margin: 5px auto;
+  color: green;
+}
+.Friends-List {
+  margin: 15px auto;
+  display: flex;
+  flex-direction: column;
+}
+.friend {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 /* Extra small devices (phones, 768px and down) */
 @media only screen and (max-width: 768px) {
