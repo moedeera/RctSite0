@@ -1,9 +1,12 @@
 import React from "react";
 import Searchbar from "../../components/Searchbar";
 import { useAuth } from "../../utils/AuthLogin";
+
 export const Friends = ({ isAuth }) => {
   const { IsAuth, SetAuth } = useAuth();
-
+  if (!IsAuth) {
+    return null;
+  }
   return (
     <div className="main-prof">
       <Searchbar setAuth={SetAuth} />
@@ -11,15 +14,15 @@ export const Friends = ({ isAuth }) => {
       <div className="MainCard">
         <div className="Upper-Half">
           <div className="Profile-Pic Logged-in">
-            <img src={isAuth.profilePic} alt="new" />
+            <img src={IsAuth.profilePic} alt="new" />
           </div>
 
           <div className="Info-Section">
-            <div className="Name"> {isAuth.name}</div>
+            <div className="Name"> {IsAuth.name}</div>
             <div className="Scores">
               {" "}
               <i className="far fa-heart"></i>{" "}
-              <div>{isAuth.followerCount} followers</div>{" "}
+              <div>{IsAuth.followerCount} followers</div>{" "}
               <i className="fas fa-gamepad"></i> 178 Score
             </div>
             <div className="Follow" style={{ backgroundColor: "green" }}>
@@ -30,7 +33,7 @@ export const Friends = ({ isAuth }) => {
         <div className="Lower-Half">
           <div className="Profile-Feed ">
             <div>
-              <h3> {isAuth.name}'s latest activity</h3>
+              <h3> {IsAuth.name}'s latest activity</h3>
 
               {/* {user.Feed.map((person) =>
                   person.type === "like" ? (

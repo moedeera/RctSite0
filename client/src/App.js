@@ -11,7 +11,7 @@ import { useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
 import { actionCreators } from "./State/index";
 import { useDispatch } from "react-redux";
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
@@ -20,28 +20,32 @@ import Searchbar from "./components/Searchbar";
 import { useAuth } from "./utils/AuthLogin";
 import { UserContext } from "./UserContext";
 import { Friends } from "./pages/Portfolio/Friends";
+import UseState from "./components/UseState";
 
+function getUserInfo() {
+  const data = sessionStorage.getItem("user-info");
+
+  if (data) {
+    console.log(data);
+    return JSON.parse(data);
+  }
+  return null;
+}
 function App() {
   const account = useSelector((state) => state.account);
   const { IsAuth, SetAuth } = useAuth();
-  const [user, setUser] = useState();
+  const [user, setUser] = useState(getUserInfo());
 
   React.useEffect(() => {
-    const data = sessionStorage.getItem("user-info");
-    if (data) {
-      setUser(JSON.parse(data));
+    console.log("it changed", user);
+    if (user) {
+      sessionStorage.setItem("user-info", JSON.stringify(user));
     }
-  }, []);
-
-  React.useEffect(() => {
-    sessionStorage.setItem("user-info", JSON.stringify(user));
-  });
+  }, [user]);
 
   const dispatch = useDispatch();
 
-  console.log(account);
-
-  console.log(IsAuth);
+  console.log(user);
 
   return (
     <Router>
@@ -63,9 +67,10 @@ function App() {
               path="/Profile"
               element={<Profile isAuth={IsAuth} setAuth={SetAuth} />}
             />
+            <Route path="/Friends" element={<Friends isAuth={IsAuth} />} />
+
             <Route path="/RT" element={<RT />} />
             <Route path="*" element={<RT />} />
-            <Route path="/Friends" element={<Friends isAuth={IsAuth} />} />
           </Routes>
         </UserContext.Provider>
         {/* <h3>{account.count}</h3>

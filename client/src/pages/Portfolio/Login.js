@@ -38,6 +38,7 @@ export const Login = ({ setAuth }) => {
       console.log("user issue");
     } else {
       setUser(Data);
+      console.log(Data);
       setAuth({
         isLoggedin: false,
         name: "John",
