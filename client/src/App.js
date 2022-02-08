@@ -8,19 +8,16 @@ import Profile from "./pages/Portfolio/Profile";
 import RT from "./components/RT";
 import Login from "./pages/Portfolio/Login";
 import { useSelector } from "react-redux";
-import { bindActionCreators } from "redux";
-import { actionCreators } from "./State/index";
+
 import { useDispatch } from "react-redux";
 import React, { useEffect, useContext } from "react";
 import { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
-import Searchbar from "./components/Searchbar";
 
 import { useAuth } from "./utils/AuthLogin";
 import { UserContext } from "./UserContext";
 import { Friends } from "./pages/Portfolio/Friends";
-import UseState from "./components/UseState";
 
 function getUserInfo() {
   const data = sessionStorage.getItem("user-info");
