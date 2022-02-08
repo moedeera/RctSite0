@@ -7,10 +7,8 @@ import { Econnect } from "./pages/Portfolio/Econnect";
 import Profile from "./pages/Portfolio/Profile";
 import RT from "./components/RT";
 import Login from "./pages/Portfolio/Login";
-import { useSelector } from "react-redux";
 
-import { useDispatch } from "react-redux";
-import React, { useEffect, useContext } from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
@@ -28,18 +26,15 @@ function getUserInfo() {
   }
 }
 function App() {
-  const account = useSelector((state) => state.account);
   const { IsAuth, SetAuth } = useAuth();
   const [user, setUser] = useState(getUserInfo());
 
-  React.useEffect(() => {
+  useEffect(() => {
     console.log("it changed", user);
     if (user) {
       sessionStorage.setItem("user-info", JSON.stringify(user));
     }
   }, [user]);
-
-  const dispatch = useDispatch();
 
   console.log(user);
 
