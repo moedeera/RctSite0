@@ -17,17 +17,18 @@ import { useAuth } from "./utils/AuthLogin";
 import { UserContext } from "./UserContext";
 import { Friends } from "./pages/Portfolio/Friends";
 
-function getUserInfo() {
-  const data = sessionStorage.getItem("user-info");
+// function getUserInfo() {
+//   const data = sessionStorage.getItem("user-info");
 
-  if (data) {
-    console.log(data);
-    return JSON.parse(data);
-  }
-}
+//   if (data) {
+//     console.log(data);
+//     return JSON.parse(data);
+//   }
+// }
 function App() {
+  //   const data = sessionStorage.getItem("user-info");
   const { IsAuth, SetAuth } = useAuth();
-  const [user, setUser] = useState(getUserInfo());
+  const [user, setUser] = useState("");
 
   useEffect(() => {
     console.log("it changed", user);
@@ -41,7 +42,6 @@ function App() {
   return (
     <Router>
       <div className="App">
-        {/* {IsAuth.Idle ? "" : <Searchbar setAuth={SetAuth} />} */}
         <UserContext.Provider value={{ user, setUser }}>
           <Routes>
             <Route path="/" element={<Homepage />} />
@@ -64,12 +64,6 @@ function App() {
             <Route path="*" element={<RT />} />
           </Routes>
         </UserContext.Provider>
-        {/* <h3>{account.count}</h3>
-        <h3>{account.name}</h3>
-
-        <button onClick={() => depositMoney(1000)}>Add</button>
-        <button onClick={() => withDrawMoney(1000)}>Subtract</button>
-        <button onClick={() => PostData(0)}>Reset</button> */}
       </div>
     </Router>
   );
