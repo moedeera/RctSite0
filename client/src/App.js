@@ -26,7 +26,6 @@ function getUserInfo() {
     console.log(data);
     return JSON.parse(data);
   }
-  return null;
 }
 function App() {
   const account = useSelector((state) => state.account);
