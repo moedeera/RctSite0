@@ -17,18 +17,18 @@ import { useAuth } from "./utils/AuthLogin";
 import { UserContext } from "./UserContext";
 import { Friends } from "./pages/Portfolio/Friends";
 
-// function getUserInfo() {
-//   const data = sessionStorage.getItem("user-info");
+function getUserInfo() {
+  const data = sessionStorage.getItem("user-info");
 
-//   if (data) {
-//     console.log(data);
-//     return JSON.parse(data);
-//   }
-// }
+  if (data) {
+    console.log(data);
+    return JSON.parse(data);
+  }
+}
 function App() {
   //   const data = sessionStorage.getItem("user-info");
   const { IsAuth, SetAuth } = useAuth();
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState(getUserInfo());
 
   useEffect(() => {
     console.log("it changed", user);
