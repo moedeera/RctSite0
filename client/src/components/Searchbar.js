@@ -32,7 +32,7 @@ const Searchbar = ({ setAuth }) => {
   };
 
   const FriendsProfile = async (id) => {
-    console.log("hey");
+   
 
     try {
       const config = {
