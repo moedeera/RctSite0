@@ -16,6 +16,7 @@ import "./App.css";
 import { useAuth } from "./utils/AuthLogin";
 import { UserContext } from "./UserContext";
 import { Friends } from "./pages/Portfolio/Friends";
+import Searchbar from "./components/Searchbar";
 
 function getUserInfo() {
   const data = sessionStorage.getItem("user-info");
@@ -53,12 +54,14 @@ function App() {
             <Route path="/Register" element={<Econnect />} />
 
             <Route path="/Login" element={<Login setAuth={SetAuth} />} />
-
             <Route
               path="/Profile"
               element={<Profile isAuth={IsAuth} setAuth={SetAuth} />}
             />
-            <Route path="/Friends" element={<Friends isAuth={IsAuth} />} />
+            <Route
+              path="/Friends"
+              element={<Friends isAuth={IsAuth} SetAuth={SetAuth} />}
+            />
 
             <Route path="/RT" element={<RT />} />
             <Route path="*" element={<RT />} />

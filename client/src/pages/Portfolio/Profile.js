@@ -19,7 +19,7 @@ export const Profile = ({ isAuth, setAuth }) => {
 
   console.log(user.profilePic);
   const FriendsProfile = async (id) => {
-    console.log("hey");
+    console.log("hey", id);
 
     try {
       const config = {

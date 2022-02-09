@@ -1,10 +1,9 @@
 import React from "react";
 import Searchbar from "../../components/Searchbar";
-import { useAuth } from "../../utils/AuthLogin";
 
-export const Friends = ({ isAuth }) => {
-  const { IsAuth, SetAuth } = useAuth();
-  if (!IsAuth) {
+export const Friends = ({ isAuth, SetAuth }) => {
+  console.log(isAuth);
+  if (!isAuth) {
     return null;
   }
   return (
@@ -14,15 +13,15 @@ export const Friends = ({ isAuth }) => {
       <div className="MainCard">
         <div className="Upper-Half">
           <div className="Profile-Pic Logged-in">
-            <img src={IsAuth.profilePic} alt="new" />
+            <img src={isAuth.profilePic} alt="new" />
           </div>
 
           <div className="Info-Section">
-            <div className="Name"> {IsAuth.name}</div>
+            <div className="Name"> {isAuth.name}</div>
             <div className="Scores">
               {" "}
               <i className="far fa-heart"></i>{" "}
-              <div>{IsAuth.followerCount} followers</div>{" "}
+              <div>{isAuth.followerCount} followers</div>{" "}
               <i className="fas fa-gamepad"></i> 178 Score
             </div>
             <div className="Follow" style={{ backgroundColor: "green" }}>
@@ -33,7 +32,7 @@ export const Friends = ({ isAuth }) => {
         <div className="Lower-Half">
           <div className="Profile-Feed ">
             <div>
-              <h3> {IsAuth.name}'s latest activity</h3>
+              <h3> {isAuth.name}'s latest activity</h3>
 
               {/* {user.Feed.map((person) =>
                   person.type === "like" ? (
