@@ -25,28 +25,40 @@ export const Econnect = () => {
     if (password !== password2) {
       console.log("passwords do not match");
     } else {
-      const newUser = {
-        name,
-        email,
-        password,
+      const key = Math.floor(Math.random() * 1000 + 1);
+      const newProfile = {
+        id: key,
+        name: name,
+        nickname: name,
+        age: 25,
         Feed: [
-          { name: "Jen Smith", type: "request" },
-          { name: "Connie Williams", type: "request" },
-          { name: "James Santos", type: "request" },
+          { name: "Matt Russo", type: "request", id: 3 },
+          { name: "James Santos", type: "request", id: 4 },
         ],
         profilePic:
           "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
         followerCount: 0,
         login: true,
+        Notifications: 0,
+        Friends: [],
+      };
+      const newUser = {
+        id: key,
+        email: email,
+        password: password,
       };
 
+      const Info = {
+        User: newUser,
+        Profile: newProfile,
+      };
       try {
         const config = {
           headers: {
             "Content-Type": "application/json",
           },
         };
-        const body = JSON.stringify(newUser);
+        const body = JSON.stringify(Info);
         const res = await axios.post(
           "http://localhost:9700/api/users/register",
           body,
@@ -54,7 +66,7 @@ export const Econnect = () => {
         );
         j = res;
         console.log(res);
-        setUser(newUser);
+        setUser(newProfile);
       } catch (err) {
         console.error(err);
       }

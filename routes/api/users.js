@@ -42,16 +42,10 @@ router.post("/update", async (req, res) => {
 });
 
 router.post("/register", async (req, res) => {
-  console.log(
-    "a register POST request was made",
-    req.body.name,
-    req.body.email,
-    req.body.password
-  );
-  User.name = req.body.name;
-  User.email = req.body.email;
-  User.password = req.body.password;
-
+  console.log("a register POST request was made", req.body.User);
+  DataBase.push(req.body.Profile);
+  Users.push(req.body.User);
+  console.log(Users, DataBase);
   res.send("Server message");
 });
 

@@ -28,7 +28,7 @@ function getUserInfo() {
 }
 function App() {
   //   const data = sessionStorage.getItem("user-info");
-  const { IsAuth, SetAuth } = useAuth();
+  const { friend, setFriend } = useAuth();
   const [user, setUser] = useState(getUserInfo());
 
   useEffect(() => {
@@ -53,14 +53,14 @@ function App() {
             <Route path="/Econnect" element={<Econnect />} />
             <Route path="/Register" element={<Econnect />} />
 
-            <Route path="/Login" element={<Login setAuth={SetAuth} />} />
+            <Route path="/Login" element={<Login />} />
             <Route
               path="/Profile"
-              element={<Profile isAuth={IsAuth} setAuth={SetAuth} />}
+              element={<Profile Friend={friend} SetFriend={setFriend} />}
             />
             <Route
               path="/Friends"
-              element={<Friends isAuth={IsAuth} SetAuth={SetAuth} />}
+              element={<Friends isAuth={friend} SetAuth={setFriend} />}
             />
 
             <Route path="/RT" element={<RT />} />

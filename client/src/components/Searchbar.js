@@ -21,19 +21,24 @@ const Searchbar = ({ setAuth }) => {
   const onChangeText = (text) => {
     let matches = [];
     if (text.length > 0) {
+      document.addEventListener("mousedown", () => {
+        console.log("you clicked outside");
+      });
+
       matches = users.filter((user) => {
         const regex = new RegExp(`${text}`, "gi");
         return user.name.match(regex);
       });
     }
+
     console.log(matches);
     setSuggestions(matches);
     setText(text);
   };
-
+  const Reset = () => {
+    setSuggestions("");
+  };
   const FriendsProfile = async (id) => {
-   
-
     try {
       const config = {
         headers: {

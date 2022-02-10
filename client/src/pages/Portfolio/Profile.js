@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import Searchbar from "../../components/Searchbar";
 
-export const Profile = ({ isAuth, setAuth }) => {
+export const Profile = ({ Friend, SetFriend }) => {
   const { user, setUser } = useContext(UserContext);
   const [slide, setSLide] = useState(1);
   const navigate = useNavigate();
@@ -32,7 +32,7 @@ export const Profile = ({ isAuth, setAuth }) => {
       console.log(string, id);
       const res = await axios.get(string);
       console.log(res.data);
-      setAuth(res.data);
+      SetFriend(res.data);
     } catch (error) {
       console.log(error);
     }
@@ -50,7 +50,7 @@ export const Profile = ({ isAuth, setAuth }) => {
 
   return (
     <div className="main-prof">
-      <Searchbar setAuth={setAuth} />
+      <Searchbar setAuth={SetFriend} />
       {user.login ? (
         <div className="MainCard">
           <div className="Upper-Half">

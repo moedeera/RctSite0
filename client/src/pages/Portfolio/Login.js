@@ -4,7 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../UserContext";
 
-export const Login = ({ setAuth }) => {
+export const Login = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
@@ -39,11 +39,7 @@ export const Login = ({ setAuth }) => {
     } else {
       setUser(Data);
       console.log(Data);
-      setAuth({
-        isLoggedin: false,
-        name: "John",
-        Idle: false,
-      });
+
       navigate("../profile");
     }
   };
