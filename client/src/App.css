@@ -381,7 +381,6 @@ img {
   width: 100%;
 }
 .Post-Feed {
-  border: 1px solid grey;
   width: 100%;
   margin: 10px auto;
   display: flex;
@@ -392,12 +391,10 @@ img {
 }
 
 .Friends {
-  border: 1px solid black;
   width: 80%;
   margin: 10px auto;
 }
 .Interests {
-  border: 1px solid black;
   width: 80%;
   margin: 10px auto;
 }
@@ -503,7 +500,22 @@ img {
   justify-content: center;
   align-items: center;
 }
+.Poster img {
+  width: 25px;
+  height: 25px;
+  border: 1px solid black;
+  border-radius: 50%;
+  padding: 5px;
+}
+.Poster {
+  width: 50%;
 
+  padding: 5px;
+  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 6fr;
+  text-align: left;
+}
 .Create-Post input {
   font-size: 16px;
   border: none;
@@ -532,7 +544,7 @@ img {
 .main-side {
   background: honeydew;
   padding: 10px 30px;
-  border: 1px solid black;
+
   margin: 10px auto;
   border-radius: 5px;
 }
@@ -568,6 +580,12 @@ img {
 .Posts img {
   width: auto;
   margin: 10px auto;
+}
+
+.Interactions {
+  width: 40%;
+  display: flex;
+  justify-content: space-between;
 }
 /* Extra small devices (phones, 768px and down) */
 @media only screen and (max-width: 768px) {

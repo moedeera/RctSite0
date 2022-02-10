@@ -109,7 +109,31 @@ var Users = [
   { id: 2, email: "cw@g", password: "123" },
   { id: 3, email: "mr@g", password: "123" },
   { id: 4, email: "jsantos@g", password: "123" },
+  { id: 4, email: "jjohnson@g", password: "123" },
   { id: 6, email: "mwiz@g", password: "123" },
+];
+
+var Posts = [
+  {
+    id: 1,
+    Poster: 5,
+    postPic:
+      "https://images.pexels.com/photos/1842182/pexels-photo-1842182.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
+    text: "Teddy was just enjoying the sun",
+    comments: [10, 11, 13],
+    likes: 16,
+  },
+  {
+    id: 5,
+    postPic:
+      "https://images.pexels.com/photos/463734/pexels-photo-463734.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+    text: "Piece and Quite",
+    comments: [10, 11, 13, 19, 22, 33],
+    likes: 52,
+  },
+  {},
+  {},
+  {},
 ];
 
 module.exports = { DataBase, Users };

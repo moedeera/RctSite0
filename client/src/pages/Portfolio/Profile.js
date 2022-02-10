@@ -147,7 +147,29 @@ export const Profile = ({ Friend, SetFriend }) => {
                 <div className="Post-Feed">
                   <div className="Posts">
                     <img src={logo} alt="" />
-                    <p>James was just enjoying the view</p>
+                    <div className=" Poster">
+                      {" "}
+                      <img src={pic} alt="" />
+                      James was just enjoying the view
+                    </div>
+
+                    <div className="Interactions">
+                      <div>
+                        109{" "}
+                        <i
+                          className="fas fa-heart"
+                          style={{ color: "red" }}
+                        ></i>
+                      </div>
+                      <div>
+                        {" "}
+                        5
+                        <i
+                          className="fas fa-comment"
+                          style={{ color: "grey" }}
+                        ></i>
+                      </div>
+                    </div>
                     <div className="Create-Post">
                       {" "}
                       <img src={pic} alt="" />
@@ -160,7 +182,28 @@ export const Profile = ({ Friend, SetFriend }) => {
                   </div>
                   <div className="Posts">
                     <img src={pic0} alt="" />
-                    <p>Piece and Quite</p>
+                    <div className=" Poster">
+                      {" "}
+                      <img src={pic} alt="" />
+                      Piece and Quite
+                    </div>
+                    <div className="Interactions">
+                      <div>
+                        52{" "}
+                        <i
+                          className="fas fa-heart"
+                          style={{ color: "red" }}
+                        ></i>
+                      </div>
+                      <div>
+                        {" "}
+                        15
+                        <i
+                          className="fas fa-comment"
+                          style={{ color: "grey" }}
+                        ></i>
+                      </div>
+                    </div>
                     <div className="Create-Post">
                       {" "}
                       <img src={pic} alt="" />
@@ -171,12 +214,7 @@ export const Profile = ({ Friend, SetFriend }) => {
                       />
                     </div>
                   </div>
-                  <div>
-                    <img src={pic1} alt="" />
-                  </div>
                 </div>
-
-                <div className="Interests">Hello </div>
               </div>
             </div>
           </div>
