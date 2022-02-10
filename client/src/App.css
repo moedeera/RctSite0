@@ -277,9 +277,8 @@ a:visited {
 }
 
 .MainCard {
-  border: 1px solid white;
   width: 100%;
-  max-width: 900px;
+  max-width: 1100px;
   height: 100%;
   margin: 50px auto;
   background: white;
@@ -523,18 +522,19 @@ img {
 
 /*New Setup*/
 .Layout-Main {
-  border: 1px solid white;
   display: grid;
   grid-template-columns: 4fr 1fr;
+  max-width: 1600px;
+  margin: 0 auto;
 }
 .Layout-Main > div {
-  border: 1px solid white;
 }
 .main-side {
   background: honeydew;
-  padding: 5px;
+  padding: 10px 30px;
   border: 1px solid black;
   margin: 10px auto;
+  border-radius: 5px;
 }
 .promotions {
   margin: 0 auto 10px;
@@ -552,6 +552,22 @@ img {
 .friend {
   display: grid;
   grid-template-columns: 1fr 1fr;
+}
+.Profile-Feed {
+}
+
+.Feed {
+}
+
+.Post-Feed {
+  width: 100%;
+}
+.Posts {
+  width: 80%;
+}
+.Posts img {
+  width: auto;
+  margin: 10px auto;
 }
 /* Extra small devices (phones, 768px and down) */
 @media only screen and (max-width: 768px) {
@@ -579,7 +595,7 @@ img {
   }
 
   .Profile-Feed {
-    max-width: 80%;
+    max-width: 100%;
   }
   .List {
     display: none;
@@ -651,11 +667,17 @@ img {
   .notifications {
     display: grid;
   }
+}
 
+@media only screen and (max-width: 925px) {
   .Layout-Main {
     grid-template-columns: 1fr;
   }
   .main-side {
     display: none;
+  }
+
+  .Posts {
+    width: 100%;
   }
 }
