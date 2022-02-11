@@ -9,7 +9,9 @@ const Searchbar = ({ setAuth }) => {
   const [text, setText] = useState([]);
   const [suggestions, setSuggestions] = useState([]);
   const { user, setUser } = useContext(UserContext);
-
+  const UserReset = () => {
+    setUser({ ...user, login: false });
+  };
   useEffect(() => {
     const LoadUsers = async () => {
       const response = await axios.get("/api/users");
@@ -59,26 +61,37 @@ const Searchbar = ({ setAuth }) => {
   };
   return (
     <div>
-      <div className="upper-sect">
-        <div>
-          <i className="fas fa-home fa-2x"></i>
-        </div>
-        <div>
-          <i className="fas fa-users fa-2x"></i>
-        </div>
-        <div className="notifications">
-          <div className="internal">
-            <i className="fas fa-bell fa-2x"></i>
-            <div className="number">
-              {user.Notifications !== 0 ? user.Notifications : ""}
+      {user.login ? (
+        <div className="upper-sect">
+          <div>
+            <i className="fas fa-home fa-2x"></i>
+          </div>
+          <div>
+            <i className="fas fa-users fa-2x"></i>
+          </div>
+          <div className="notifications">
+            <div className="internal">
+              <i className="fas fa-bell fa-2x"></i>
+              <div className="number">
+                {user.Notifications !== 0 ? user.Notifications : ""}
+              </div>
             </div>
           </div>
-        </div>
 
-        <div>
-          <i className="fas fa-chevron-circle-down fa-2x"></i>
+          <div onClick={() => UserReset()}>
+            <i className="fas fa-times-circle fa-2x"></i>
+          </div>
         </div>
-      </div>
+      ) : (
+        <div className="MainCard">
+          {" "}
+          <Link to="/Login">
+            {" "}
+            <p style={{ color: "black" }}>Login</p>
+          </Link>
+        </div>
+      )}
+
       <div className="Search">
         <div className="searchBar">
           <i className="fas fa-search" style={{ color: "grey" }}></i>
