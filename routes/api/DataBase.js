@@ -14,7 +14,8 @@ var DataBase = [
     followerCount: 26,
     login: false,
     Notifications: 2,
-    Friends: [2, 3],
+    Friends: [2, 3, 4],
+    Posts: [6, 5, 1],
   },
   {
     id: 2,
@@ -32,6 +33,7 @@ var DataBase = [
     login: false,
     Notifications: 11,
     Friends: [1, 3, 5],
+    Posts: [5],
   },
   {
     id: 3,
@@ -49,6 +51,7 @@ var DataBase = [
     login: false,
     Notifications: 1,
     Friends: [1, 2, 5],
+    Posts: [6],
   },
   {
     id: 4,
@@ -67,6 +70,7 @@ var DataBase = [
     login: false,
     Notifications: 0,
     Friends: [1, 4],
+    Posts: [1],
   },
   {
     id: 5,
@@ -85,6 +89,7 @@ var DataBase = [
     login: false,
     Notifications: 3,
     Friends: [1, 2, 3],
+    Posts: [1, 6],
   },
   {
     id: 6,
@@ -101,6 +106,7 @@ var DataBase = [
     login: false,
     Notifications: 3,
     Friends: [2, 4],
+    Posts: [1, 6],
   },
 ];
 
@@ -116,22 +122,31 @@ var Users = [
 var Posts = [
   {
     id: 1,
-    Poster: 5,
+    Poster: 4,
     postPic:
       "https://images.pexels.com/photos/1842182/pexels-photo-1842182.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
     text: "Teddy was just enjoying the sun",
-    comments: [10, 11, 13],
+    comments: [7],
     likes: 16,
   },
   {
     id: 5,
+    Poster: 3,
     postPic:
       "https://images.pexels.com/photos/463734/pexels-photo-463734.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
     text: "Piece and Quite",
     comments: [10, 11, 13, 19, 22, 33],
     likes: 52,
   },
-  {},
+  {
+    id: 6,
+    Poster: 2,
+    postPic:
+      "https://cdn.pixabay.com/photo/2019/11/10/11/13/couple-4615557_960_720.jpg",
+    text: "Happy Anniversary Babe",
+    comments: [29, 42],
+    likes: 12,
+  },
   {},
   {},
 ];

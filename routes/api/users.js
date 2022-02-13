@@ -2,6 +2,7 @@ const express = require("express");
 var cors = require("cors");
 const { Router } = require("express");
 const { DataBase, Users } = require("./DataBase");
+const { Posts } = require("../../client/src/components/Posts");
 
 const router = express.Router();
 const number = { count: 2150, name: "James Smith" };
@@ -66,6 +67,10 @@ router.get("/profiles/:user_id", async (req, res) => {
   } catch (error) {
     res.send(error);
   }
+});
+
+router.get("/posts", async (req, res) => {
+  res.send("hello");
 });
 
 module.exports = router;

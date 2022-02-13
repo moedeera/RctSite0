@@ -309,7 +309,10 @@ img {
   height: 300px;
   box-shadow: 0.24em 0.24em 0.33em rgba(128, 128, 128, 0.39);
 }
-
+.Meetup {
+  width: auto;
+  height: 150px;
+}
 .Info-Section {
   display: flex;
   justify-content: space-between;
@@ -445,7 +448,7 @@ img {
   border: 1px solid grey;
   padding: 10px;
   border-radius: 10px;
-  max-width: 900px;
+  max-width: 1400px;
   margin: 0 auto;
   margin-bottom: 100px;
   background: white;

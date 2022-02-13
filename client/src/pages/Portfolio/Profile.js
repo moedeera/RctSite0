@@ -2,20 +2,18 @@ import React from "react";
 import logo from "./profile-pic.jpeg";
 import pic0 from "./pic0.jpeg";
 import pic1 from "./pic1.jpeg";
+import pic2 from "./meetup.png";
 import pic from "../../blank-avatar.png";
 import { useContext, useEffect } from "react";
 import { useState, useCallback } from "react";
 import { UserContext } from "../../UserContext";
-import { Navigate } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Searchbar from "../../components/Searchbar";
 
-export const Profile = ({ Friend, SetFriend }) => {
+export const Profile = ({ Friend, SetFriend, post, setPosts }) => {
   const { user, setUser } = useContext(UserContext);
-  const [slide, setSLide] = useState(1);
-  const navigate = useNavigate();
 
   console.log(user.profilePic);
   const FriendsProfile = async (id) => {
@@ -78,7 +76,7 @@ export const Profile = ({ Friend, SetFriend }) => {
               <div className="Lower-Half">
                 <div className="Profile-Feed ">
                   <div>
-                    <h3> Welcome back {user.name}</h3>
+                    <h3> Welcome back {user.nickname}</h3>
 
                     {user.Feed.map((person) =>
                       person.type === "like" ? (
@@ -145,6 +143,44 @@ export const Profile = ({ Friend, SetFriend }) => {
 
               <div className="Feed">
                 <div className="Post-Feed">
+                  {user.Posts.map((post) => (
+                    <div className="Posts">
+                      <img src={logo} alt="" />
+                      <div className=" Poster">
+                        {" "}
+                        <img src={pic} alt="" />
+                        Just just enjoying the view....
+                      </div>
+                      <div className="Interactions">
+                        <div>Feb 22</div>
+                        <div>
+                          109{" "}
+                          <i
+                            className="fas fa-heart"
+                            style={{ color: "red" }}
+                          ></i>
+                        </div>
+                        <div>
+                          {" "}
+                          5
+                          <i
+                            className="fas fa-comment"
+                            style={{ color: "grey" }}
+                          ></i>
+                        </div>
+                      </div>
+                      <div className="Create-Post">
+                        {" "}
+                        <img src={pic} alt="" />
+                        <input
+                          type="textarea"
+                          name="textValue"
+                          placeholder="Comment"
+                        />
+                      </div>
+                    </div>
+                  ))}
+
                   <div className="Posts">
                     <img src={logo} alt="" />
                     <div className=" Poster">
@@ -152,8 +188,8 @@ export const Profile = ({ Friend, SetFriend }) => {
                       <img src={pic} alt="" />
                       Just just enjoying the view....
                     </div>
-
                     <div className="Interactions">
+                      <div>Feb 22</div>
                       <div>
                         109{" "}
                         <i
@@ -188,6 +224,7 @@ export const Profile = ({ Friend, SetFriend }) => {
                       Piece and Quite
                     </div>
                     <div className="Interactions">
+                      <div>Feb 22</div>
                       <div>
                         52{" "}
                         <i
@@ -221,7 +258,7 @@ export const Profile = ({ Friend, SetFriend }) => {
           <div className="main-side">
             <div className="promotions">
               {" "}
-              <img src={pic0} alt="" />
+              <img src={pic2} alt="" className="Meetup" />
               Connect with local social groups in your area
             </div>
             <div className="friends-side">

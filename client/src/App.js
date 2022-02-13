@@ -12,11 +12,10 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
-
+import { usePosts } from "./utils/PostAuth";
 import { useAuth } from "./utils/AuthLogin";
 import { UserContext } from "./UserContext";
 import { Friends } from "./pages/Portfolio/Friends";
-import Searchbar from "./components/Searchbar";
 
 function getUserInfo() {
   const data = sessionStorage.getItem("user-info");
@@ -29,6 +28,7 @@ function getUserInfo() {
 function App() {
   //   const data = sessionStorage.getItem("user-info");
   const { friend, setFriend } = useAuth();
+  const { posts, setPosts } = usePosts();
   const [user, setUser] = useState(getUserInfo());
 
   useEffect(() => {
@@ -37,8 +37,6 @@ function App() {
       sessionStorage.setItem("user-info", JSON.stringify(user));
     }
   }, [user]);
-
-  console.log(user);
 
   return (
     <Router>
@@ -56,7 +54,14 @@ function App() {
             <Route path="/Login" element={<Login />} />
             <Route
               path="/Profile"
-              element={<Profile Friend={friend} SetFriend={setFriend} />}
+              element={
+                <Profile
+                  Friend={friend}
+                  SetFriend={setFriend}
+                  post={posts}
+                  setPosts={setPosts}
+                />
+              }
             />
             <Route
               path="/Friends"
@@ -73,6 +78,3 @@ function App() {
 }
 
 export default App;
-
-
-

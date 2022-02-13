@@ -64,7 +64,9 @@ const Searchbar = ({ setAuth }) => {
       {user.login ? (
         <div className="upper-sect">
           <div>
-            <i className="fas fa-home fa-2x"></i>
+            <Link to="/Profile">
+              <i className="fas fa-home fa-2x"></i>
+            </Link>
           </div>
           <div>
             <i className="fas fa-users fa-2x"></i>
