@@ -186,7 +186,7 @@ export const Profile = ({ Friend, SetFriend, post, setPosts }) => {
                     <div className=" Poster">
                       {" "}
                       <img src={pic} alt="" />
-                      Just just enjoying the view....
+                      James was just enjoying the view
                     </div>
                     <div className="Interactions">
                       <div>Feb 22</div>
@@ -275,10 +275,7 @@ export const Profile = ({ Friend, SetFriend, post, setPosts }) => {
                 </div>
               </div>
               <div className="settings">
-                <i className="fas fa-cog fa-2x"></i> Settings
-              </div>
-              <div className="settings">
-                <i className="fab fa-twitter fa-2x"></i> Twitter
+                <i className="fas fa-cog fa-2x"></i>
               </div>
             </div>
           </div>
