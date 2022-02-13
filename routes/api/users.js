@@ -2,7 +2,6 @@ const express = require("express");
 var cors = require("cors");
 const { Router } = require("express");
 const { DataBase, Users } = require("./DataBase");
-const { Posts } = require("../../client/src/components/Posts");
 
 const router = express.Router();
 const number = { count: 2150, name: "James Smith" };
@@ -18,8 +17,8 @@ router.get("/", async (req, res) => {
 
   res.send(DataBase);
 });
-
-router.post("/", async (req, res) => {
+// LOGIN FUNCTION
+router.post("/login", async (req, res) => {
   const match = Users.some((user) => user.email === req.body.email);
   console.log("a GET request was made", req.body, match);
   if (match) {

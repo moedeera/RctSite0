@@ -59,24 +59,6 @@ const Searchbar = ({ setAuth }) => {
   };
   return (
     <div>
-<<<<<<< HEAD
-      {user.login ? (
-        <div className="upper-sect">
-          <div>
-            <Link to="/Profile">
-              <i className="fas fa-home fa-2x"></i>
-            </Link>
-          </div>
-          <div>
-            <i className="fas fa-users fa-2x"></i>
-          </div>
-          <div className="notifications">
-            <div className="internal">
-              <i className="fas fa-bell fa-2x"></i>
-              <div className="number">
-                {user.Notifications !== 0 ? user.Notifications : ""}
-              </div>
-=======
       <div className="upper-sect">
         <div>
           <i className="fas fa-home fa-2x"></i>
@@ -88,8 +70,7 @@ const Searchbar = ({ setAuth }) => {
           <div className="internal">
             <i className="fas fa-bell fa-2x"></i>
             <div className="number">
-              {user.Notifications !== 0 ? user.Notifications : ""}
->>>>>>> parent of e64beaa (commit)
+              {user && user.Notifications !== 0 ? user.Notifications : ""}
             </div>
           </div>
         </div>

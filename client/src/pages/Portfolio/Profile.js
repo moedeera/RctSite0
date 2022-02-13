@@ -15,7 +15,6 @@ import Searchbar from "../../components/Searchbar";
 export const Profile = ({ Friend, SetFriend, post, setPosts }) => {
   const { user, setUser } = useContext(UserContext);
 
-  console.log(user.profilePic);
   const FriendsProfile = async (id) => {
     console.log("hey", id);
 
@@ -49,7 +48,7 @@ export const Profile = ({ Friend, SetFriend, post, setPosts }) => {
   return (
     <div className="main-prof">
       <Searchbar setAuth={SetFriend} />
-      {user.login ? (
+      {user && user.login ? (
         <div className="Layout-Main">
           <div>
             {" "}
