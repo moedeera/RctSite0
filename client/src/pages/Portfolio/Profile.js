@@ -232,7 +232,23 @@ export const Profile = ({ Friend, SetFriend, post, setPosts }) => {
           </div>
         </div>
       ) : (
-        <div className="MainCard">You are not logged in</div>
+        <div className="MainCard">
+          <div>
+            {" "}
+            You are not logged in click{" "}
+            <Link to="/Login" style={{ color: "green" }}>
+              here to login
+            </Link>{" "}
+          </div>
+          <div>Or</div>
+          <div>
+            {" "}
+            click{" "}
+            <Link to="/Register" style={{ color: "green" }}>
+              here to Register
+            </Link>{" "}
+          </div>
+        </div>
       )}
     </div>
   );
