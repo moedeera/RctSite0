@@ -115,7 +115,7 @@ var Users = [
   { id: 2, email: "cw@g", password: "123" },
   { id: 3, email: "mr@g", password: "123" },
   { id: 4, email: "jsantos@g", password: "123" },
-  { id: 4, email: "jjohnson@g", password: "123" },
+  { id: 5, email: "jjohnson@g", password: "123" },
   { id: 6, email: "mwiz@g", password: "123" },
 ];
 
@@ -123,27 +123,41 @@ var Posts = [
   {
     id: 1,
     Poster: 4,
+    PosterName: "Jamie",
+    PosterPic:
+      "https://images.pexels.com/photos/1693085/pexels-photo-1693085.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+
     postPic:
       "https://images.pexels.com/photos/1842182/pexels-photo-1842182.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
     text: "Teddy was just enjoying the sun",
+    date: "March 6",
     comments: [7],
     likes: 16,
   },
   {
     id: 5,
     Poster: 3,
+    PosterName: "Matt",
+    PosterPic:
+      "https://images.pexels.com/photos/1819483/pexels-photo-1819483.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+
     postPic:
       "https://images.pexels.com/photos/463734/pexels-photo-463734.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-    text: "Piece and Quite",
+    text: "Enjoying some quite time at the cabin",
     comments: [10, 11, 13, 19, 22, 33],
+    date: "March 6",
     likes: 52,
   },
   {
     id: 6,
-    Poster: 2,
+    Poster: 6,
+    PosterName: "Mitch Wiz",
+    PosterPic:
+      "https://cdn.pixabay.com/photo/2019/11/10/11/13/couple-4615557_960_720.jpg",
     postPic:
       "https://cdn.pixabay.com/photo/2019/11/10/11/13/couple-4615557_960_720.jpg",
     text: "Happy Anniversary Babe",
+    date: "February 22",
     comments: [29, 42],
     likes: 12,
   },

@@ -498,26 +498,35 @@ img {
   padding: 10px;
   display: grid;
   grid-template-columns: 1fr 6fr;
-
-  max-width: 400px;
+  width: 80%;
   justify-content: center;
   align-items: center;
 }
-.Poster img {
-  width: 25px;
-  height: 25px;
-  border: 1px solid black;
-  border-radius: 50%;
-  padding: 5px;
+.PosterInfo {
+  padding: 4px;
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  gap: 7px;
+  border-radius: 10px;
+  font-size: 12px;
 }
 .Poster {
-  width: 50%;
-
   padding: 5px;
-  align-items: center;
   display: grid;
-  grid-template-columns: 1fr 6fr;
-  text-align: left;
+  grid-template-columns: 1fr 8fr;
+  align-items: center;
+}
+
+.Poster img {
+  border: 1px solid;
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
 }
 .Create-Post input {
   font-size: 16px;
@@ -526,6 +535,7 @@ img {
   border-radius: 10px;
   color: red !important;
   padding: 10px;
+  width: 100%;
 }
 .Create-Post img {
   width: 25px;
@@ -578,18 +588,25 @@ img {
   width: 100%;
 }
 .Posts {
-  width: 80%;
-}
-.Posts img {
-  width: auto;
-  margin: 10px auto;
+  width: 70%;
+  margin: 5px 0px;
+  border: 1px solid grey;
+  padding: 5px 10px;
+  border-radius: 5px;
 }
 
 .Interactions {
-  width: 40%;
+  width: 80%;
   display: flex;
   justify-content: space-between;
 }
+.PostPic {
+  width: auto;
+  max-width: 500px;
+  height: auto;
+  margin: 10px auto;
+}
+
 /* Extra small devices (phones, 768px and down) */
 @media only screen and (max-width: 768px) {
   /* Navbar*/

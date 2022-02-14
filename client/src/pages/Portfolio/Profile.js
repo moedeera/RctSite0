@@ -167,14 +167,17 @@ export const Profile = ({ Friend, SetFriend, post, setPosts }) => {
                 <div className="Post-Feed">
                   {post.map((Post) => (
                     <div className="Posts">
-                      <img src={Post.postPic} alt="" />
+                      <img src={Post.postPic} alt="" className="PostPic" />
                       <div className=" Poster">
                         {" "}
-                        <img src={pic} alt="" />
-                        Just just enjoying the view....
+                        <div className="PosterInfo">
+                          <img src={Post.PosterPic} alt="" />
+                          {Post.PosterName}
+                        </div>
+                        {Post.text}
                       </div>
                       <div className="Interactions">
-                        <div>Feb 22</div>
+                        <div>{Post.date}</div>
                         <div>
                           {Post.likes}{" "}
                           <i
@@ -182,6 +185,7 @@ export const Profile = ({ Friend, SetFriend, post, setPosts }) => {
                             style={{ color: "red" }}
                           ></i>
                         </div>
+
                         <div>
                           {" "}
                           {Post.comments.length}
