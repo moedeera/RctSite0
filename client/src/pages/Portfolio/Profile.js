@@ -15,6 +15,29 @@ import Searchbar from "../../components/Searchbar";
 export const Profile = ({ Friend, SetFriend, post, setPosts }) => {
   const { user, setUser } = useContext(UserContext);
 
+  const postsIds = [6, 5, 1];
+
+  const getPosts = async (array) => {
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+
+      const body = JSON.stringify(array);
+      const res = await axios.post("/api/post", body, config);
+      console.log(res.data);
+      setPosts(res.data);
+      return res.data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    getPosts(user.Posts);
+  }, []);
+
   const FriendsProfile = async (id) => {
     console.log("hey", id);
 
@@ -142,9 +165,9 @@ export const Profile = ({ Friend, SetFriend, post, setPosts }) => {
 
               <div className="Feed">
                 <div className="Post-Feed">
-                  {user.Posts.map((post) => (
+                  {post.map((Post) => (
                     <div className="Posts">
-                      <img src={logo} alt="" />
+                      <img src={Post.postPic} alt="" />
                       <div className=" Poster">
                         {" "}
                         <img src={pic} alt="" />
@@ -153,7 +176,7 @@ export const Profile = ({ Friend, SetFriend, post, setPosts }) => {
                       <div className="Interactions">
                         <div>Feb 22</div>
                         <div>
-                          109{" "}
+                          {Post.likes}{" "}
                           <i
                             className="fas fa-heart"
                             style={{ color: "red" }}
@@ -161,7 +184,7 @@ export const Profile = ({ Friend, SetFriend, post, setPosts }) => {
                         </div>
                         <div>
                           {" "}
-                          5
+                          {Post.comments.length}
                           <i
                             className="fas fa-comment"
                             style={{ color: "grey" }}
@@ -179,77 +202,6 @@ export const Profile = ({ Friend, SetFriend, post, setPosts }) => {
                       </div>
                     </div>
                   ))}
-
-                  <div className="Posts">
-                    <img src={logo} alt="" />
-                    <div className=" Poster">
-                      {" "}
-                      <img src={pic} alt="" />
-                      James was just enjoying the view
-                    </div>
-                    <div className="Interactions">
-                      <div>Feb 22</div>
-                      <div>
-                        109{" "}
-                        <i
-                          className="fas fa-heart"
-                          style={{ color: "red" }}
-                        ></i>
-                      </div>
-                      <div>
-                        {" "}
-                        5
-                        <i
-                          className="fas fa-comment"
-                          style={{ color: "grey" }}
-                        ></i>
-                      </div>
-                    </div>
-                    <div className="Create-Post">
-                      {" "}
-                      <img src={pic} alt="" />
-                      <input
-                        type="textarea"
-                        name="textValue"
-                        placeholder="Comment"
-                      />
-                    </div>
-                  </div>
-                  <div className="Posts">
-                    <img src={pic0} alt="" />
-                    <div className=" Poster">
-                      {" "}
-                      <img src={pic} alt="" />
-                      Piece and Quite
-                    </div>
-                    <div className="Interactions">
-                      <div>Feb 22</div>
-                      <div>
-                        52{" "}
-                        <i
-                          className="fas fa-heart"
-                          style={{ color: "red" }}
-                        ></i>
-                      </div>
-                      <div>
-                        {" "}
-                        15
-                        <i
-                          className="fas fa-comment"
-                          style={{ color: "grey" }}
-                        ></i>
-                      </div>
-                    </div>
-                    <div className="Create-Post">
-                      {" "}
-                      <img src={pic} alt="" />
-                      <input
-                        type="textarea"
-                        name="textValue"
-                        placeholder="Comment"
-                      />
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>

@@ -151,4 +151,4 @@ var Posts = [
   {},
 ];
 
-module.exports = { DataBase, Users };
+module.exports = { DataBase, Users, Posts };
