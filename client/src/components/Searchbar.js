@@ -23,8 +23,10 @@ const Searchbar = ({ setAuth }) => {
   const onChangeText = (text) => {
     let matches = [];
     if (text.length > 0) {
-      document.addEventListener("mousedown", () => {
-        console.log("you clicked outside");
+      document.addEventListener("click", (e) => {
+        if (e.target.className !== "Searchbar") {
+          Reset();
+        }
       });
 
       matches = users.filter((user) => {
@@ -39,6 +41,7 @@ const Searchbar = ({ setAuth }) => {
   };
   const Reset = () => {
     setSuggestions("");
+    setText("");
   };
   const FriendsProfile = async (id) => {
     try {
@@ -61,7 +64,7 @@ const Searchbar = ({ setAuth }) => {
   };
   return (
     <div>
-      {user.login && (
+      {user?.login && (
         <div className="upper-sect">
           <div>
             <i className="fas fa-home fa-2x"></i>
@@ -96,6 +99,7 @@ const Searchbar = ({ setAuth }) => {
               type="text"
               placeholder="Search for people"
               name="text"
+              value={text}
               onChange={(e) => onChangeText(e.target.value)}
             />
             {suggestions

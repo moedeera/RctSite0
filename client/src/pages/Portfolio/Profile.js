@@ -11,32 +11,12 @@ import { UserContext } from "../../UserContext";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Searchbar from "../../components/Searchbar";
+import { usePosts } from "../../utils/PostAuth";
+import { useAuth } from "../../utils/AuthLogin";
 
-export const Profile = ({ Friend, SetFriend, post, setPosts }) => {
-  const { user, setUser } = useContext(UserContext);
-
-  const postsIds = [6, 5, 1];
-
-  const getPosts = async (array) => {
-    try {
-      const config = {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      };
-
-      const body = JSON.stringify(array);
-      const res = await axios.post("/api/post", body, config);
-      console.log(res.data);
-      setPosts(res.data);
-      return res.data;
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  useEffect(() => {
-    getPosts(user.Posts);
-  }, []);
+export const Profile = ({ Friend, SetFriend }) => {
+  const { user } = useContext(UserContext);
+  const { posts, likeCount } = usePosts();
 
   const FriendsProfile = async (id) => {
     console.log("hey", id);
@@ -59,38 +39,6 @@ export const Profile = ({ Friend, SetFriend, post, setPosts }) => {
 
     // navigate("../Friends");
   };
-
-  const likeCount = (id) => {
-    setPosts(
-      post.map((posts) =>
-        posts.id === id ? { ...posts, likes: posts.likes++ } : posts
-      )
-    );
-
-    try {
-      const config = {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      };
-
-      const body = JSON.stringify(post);
-      const res = axios.post("/api/post/update", body, config);
-      console.log(res.data);
-      // setPosts(res.data);
-    } catch (error) {
-      console.log(error);
-    }
-
-    console.log(post);
-  };
-
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     MoveSlide();
-  //   }, 5000);
-  //   return () => clearInterval(interval);
-  // }, []);
 
   return (
     <div className="main-prof">
@@ -189,7 +137,7 @@ export const Profile = ({ Friend, SetFriend, post, setPosts }) => {
 
               <div className="Feed">
                 <div className="Post-Feed">
-                  {post.map((Post) => (
+                  {posts.map((Post) => (
                     <div className="Posts">
                       <img src={Post.postPic} alt="" className="PostPic" />
                       <div className=" Poster">

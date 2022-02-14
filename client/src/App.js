@@ -12,7 +12,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
-import { usePosts } from "./utils/PostAuth";
+
 import { useAuth } from "./utils/AuthLogin";
 import { UserContext } from "./UserContext";
 import { Friends } from "./pages/Portfolio/Friends";
@@ -26,9 +26,11 @@ function getUserInfo() {
   }
 }
 function App() {
-  //   const data = sessionStorage.getItem("user-info");
   const { friend, setFriend } = useAuth();
-  const { posts, setPosts } = usePosts();
+
+  /// Comments
+  /// Shares
+  //  Messages
   const [user, setUser] = useState(getUserInfo());
 
   useEffect(() => {
@@ -54,14 +56,7 @@ function App() {
             <Route path="/Login" element={<Login />} />
             <Route
               path="/Profile"
-              element={
-                <Profile
-                  Friend={friend}
-                  SetFriend={setFriend}
-                  post={posts}
-                  setPosts={setPosts}
-                />
-              }
+              element={<Profile Friend={friend} SetFriend={setFriend} />}
             />
             <Route
               path="/Friends"
