@@ -60,7 +60,31 @@ export const Profile = ({ Friend, SetFriend, post, setPosts }) => {
     // navigate("../Friends");
   };
 
-  console.log(user);
+  const likeCount = (id) => {
+    setPosts(
+      post.map((posts) =>
+        posts.id === id ? { ...posts, likes: posts.likes++ } : posts
+      )
+    );
+
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+
+      const body = JSON.stringify(post);
+      const res = axios.post("/api/post/update", body, config);
+      console.log(res.data);
+      // setPosts(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+
+    console.log(post);
+  };
+
   // useEffect(() => {
   //   const interval = setInterval(() => {
   //     MoveSlide();
@@ -178,7 +202,7 @@ export const Profile = ({ Friend, SetFriend, post, setPosts }) => {
                       </div>
                       <div className="Interactions">
                         <div>{Post.date}</div>
-                        <div>
+                        <div onClick={() => likeCount(Post.id)}>
                           {Post.likes}{" "}
                           <i
                             className="fas fa-heart"

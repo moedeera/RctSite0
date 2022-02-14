@@ -17,4 +17,16 @@ router.post("/", async (req, res) => {
   res.send(response);
 });
 
+router.post("/update", async (req, res) => {
+  console.log("post get request", req.body, Posts);
+
+  var response = [];
+
+  for (var j = 0; j < req.body.length; j++) {
+    Posts[j] = req.body[j];
+  }
+  console.log("xox", Posts);
+  res.send(Posts);
+});
+
 module.exports = router;
