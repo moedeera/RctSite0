@@ -182,7 +182,7 @@ export const Profile = ({ Friend, SetFriend }) => {
               </div>
             </div>
           </div>
-          <div className="main-side">
+          {/* <div className="main-side">
             <div className="promotions">
               {" "}
               <img src={pic2} alt="" className="Meetup" />
@@ -205,7 +205,7 @@ export const Profile = ({ Friend, SetFriend }) => {
                 <i className="fas fa-cog fa-2x"></i>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       ) : (
         <div className="MainCard">
