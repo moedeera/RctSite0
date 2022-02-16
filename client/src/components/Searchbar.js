@@ -12,6 +12,7 @@ const Searchbar = ({ setAuth }) => {
   const UserReset = () => {
     setUser({ ...user, login: false });
   };
+
   useEffect(() => {
     const LoadUsers = async () => {
       const response = await axios.get("/api/users");
