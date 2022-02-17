@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import Searchbar from "../../components/Searchbar";
 import { usePosts } from "../../utils/PostAuth";
-import { useAuth } from "../../utils/AuthLogin";
+
 
 export const Profile = ({ Friend, SetFriend }) => {
   const { user } = useContext(UserContext);
