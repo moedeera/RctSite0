@@ -10,7 +10,7 @@ import { usePosts } from "../../utils/PostAuth";
 
 export const Guest = ({ Friend, SetFriend }) => {
   const { user, setUser } = useContext(UserContext);
-  console.log(user);
+
   useEffect(() => {
     setUser({
       id: 1,
@@ -30,6 +30,10 @@ export const Guest = ({ Friend, SetFriend }) => {
       Friends: [2, 3, 4],
       Posts: [6, 5, 1],
     });
+    console.log(user);
+    return () => {
+      console.log("you left Guest Component");
+    };
   }, []);
 
   const { posts, likeCount } = usePosts();

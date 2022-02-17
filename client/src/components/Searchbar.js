@@ -22,6 +22,7 @@ const Searchbar = ({ setAuth }) => {
     };
     LoadUsers();
   }, []);
+
   const onChangeText = (text) => {
     let matches = [];
     if (text.length > 0) {
@@ -90,30 +91,7 @@ const Searchbar = ({ setAuth }) => {
           </div>
         </div>
       )}
-      {!user.login && guest?.login && (
-        <div className="upper-sect">
-          <div>
-            <i className="fas fa-home fa-2x"></i>
-          </div>
-          <div>
-            <i className="fas fa-users fa-2x"></i>
-          </div>
-          <div className="notifications">
-            <div className="internal">
-              <i className="fas fa-bell fa-2x"></i>
-              <div className="number">
-                {user && user.Notifications !== 0 ? user.Notifications : ""}
-              </div>
-            </div>
-          </div>
 
-          <div>
-            <div onClick={() => UserReset()}>
-              <i className="fas fa-times-circle fa-2x"></i>
-            </div>
-          </div>
-        </div>
-      )}
       <div className="Search">
         <div className="searchBar">
           <i className="fas fa-search" style={{ color: "grey" }}></i>
