@@ -1,32 +1,37 @@
 import React from "react";
 import pic from "../../blank-avatar.png";
 import { useContext } from "react";
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
+import { UserContext } from "../../UserContext";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Searchbar from "../../components/Searchbar";
 import { usePosts } from "../../utils/PostAuth";
 
 export const Guest = ({ Friend, SetFriend }) => {
-  const [user, setUser] = useState({
-    id: 1,
-    name: "Jennifer Smith",
-    nickname: "Jenny",
-    age: 25,
-    Feed: [
-      { name: "Connie Williams", type: "like", id: 2 },
-      { name: "Matt Russo", type: "request", id: 3 },
-      { name: "James Santos", type: "request", id: 4 },
-    ],
-    profilePic:
-      "https://images.pexels.com/photos/1090387/pexels-photo-1090387.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-    followerCount: 26,
-    login: true,
-    Notifications: 2,
-    Friends: [2, 3, 4],
-    Posts: [6, 5, 1],
-  });
+  const { user, setUser } = useContext(UserContext);
+  console.log(user);
+  useEffect(() => {
+    setUser({
+      id: 1,
+      name: "Jennifer Smith",
+      nickname: "Jenny",
+      age: 25,
+      Feed: [
+        { name: "Connie Williams", type: "like", id: 2 },
+        { name: "Matt Russo", type: "request", id: 3 },
+        { name: "James Santos", type: "request", id: 4 },
+      ],
+      profilePic:
+        "https://images.pexels.com/photos/1090387/pexels-photo-1090387.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+      followerCount: 26,
+      login: true,
+      Notifications: 2,
+      Friends: [2, 3, 4],
+      Posts: [6, 5, 1],
+    });
+  }, []);
+
   const { posts, likeCount } = usePosts();
 
   const FriendsProfile = async (id) => {
@@ -105,7 +110,10 @@ export const Guest = ({ Friend, SetFriend }) => {
                       <p>
                         This is a full stack social media website that allows
                         comments, likes, friends, and posts that can all be
-                        stored in real time in a MongoDB database
+                        stored in real time in a MongoDB database This is a full
+                        stack social media website that allows comments, likes,
+                        friends, and posts that can all be stored in real time
+                        in a MongoDB database
                       </p>
                     </div>
                     <div className="RightLowerAM">

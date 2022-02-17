@@ -90,7 +90,7 @@ const Searchbar = ({ setAuth }) => {
           </div>
         </div>
       )}
-      {guest?.login && (
+      {!user.login && guest?.login && (
         <div className="upper-sect">
           <div>
             <i className="fas fa-home fa-2x"></i>

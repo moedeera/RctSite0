@@ -19,7 +19,7 @@ import { Friends } from "./pages/Portfolio/Friends";
 import { Guest } from "./pages/Portfolio/Guest";
 
 function getUserInfo() {
-  const data = sessionStorage.getItem("user-info");
+  var data = sessionStorage.getItem("user-info");
 
   if (data) {
     console.log(data);
