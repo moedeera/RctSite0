@@ -50,7 +50,7 @@ export const usePosts = () => {
   };
 
   useEffect(() => {
-    if (user.Posts !== undefined) {
+    if (user?.Posts !== undefined) {
       getPosts(user.Posts);
     } else {
       var Mock = {
@@ -72,7 +72,7 @@ export const usePosts = () => {
         Posts: [6, 5, 1],
       };
 
-      getPosts(Mock);
+      getPosts(Mock.Posts);
     }
   }, []);
 
