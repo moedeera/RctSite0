@@ -318,7 +318,7 @@ img {
   justify-content: space-between;
 
   padding: 10px;
-  align-items: center;
+
   width: 85%;
 }
 
@@ -331,21 +331,69 @@ img {
 
   grid-template-columns: 3fr 1fr;
 }
+/*AboutME*/
+.AboutMe {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 2fr;
+}
+.UpperAM {
+  display: grid;
+  grid-template-columns: 3fr 2fr 2fr;
+}
+.UpperAM > div {
+  border-right: 1px solid rgba(128, 128, 128, 0.712);
+  padding: 5px;
+  margin-left: 5px;
+}
+.AMU-Name {
+  text-align: left;
+  padding: 0 5px;
+}
+.AMU-Name p {
+  color: grey;
+  font-size: 12px;
+  font-style: italic;
+  font-weight: 500;
+}
+#first {
+  margin-top: -15px;
+}
+.AMU-stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5px;
+}
 
+.lowerAM {
+  display: grid;
+  grid-template-columns: 5fr 2fr;
+}
+.LeftLowerAM {
+  text-align: left;
+  line-height: 1.6em;
+  padding: 5px;
+}
 .Profile-Feed {
   text-align: left;
 }
 
 .Game-Feed {
-  height: 300px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  gap: 20px;
+  padding: 10px 0;
 }
 .Follow {
   background: goldenrod;
   padding: 10px;
   color: white;
+  margin: auto 0;
+  height: 50px;
+
+  line-height: 50px;
   border-right: none !important;
 }
 .Scores {
@@ -680,6 +728,10 @@ img {
   }
   .filter {
     display: none;
+  }
+  .AMU-stats {
+    display: flex;
+    flex-direction: column;
   }
 }
 

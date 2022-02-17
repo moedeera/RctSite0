@@ -8,16 +8,17 @@ const Searchbar = ({ setAuth }) => {
   const [users, setUsers] = useState([]);
   const [text, setText] = useState([]);
   const [suggestions, setSuggestions] = useState([]);
-  const { user, setUser } = useContext(UserContext);
+  const { user, setUser, guest, setGuest } = useContext(UserContext);
+
   const UserReset = () => {
     setUser({ ...user, login: false });
+    setGuest({ ...guest, login: false });
   };
 
   useEffect(() => {
     const LoadUsers = async () => {
       const response = await axios.get("/api/users");
       setUsers(response.data);
-      console.log(response.data);
     };
     LoadUsers();
   }, []);
@@ -89,7 +90,30 @@ const Searchbar = ({ setAuth }) => {
           </div>
         </div>
       )}
+      {guest?.login && (
+        <div className="upper-sect">
+          <div>
+            <i className="fas fa-home fa-2x"></i>
+          </div>
+          <div>
+            <i className="fas fa-users fa-2x"></i>
+          </div>
+          <div className="notifications">
+            <div className="internal">
+              <i className="fas fa-bell fa-2x"></i>
+              <div className="number">
+                {user && user.Notifications !== 0 ? user.Notifications : ""}
+              </div>
+            </div>
+          </div>
 
+          <div>
+            <div onClick={() => UserReset()}>
+              <i className="fas fa-times-circle fa-2x"></i>
+            </div>
+          </div>
+        </div>
+      )}
       <div className="Search">
         <div className="searchBar">
           <i className="fas fa-search" style={{ color: "grey" }}></i>

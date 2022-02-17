@@ -16,6 +16,7 @@ import "./App.css";
 import { useAuth } from "./utils/AuthLogin";
 import { UserContext } from "./UserContext";
 import { Friends } from "./pages/Portfolio/Friends";
+import { Guest } from "./pages/Portfolio/Guest";
 
 function getUserInfo() {
   const data = sessionStorage.getItem("user-info");
@@ -32,6 +33,7 @@ function App() {
   /// Shares
   //  Messages
   const [user, setUser] = useState(getUserInfo());
+  const [guest, setGuest] = useState({ login: "true" });
 
   useEffect(() => {
     console.log("it changed", user);
@@ -43,7 +45,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <UserContext.Provider value={{ user, setUser }}>
+        <UserContext.Provider value={{ user, setUser, guest, setGuest }}>
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/Table" element={<Table />} />
@@ -57,6 +59,10 @@ function App() {
             <Route
               path="/Profile"
               element={<Profile Friend={friend} SetFriend={setFriend} />}
+            />
+            <Route
+              path="/Guest"
+              element={<Guest Friend={friend} SetFriend={setFriend} />}
             />
             <Route
               path="/Friends"
