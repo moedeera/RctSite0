@@ -397,9 +397,16 @@ img {
   color: white;
   margin: auto 0;
   height: 50px;
-
+  font-size: 18px;
   line-height: 50px;
   border-right: none !important;
+}
+.Follow button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 18px;
+  line-height: 50px;
 }
 .Scores {
   display: flex;
