@@ -278,7 +278,7 @@ a:visited {
 
 .MainCard {
   width: 100%;
-  max-width: 1100px;
+  max-width: 1200px;
   height: 100%;
   margin: 50px auto;
   background: white;
@@ -385,6 +385,11 @@ img {
   justify-content: space-evenly;
   gap: 20px;
   padding: 10px 0;
+}
+.EditBtn {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 .Follow {
   background: goldenrod;
@@ -596,8 +601,8 @@ img {
 /*New Setup*/
 .Layout-Main {
   display: grid;
-  grid-template-columns: 4fr 1fr;
-  max-width: 1600px;
+  grid-template-columns: 1fr;
+  max-width: 1800px;
   margin: 0 auto;
 }
 .Layout-Main > div {

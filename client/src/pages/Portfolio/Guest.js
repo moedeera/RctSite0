@@ -1,7 +1,7 @@
 import React from "react";
 import pic from "../../blank-avatar.png";
-import { useContext } from "react";
-import { useState, useEffect } from "react";
+import { Edit } from "../../utils/Edit";
+import { useEffect, useContext } from "react";
 import { UserContext } from "../../UserContext";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -10,13 +10,20 @@ import { usePosts } from "../../utils/PostAuth";
 
 export const Guest = ({ Friend, SetFriend }) => {
   const { user, setUser } = useContext(UserContext);
+  const { edit, setEdit } = Edit();
 
   useEffect(() => {
     setUser({
       id: 1,
       name: "Jennifer Smith",
       nickname: "Jenny",
+      location: "Toronto, ON",
+      description: "Night Owl Queen",
       age: 25,
+      scores: [125, 102, 55],
+      header: "About this Project",
+      about:
+        "This is a full stack social media website that allows comments, likes, friends, and posts that can all be stored in real time in a MongoDB database. The user is stored in a local session once logged in and JWT technology ensures safe data transfer for security.",
       Feed: [
         { name: "Connie Williams", type: "like", id: 2 },
         { name: "Matt Russo", type: "request", id: 3 },
@@ -35,6 +42,8 @@ export const Guest = ({ Friend, SetFriend }) => {
       console.log("you left Guest Component");
     };
   }, []);
+
+  const onChange = (e) => setUser({ ...user, [e.target.name]: e.target.value });
 
   const { posts, likeCount } = usePosts();
 
@@ -77,14 +86,24 @@ export const Guest = ({ Friend, SetFriend }) => {
                 <div className="AboutMe">
                   <div className="UpperAM">
                     <div className="AMU-Name">
-                      <h4>{user.name}</h4>
-                      <p id="first">Night Owl Queen</p>
-                      <p>Toronto, ON</p>
+                      <h4>
+                        {!edit ? (
+                          user.name
+                        ) : (
+                          <input
+                            type="text"
+                            value={user.name}
+                            onChange={(e) => onChange(e)}
+                          />
+                        )}
+                      </h4>
+                      <p id="first">{user.description}</p>
+                      <p>{user.location}</p>
                     </div>
                     <div className="AMU-stats">
                       <div>
                         {" "}
-                        125
+                        {user.scores[0]}
                         <i
                           className="fa fa-heart"
                           style={{ color: "crimson" }}
@@ -92,33 +111,48 @@ export const Guest = ({ Friend, SetFriend }) => {
                       </div>
                       <div>
                         {" "}
-                        102
+                        {user.scores[1]}
                         <i className="far fa-user-circle"></i>
                       </div>
                       <div>
                         {" "}
-                        55
+                        {user.scores[2]}
                         <i
                           class="fas fa-star"
                           style={{ color: "goldenrod" }}
                         ></i>
                       </div>
                     </div>
-                    <div className="Follow">
-                      <i className="fas fa-user-circle"></i>Edit
+                    <div className="EditBtn">
+                      <div className="Follow">
+                        {" "}
+                        {edit ? (
+                          "Save"
+                        ) : (
+                          <div onClick={() => setEdit(!edit)}>
+                            {" "}
+                            <i className="fas fa-user-circle"></i>Edit
+                          </div>
+                        )}{" "}
+                      </div>
+                      {edit ? (
+                        <div
+                          onClick={() => setEdit(!edit)}
+                          className="Follow"
+                          style={{ backgroundColor: "red" }}
+                        >
+                          {" "}
+                          Cancel
+                        </div>
+                      ) : (
+                        ""
+                      )}
                     </div>
                   </div>
                   <div className="lowerAM">
                     <div className="LeftLowerAM">
-                      <h3>About this Project</h3>
-                      <p>
-                        This is a full stack social media website that allows
-                        comments, likes, friends, and posts that can all be
-                        stored in real time in a MongoDB database This is a full
-                        stack social media website that allows comments, likes,
-                        friends, and posts that can all be stored in real time
-                        in a MongoDB database
-                      </p>
+                      <h3>{user.header}</h3>
+                      <p>{user.about}</p>
                     </div>
                     <div className="RightLowerAM">
                       <div className="Game-Feed">

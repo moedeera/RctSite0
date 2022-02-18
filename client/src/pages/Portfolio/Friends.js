@@ -16,16 +16,47 @@ export const Friends = ({ isAuth, SetAuth }) => {
             <img src={isAuth.profilePic} alt="new" />
           </div>
 
-          <div className="Info-Section">
-            <div className="Name"> {isAuth.name}</div>
-            <div className="Scores">
-              {" "}
-              <i className="far fa-heart"></i>{" "}
-              <div>{isAuth.followerCount} followers</div>{" "}
-              <i className="fas fa-gamepad"></i> 178 Score
+          <div className="AboutMe">
+            <div className="UpperAM">
+              <div className="AMU-Name">
+                <h4>{isAuth.name}</h4>
+                <p id="first">{isAuth.description}</p>
+                <p>{isAuth.location}</p>
+              </div>
+              <div className="AMU-stats">
+                <div>
+                  {" "}
+                  {isAuth.scores[0]}
+                  <i className="fa fa-heart" style={{ color: "crimson" }}></i>
+                </div>
+                <div>
+                  {" "}
+                  {isAuth.scores[1]}
+                  <i className="far fa-user-circle"></i>
+                </div>
+                <div>
+                  {" "}
+                  {isAuth.scores[2]}
+                  <i class="fas fa-star" style={{ color: "goldenrod" }}></i>
+                </div>
+              </div>
+              <div className="Follow">
+                <i className="fas fa-user-circle"></i>Message
+              </div>
             </div>
-            <div className="Follow" style={{ backgroundColor: "green" }}>
-              <i className="fas fa-user-circle"></i>Message
+            <div className="lowerAM">
+              <div className="LeftLowerAM">
+                <h3>{isAuth.header}</h3>
+                <p>{isAuth.about}</p>
+              </div>
+              <div className="RightLowerAM">
+                <div className="Game-Feed">
+                  <h3>Skills</h3>
+                  <i className="fas fa-stethoscope fa-2x"></i>
+                  <i className="fas fa-code fa-2x"></i>
+                  <i className="fas fa-gamepad fa-2x"></i>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -66,14 +97,6 @@ export const Friends = ({ isAuth, SetAuth }) => {
                   )
                 )} */}
             </div>
-          </div>
-
-          <div className="Game-Feed">
-            <h3>Skills</h3>
-            <i className="fas fa-glass-cheers fa-2x"></i>
-            <i className="fas fa-running fa-2x"></i>
-            <i className="fas fa-motorcycle fa-2x"></i>
-            <i className="fas fa-gamepad fa-2x"></i>
           </div>
         </div>
 

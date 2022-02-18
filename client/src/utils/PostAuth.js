@@ -50,14 +50,21 @@ export const usePosts = () => {
   };
 
   useEffect(() => {
-    if (user?.Posts !== undefined) {
+    if (user?.Posts != null) {
       getPosts(user.Posts);
     } else {
       var Mock = {
         id: 1,
         name: "Jennifer Smith",
         nickname: "Jenny",
+        location: "Toronto, ON",
+        description: "Night Owl Queen",
         age: 25,
+        scores: [125, 102, 55],
+        header: "Mom to 2 cats and a Dog",
+        about:
+          "Photography aficionado, GamerGirl, Outdoorsy-gal, solo-traveler. Vlogger...pretty much your average millennial",
+
         Feed: [
           { name: "Connie Williams", type: "like", id: 2 },
           { name: "Matt Russo", type: "request", id: 3 },
