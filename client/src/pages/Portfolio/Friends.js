@@ -26,17 +26,17 @@ export const Friends = ({ isAuth, SetAuth }) => {
               <div className="AMU-stats">
                 <div>
                   {" "}
-                  {isAuth.scores[0]}
+                  {/* {isAuth.scores[0]} */} 23
                   <i className="fa fa-heart" style={{ color: "crimson" }}></i>
                 </div>
                 <div>
                   {" "}
-                  {isAuth.scores[1]}
+                  {/* {isAuth.scores[1]} */}50
                   <i className="far fa-user-circle"></i>
                 </div>
                 <div>
                   {" "}
-                  {isAuth.scores[2]}
+                  {/* {isAuth.scores[2]} */}44
                   <i class="fas fa-star" style={{ color: "goldenrod" }}></i>
                 </div>
               </div>
