@@ -318,6 +318,151 @@ export const Guest = ({ Friend, SetFriend }) => {
           </div>
         </div>
       )}
+      <div className="MainCard">
+        <div className="Upper-Half">
+          <div className="Profile-Pic Logged-in">
+            <img src={user.profilePic} alt="new" />
+            <div className="PhotoEdit">Change Photo</div>
+          </div>
+
+          <div className="AboutMe">
+            <div className="UpperAM">
+              <div className="AMU-Name">
+                <h4>
+                  {!edit ? (
+                    user.name
+                  ) : (
+                    <input
+                      type="text"
+                      value={user.name}
+                      onChange={(e) => onChange(e)}
+                    />
+                  )}
+                </h4>
+                <p id="first">{user.description}</p>
+                <p>{user.location}</p>
+              </div>
+              <div className="AMU-stats">
+                <div>
+                  {" "}
+                  {user.scores[0]}
+                  <i className="fa fa-heart" style={{ color: "crimson" }}></i>
+                </div>
+                <div>
+                  {" "}
+                  {user.scores[1]}
+                  <i className="far fa-user-circle"></i>
+                </div>
+                <div>
+                  {" "}
+                  {user.scores[2]}
+                  <i class="fas fa-star" style={{ color: "goldenrod" }}></i>
+                </div>
+              </div>
+              <div className="EditBtn">
+                <div className="Follow">
+                  {" "}
+                  {edit ? (
+                    "Save"
+                  ) : (
+                    <div onClick={() => setEdit(!edit)}>
+                      {" "}
+                      <i className="fas fa-user-circle"></i>Edit
+                    </div>
+                  )}{" "}
+                </div>
+                {edit ? (
+                  <div
+                    onClick={() => setEdit(!edit)}
+                    className="Follow"
+                    style={{ backgroundColor: "red" }}
+                  >
+                    {" "}
+                    Cancel
+                  </div>
+                ) : (
+                  ""
+                )}
+              </div>
+            </div>
+            <div className="lowerAM">
+              <div className="LeftLowerAM">
+                <h3>{user.header}</h3>
+                <p>{user.about}</p>
+              </div>
+              <div className="RightLowerAM">
+                <div className="Game-Feed">
+                  <h3>Skills</h3>
+                  <i className="fas fa-stethoscope fa-2x"></i>
+                  <i className="fas fa-code fa-2x"></i>
+                  <i className="fas fa-gamepad fa-2x"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="Lower-Half">
+          <div className="Profile-Feed ">
+            <div>
+              <h3> Welcome back {user.nickname}</h3>
+
+              {user.Feed.map((person) =>
+                person.type === "like" ? (
+                  <Link
+                    key={person.id}
+                    to="/Friends"
+                    onClick={() => FriendsProfile(person.id)}
+                  >
+                    {" "}
+                    <p style={{ color: "black" }}>
+                      <i
+                        className="fas fa-heart"
+                        style={{ color: "crimson" }}
+                      ></i>{" "}
+                      {person.name} Liked your post
+                    </p>
+                  </Link>
+                ) : person.type === "request" ? (
+                  <Link
+                    key={person.id}
+                    to="/Friends"
+                    onClick={() => FriendsProfile(person.id)}
+                  >
+                    <p style={{ color: "black" }}>
+                      <i className="far fa-user-circle"></i>
+                      {person.name} requested to follow you
+                    </p>
+                  </Link>
+                ) : (
+                  person.type === "Challenge" && (
+                    <Link
+                      key={person.id}
+                      to="/Friends"
+                      onClick={() => FriendsProfile(person.id)}
+                    >
+                      <p style={{ color: "black" }}>
+                        {" "}
+                        <i className="fas fa-gamepad "></i>
+                        {person.name} Challenged you to a game
+                      </p>
+                    </Link>
+                  )
+                )
+              )}
+              <div className="Create-Post">
+                {" "}
+                <img src={pic} alt="" />
+                <input
+                  type="textarea"
+                  name="textValue"
+                  placeholder="Create a Post"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
