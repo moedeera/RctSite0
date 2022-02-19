@@ -13,16 +13,22 @@ export const Guest = ({ Friend, SetFriend }) => {
   const { edit, setEdit } = Edit();
 
   const [formData, setFormData] = useState({
-    nickname: user.nickname,
-    location: user.location,
-    description: user.description,
-    age: user.age,
-    header: user.header,
-    about: user.about,
+    name: "Jennifer Smith",
+    nickname: "Jenny",
+    location: "Toronto, ON",
+    description: "Night Owl Queen",
+    age: 25,
+       header: "About this Project",
+    about:
+      "This is a full stack social media website that allows comments, likes, friends, and posts that can all be stored in real time in a MongoDB database. The user is stored in a local session once logged in and JWT technology ensures safe data transfer for security.",
+  
   });
   const { nickname, location, description, age, header, about } = formData;
 
   useEffect(() => {
+    var data = sessionStorage.getItem("user-info");
+
+    if (!data){
     setUser({
       id: 1,
       name: "Jennifer Smith",
@@ -46,13 +52,28 @@ export const Guest = ({ Friend, SetFriend }) => {
       Notifications: 2,
       Friends: [2, 3, 4],
       Posts: [6, 5, 1],
-    });
-    console.log(user);
-    return () => {
-      console.log("you left Guest Component");
-    };
-  }, []);
+    })
+    }
+    
+    ;
 
+    
+    // setFormData({
+    //   nickname: user.nickname,
+    //   location: user.location,
+    //   description: user.description,
+    //   age: user.age,
+    //   header: user.header,
+    //   about: user.about,
+    // })
+ 
+  }, []);
+  useEffect(() => {
+    console.log("it changed", user);
+  
+      sessionStorage.setItem("user-info", JSON.stringify(user));
+    
+  }, [user]);
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
@@ -80,6 +101,20 @@ export const Guest = ({ Friend, SetFriend }) => {
     // navigate("../Friends");
   };
 
+
+  const onSubmission = (e)=>{
+
+    e.preventDefault();
+   
+    // setUser({...user,[e.target.name]:e.target.value})
+     setUser({...user,nickname:formData.nickname,
+       location:formData.location,
+       header:formData.header,
+      description:formData.description,
+      about:formData.about
+    })
+   setEdit(!edit)
+  }
   return (
     <div className="main-prof">
       <Searchbar setAuth={SetFriend} />
@@ -87,97 +122,138 @@ export const Guest = ({ Friend, SetFriend }) => {
         <div className="Layout-Main">
           <div>
             {" "}
-            <div className="MainCard">
-              <div className="Upper-Half">
-                <div className="Profile-Pic Logged-in">
-                  <img src={user.profilePic} alt="new" />
-                  <div className="PhotoEdit">Change Photo</div>
-                </div>
+            <form
+        onSubmit={(e) => onSubmission(e)}
+      
+      >
+        <div className="MainCard">
+          <div className="Upper-Half">
+            <div className="Profile-Pic Logged-in">
+              <img src={user.profilePic} alt="new" />
+              <div className="PhotoEdit">Change Photo</div>
+            </div>
 
-                <div className="AboutMe">
-                  <div className="UpperAM">
-                    <div className="AMU-Name">
-                      <h4>
-                        {!edit ? (
-                          user.name
-                        ) : (
-                          <input
-                            type="text"
-                            value={user.name}
-                            onChange={(e) => onChange(e)}
-                          />
-                        )}
-                      </h4>
-                      <p id="first">{user.description}</p>
-                      <p>{user.location}</p>
-                    </div>
-                    <div className="AMU-stats">
-                      <div>
-                        {" "}
-                        {user.scores[0]}
-                        <i
-                          className="fa fa-heart"
-                          style={{ color: "crimson" }}
-                        ></i>
+            <div className="AboutMe">
+              <div className="UpperAM">
+               
+                 {!edit ? (  <div className="AMU-Name"><h4>{user.nickname}</h4>
+                       <p id="first">{user.description}</p>
+                       <p>{user.location}</p>
+                       </div>)
+                     : (
+                      <div className="AMU-NameEdit">
+                        <input
+                        type="text"
+                        name="nickname"
+                        value={nickname}
+                        onChange={(e) => onChange(e)}
+                        style={{fontSize:'16px', width:'50%'}}
+                      />
+                      <input
+                        type="text"
+                        name="description"
+                        value={description}
+                        onChange={(e) => onChange(e)}
+                        style={{marginTop:'-15px', width:'40%'}}
+                      />
+                         <input
+                        type="text"
+                        name="location"
+                        value={location}
+                        onChange={(e) => onChange(e)}
+                        style={{marginTop:'-10px', width:'40%'}}
+                      />
+                      
                       </div>
-                      <div>
-                        {" "}
-                        {user.scores[1]}
-                        <i className="far fa-user-circle"></i>
-                      </div>
-                      <div>
-                        {" "}
-                        {user.scores[2]}
-                        <i
-                          class="fas fa-star"
-                          style={{ color: "goldenrod" }}
-                        ></i>
-                      </div>
-                    </div>
-                    <div className="EditBtn">
-                      <div className="Follow">
-                        {" "}
-                        {edit ? (
-                          "Save"
-                        ) : (
-                          <div onClick={() => setEdit(!edit)}>
-                            {" "}
-                            <i className="fas fa-user-circle"></i>Edit
-                          </div>
-                        )}{" "}
-                      </div>
-                      {edit ? (
-                        <div
-                          onClick={() => setEdit(!edit)}
-                          className="Follow"
-                          style={{ backgroundColor: "red" }}
-                        >
-                          {" "}
-                          Cancel
-                        </div>
-                      ) : (
-                        ""
-                      )}
-                    </div>
+                      
+                )
+                    
+
+                  }
+                 
+                 
+              
+                <div className="AMU-stats">
+                  <div>
+                    {" "}
+                    {user.scores[0]}
+                    <i className="fa fa-heart" style={{ color: "crimson" }}></i>
                   </div>
-                  <div className="lowerAM">
-                    <div className="LeftLowerAM">
-                      <h3>{user.header}</h3>
-                      <p>{user.about}</p>
-                    </div>
-                    <div className="RightLowerAM">
-                      <div className="Game-Feed">
-                        <h3>Skills</h3>
-                        <i className="fas fa-stethoscope fa-2x"></i>
-                        <i className="fas fa-code fa-2x"></i>
-                        <i className="fas fa-gamepad fa-2x"></i>
+                  <div>
+                    {" "}
+                    {user.scores[1]}
+                    <i className="far fa-user-circle"></i>
+                  </div>
+                  <div>
+                    {" "}
+                    {user.scores[2]}
+                    <i class="fas fa-star" style={{ color: "goldenrod" }}></i>
+                  </div>
+                </div>
+                <div className="EditBtn">
+                  <div className="Follow">
+                    {" "}
+                    {edit ? (
+                      <button type="submit">Save</button>
+                    ) : (
+                      <div onClick={() => setEdit(!edit)}>
+                        {" "}
+                        <i className="fas fa-user-circle"></i>Edit
                       </div>
+                    )}{" "}
+                  </div>
+                  {edit ? (
+                    <div
+                      onClick={() => setEdit(!edit)}
+                      className="Follow"
+                      style={{ backgroundColor: "red" }}
+                    >
+                      {" "}
+                      <button>Cancel</button>
                     </div>
+                  ) : (
+                    ""
+                  )}
+                </div>
+              </div>
+              <div className="lowerAM">
+                <div className="LeftLowerAM">
+                  {!edit?(<><h3>{user.header}</h3>
+                  <p>{user.about}</p></>):(<>
+                  <h3>
+                  <input
+                  className="AMU-NameEdit"
+                  style={{fontSize:'18.72px', width:'50%', fontWeight:'bold'}}
+                        type="text"
+                        name="header"
+                        value={header}
+                        onChange={(e) => onChange(e)}
+                      /></h3>
+                      <p>
+                      <textarea
+                        type="text"
+                        name="about"
+                        value={about}
+                        rows="10" cols="50"
+                        // style={{ height:'150px',width:'400px' }}
+                        onChange={(e) => onChange(e)}
+                      /></p>
+                      
+                      </>)}
+                  
+                </div>
+                <div className="RightLowerAM">
+                  <div className="Game-Feed">
+                    <h3>Skills</h3>
+                    <i className="fas fa-stethoscope fa-2x"></i>
+                    <i className="fas fa-code fa-2x"></i>
+                    <i className="fas fa-gamepad fa-2x"></i>
                   </div>
                 </div>
               </div>
-
-              <div className="Lower-Half">
+            </div>
+          </div>
+          <div className="Lower-Half">
                 <div className="Profile-Feed ">
                   <div>
                     <h3> Welcome back {user.nickname}</h3>
@@ -283,32 +359,11 @@ export const Guest = ({ Friend, SetFriend }) => {
                   ))}
                 </div>
               </div>
-            </div>
+        </div>
+      </form>
+     
           </div>
-          {/* <div className="main-side">
-            <div className="promotions">
-              {" "}
-              <img src={pic2} alt="" className="Meetup" />
-              Connect with local social groups in your area
-            </div>
-            <div className="friends-side">
-              <div className="header">
-                <i className="fas fa-user-friends fa-2x"></i>Online Friends
-              </div>
-              <div className="Friends-List">
-                <div className="friend">
-                  Jenny{" "}
-                  <div>
-                    {" "}
-                    <img src={user.profilePic} alt="" className="images" />
-                  </div>
-                </div>
-              </div>
-              <div className="settings">
-                <i className="fas fa-cog fa-2x"></i>
-              </div>
-            </div>
-          </div> */}
+        
         </div>
       ) : (
         <div className="MainCard">
@@ -329,97 +384,7 @@ export const Guest = ({ Friend, SetFriend }) => {
           </div>
         </div>
       )}
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          console.log("submission", formData);
-        }}
-      >
-        <div className="MainCard">
-          <div className="Upper-Half">
-            <div className="Profile-Pic Logged-in">
-              <img src={user.profilePic} alt="new" />
-              <div className="PhotoEdit">Change Photo</div>
-            </div>
-
-            <div className="AboutMe">
-              <div className="UpperAM">
-                <div className="AMU-Name">
-                  <h4>
-                    {!edit ? (
-                      user.nickname
-                    ) : (
-                      <input
-                        type="text"
-                        value={nickname}
-                        onChange={(e) => onChange(e)}
-                      />
-                    )}
-                  </h4>
-                  <p id="first">{user.description}</p>
-                  <p>{user.location}</p>
-                </div>
-                <div className="AMU-stats">
-                  <div>
-                    {" "}
-                    {user.scores[0]}
-                    <i className="fa fa-heart" style={{ color: "crimson" }}></i>
-                  </div>
-                  <div>
-                    {" "}
-                    {user.scores[1]}
-                    <i className="far fa-user-circle"></i>
-                  </div>
-                  <div>
-                    {" "}
-                    {user.scores[2]}
-                    <i class="fas fa-star" style={{ color: "goldenrod" }}></i>
-                  </div>
-                </div>
-                <div className="EditBtn">
-                  <div className="Follow">
-                    {" "}
-                    {edit ? (
-                      <button type="submit">Save</button>
-                    ) : (
-                      <div onClick={() => setEdit(!edit)}>
-                        {" "}
-                        <i className="fas fa-user-circle"></i>Edit
-                      </div>
-                    )}{" "}
-                  </div>
-                  {edit ? (
-                    <div
-                      onClick={() => setEdit(!edit)}
-                      className="Follow"
-                      style={{ backgroundColor: "red" }}
-                    >
-                      {" "}
-                      <button>Cancel</button>
-                    </div>
-                  ) : (
-                    ""
-                  )}
-                </div>
-              </div>
-              <div className="lowerAM">
-                <div className="LeftLowerAM">
-                  <h3>{user.header}</h3>
-                  <p>{user.about}</p>
-                </div>
-                <div className="RightLowerAM">
-                  <div className="Game-Feed">
-                    <h3>Skills</h3>
-                    <i className="fas fa-stethoscope fa-2x"></i>
-                    <i className="fas fa-code fa-2x"></i>
-                    <i className="fas fa-gamepad fa-2x"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </form>
+     
     </div>
   );
 };
