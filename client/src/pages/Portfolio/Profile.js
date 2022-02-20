@@ -7,6 +7,7 @@ import pic from "../../blank-avatar.png";
 import { useContext, useEffect } from "react";
 import { useState, useCallback } from "react";
 import { UserContext } from "../../UserContext";
+import { Edit } from "../../utils/Edit";
 
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -15,8 +16,37 @@ import { usePosts } from "../../utils/PostAuth";
 
 
 export const Profile = ({ Friend, SetFriend }) => {
-  const { user } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
   const { posts, likeCount } = usePosts();
+  const { edit, setEdit } = Edit();
+
+  const [formData, setFormData] = useState({
+    name: user.name,
+    nickname: user.nickname,
+    location:user.location,
+    description: user.description,
+    age: 25,
+       header: user.header,
+    about:user.about
+   
+  });
+  const { nickname, location, description, header, about } = formData;
+  const onChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+
+    const onSubmission = (e)=>{
+
+      e.preventDefault();
+     
+      // setUser({...user,[e.target.name]:e.target.value})
+       setUser({...user,nickname:formData.nickname,
+         location:formData.location,
+         header:formData.header,
+        description:formData.description,
+        about:formData.about
+      })
+     setEdit(!edit)
+    }
 
   const FriendsProfile = async (id) => {
     console.log("hey", id);
@@ -42,91 +72,132 @@ export const Profile = ({ Friend, SetFriend }) => {
 
   return (
     <div className="main-prof">
-      <Searchbar setAuth={SetFriend} />
-      {user && user.login ? (
-        <div className="Layout-Main">
-          <div>
-            {" "}
-            <div className="MainCard">
-              <div className="Upper-Half">
-                <div className="Profile-Pic Logged-in">
-                  <img src={user.profilePic} alt="new" />
-                  <div className="PhotoEdit">Change Photo</div>
-                </div>
+    <Searchbar setAuth={SetFriend} />
+    {user && user.login ? (
+      <div className="Layout-Main">
+        <div>
+          {" "}
+          <form
+      onSubmit={(e) => onSubmission(e)}
+    
+    >
+      <div className="MainCard">
+        <div className="Upper-Half">
+          <div className="Profile-Pic Logged-in">
+            <img src={user.profilePic} alt="new" />
+            <div className="PhotoEdit">Change Photo</div>
+          </div>
 
-                <div className="Info-Section">
-                  <div className="Name"> {user.name}</div>
-                  <div className="Scores">
-                    {" "}
-                    <i className="far fa-heart"></i>{" "}
-                    <div>{user.followerCount} followers</div>{" "}
-                    <i className="fas fa-gamepad"></i> 578 Score
-                  </div>
-                  <div className="Follow">
-                    <i className="fas fa-user-circle"></i>Account
-                  </div>
+          <div className="AboutMe">
+            <div className="UpperAM">
+             
+               {!edit ? (  <div className="AMU-Name"><h4>{user.nickname}</h4>
+                     <p id="first">{user.description}</p>
+                     <p>{user.location}</p>
+                     </div>)
+                   : (
+                    <div className="AMU-NameEdit">
+                      <input
+                      type="text"
+                      name="nickname"
+                      value={nickname}
+                      onChange={(e) => onChange(e)}
+                      style={{fontSize:'16px', width:'50%'}}
+                    />
+                    <input
+                      type="text"
+                      name="description"
+                      value={description}
+                      onChange={(e) => onChange(e)}
+                      style={{marginTop:'-15px', width:'40%'}}
+                    />
+                       <input
+                      type="text"
+                      name="location"
+                      value={location}
+                      onChange={(e) => onChange(e)}
+                      style={{marginTop:'-10px', width:'40%'}}
+                    />
+                    
+                    </div>
+                    
+              )
+                  
+
+                }
+               
+               
+            
+              <div className="AMU-stats">
+                <div>
+                  {" "}
+                  {user.scores[0]}
+                  <i className="fa fa-heart" style={{ color: "crimson" }}></i>
+                </div>
+                <div>
+                  {" "}
+                  {user.scores[1]}
+                  <i className="far fa-user-circle"></i>
+                </div>
+                <div>
+                  {" "}
+                  {user.scores[2]}
+                  <i class="fas fa-star" style={{ color: "goldenrod" }}></i>
                 </div>
               </div>
-              <div className="Lower-Half">
-                <div className="Profile-Feed ">
-                  <div>
-                    <h3> Welcome back {user.nickname}</h3>
-
-                    {user.Feed.map((person) =>
-                      person.type === "like" ? (
-                        <Link
-                          key={person.id}
-                          to="/Friends"
-                          onClick={() => FriendsProfile(person.id)}
-                        >
-                          {" "}
-                          <p style={{ color: "black" }}>
-                            <i
-                              className="fas fa-heart"
-                              style={{ color: "crimson" }}
-                            ></i>{" "}
-                            {person.name} Liked your post
-                          </p>
-                        </Link>
-                      ) : person.type === "request" ? (
-                        <Link
-                          key={person.id}
-                          to="/Friends"
-                          onClick={() => FriendsProfile(person.id)}
-                        >
-                          <p style={{ color: "black" }}>
-                            <i className="far fa-user-circle"></i>
-                            {person.name} requested to follow you
-                          </p>
-                        </Link>
-                      ) : (
-                        person.type === "Challenge" && (
-                          <Link
-                            key={person.id}
-                            to="/Friends"
-                            onClick={() => FriendsProfile(person.id)}
-                          >
-                            <p style={{ color: "black" }}>
-                              {" "}
-                              <i className="fas fa-gamepad "></i>
-                              {person.name} Challenged you to a game
-                            </p>
-                          </Link>
-                        )
-                      )
-                    )}
-                    <div className="Create-Post">
+              <div className="EditBtn">
+                <div className="Follow">
+                  {" "}
+                  {edit ? (
+                    <button type="submit">Save</button>
+                  ) : (
+                    <div onClick={() => setEdit(!edit)}>
                       {" "}
-                      <img src={pic} alt="" />
-                      <input
-                        type="textarea"
-                        name="textValue"
-                        placeholder="Create a Post"
-                      />
+                      <i className="fas fa-user-circle"></i>Edit
                     </div>
-                  </div>
+                  )}{" "}
                 </div>
-
+                {edit ? (
+                  <div
+                    onClick={() => setEdit(!edit)}
+                    className="Follow"
+                    style={{ backgroundColor: "red" }}
+                  >
+                    {" "}
+                    <button>Cancel</button>
+                  </div>
+                ) : (
+                  ""
+                )}
+              </div>
+            </div>
+            <div className="lowerAM">
+              <div className="LeftLowerAM">
+                {!edit?(<><h3>{user.header}</h3>
+                <p>{user.about}</p></>):(<>
+                <h3>
+                <input
+                className="AMU-NameEdit"
+                style={{fontSize:'18.72px', width:'50%', fontWeight:'bold'}}
+                      type="text"
+                      name="header"
+                      value={header}
+                      onChange={(e) => onChange(e)}
+                    /></h3>
+                    <p>
+                    <textarea
+                      type="text"
+                      name="about"
+                      value={about}
+                      rows="10" cols="50"
+                      // style={{ height:'150px',width:'400px' }}
+                      onChange={(e) => onChange(e)}
+                    /></p>
+                    
+                    </>)}
+                
+              </div>
+              <div className="RightLowerAM">
                 <div className="Game-Feed">
                   <h3>Skills</h3>
                   <i className="fas fa-stethoscope fa-2x"></i>
@@ -134,99 +205,142 @@ export const Profile = ({ Friend, SetFriend }) => {
                   <i className="fas fa-gamepad fa-2x"></i>
                 </div>
               </div>
-
-              <div className="Feed">
-                <div className="Post-Feed">
-                  {posts.map((Post) => (
-                    <div className="Posts">
-                      <img src={Post.postPic} alt="" className="PostPic" />
-                      <div className=" Poster">
-                        {" "}
-                        <div className="PosterInfo">
-                          <img src={Post.PosterPic} alt="" />
-                          {Post.PosterName}
-                        </div>
-                        {Post.text}
-                      </div>
-                      <div className="Interactions">
-                        <div>{Post.date}</div>
-                        <div onClick={() => likeCount(Post.id)}>
-                          {Post.likes}{" "}
-                          <i
-                            className="fas fa-heart"
-                            style={{ color: "red" }}
-                          ></i>
-                        </div>
-
-                        <div>
-                          {" "}
-                          {Post.comments.length}
-                          <i
-                            className="fas fa-comment"
-                            style={{ color: "grey" }}
-                          ></i>
-                        </div>
-                      </div>
-                      <div className="Create-Post">
-                        {" "}
-                        <img src={pic} alt="" />
-                        <input
-                          type="textarea"
-                          name="textValue"
-                          placeholder="Comment"
-                        />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
             </div>
           </div>
-          {/* <div className="main-side">
-            <div className="promotions">
-              {" "}
-              <img src={pic2} alt="" className="Meetup" />
-              Connect with local social groups in your area
-            </div>
-            <div className="friends-side">
-              <div className="header">
-                <i className="fas fa-user-friends fa-2x"></i>Online Friends
-              </div>
-              <div className="Friends-List">
-                <div className="friend">
-                  Jenny{" "}
-                  <div>
+        </div>
+        <div className="Lower-Half">
+              <div className="Profile-Feed ">
+                <div>
+                  <h3> Welcome back {user.nickname}</h3>
+
+                  {user.Feed.map((person) =>
+                    person.type === "like" ? (
+                      <Link
+                        key={person.id}
+                        to="/Friends"
+                        onClick={() => FriendsProfile(person.id)}
+                      >
+                        {" "}
+                        <p style={{ color: "black" }}>
+                          <i
+                            className="fas fa-heart"
+                            style={{ color: "crimson" }}
+                          ></i>{" "}
+                          {person.name} Liked your post
+                        </p>
+                      </Link>
+                    ) : person.type === "request" ? (
+                      <Link
+                        key={person.id}
+                        to="/Friends"
+                        onClick={() => FriendsProfile(person.id)}
+                      >
+                        <p style={{ color: "black" }}>
+                          <i className="far fa-user-circle"></i>
+                          {person.name} requested to follow you
+                        </p>
+                      </Link>
+                    ) : (
+                      person.type === "Challenge" && (
+                        <Link
+                          key={person.id}
+                          to="/Friends"
+                          onClick={() => FriendsProfile(person.id)}
+                        >
+                          <p style={{ color: "black" }}>
+                            {" "}
+                            <i className="fas fa-gamepad "></i>
+                            {person.name} Challenged you to a game
+                          </p>
+                        </Link>
+                      )
+                    )
+                  )}
+                  <div className="Create-Post">
                     {" "}
-                    <img src={user.profilePic} alt="" className="images" />
+                    <img src={pic} alt="" />
+                    <input
+                      type="textarea"
+                      name="textValue"
+                      placeholder="Create a Post"
+                    />
                   </div>
                 </div>
               </div>
-              <div className="settings">
-                <i className="fas fa-cog fa-2x"></i>
+            </div>
+
+            <div className="Feed">
+              <div className="Post-Feed">
+                {posts.map((Post) => (
+                  <div className="Posts">
+                    <img src={Post.postPic} alt="" className="PostPic" />
+                    <div className=" Poster">
+                      {" "}
+                      <div className="PosterInfo">
+                        <img src={Post.PosterPic} alt="" />
+                        {Post.PosterName}
+                      </div>
+                      {Post.text}
+                    </div>
+                    <div className="Interactions">
+                      <div>{Post.date}</div>
+                      <div onClick={() => likeCount(Post.id)}>
+                        {Post.likes}{" "}
+                        <i
+                          className="fas fa-heart"
+                          style={{ color: "red" }}
+                        ></i>
+                      </div>
+
+                      <div>
+                        {" "}
+                        {Post.comments.length}
+                        <i
+                          className="fas fa-comment"
+                          style={{ color: "grey" }}
+                        ></i>
+                      </div>
+                    </div>
+                    <div className="Create-Post">
+                      {" "}
+                      <img src={pic} alt="" />
+                      <input
+                        type="textarea"
+                        name="textValue"
+                        placeholder="Comment"
+                      />
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
-          </div> */}
+      </div>
+    </form>
+   
         </div>
-      ) : (
-        <div className="MainCard">
-          <div>
-            {" "}
-            You are not logged in click{" "}
-            <Link to="/Login" style={{ color: "green" }}>
-              here to login
-            </Link>{" "}
-          </div>
-          <div>Or</div>
-          <div>
-            {" "}
-            click{" "}
-            <Link to="/Register" style={{ color: "green" }}>
-              here to Register
-            </Link>{" "}
-          </div>
+      
+      </div>
+    ) : (
+      <div className="MainCard">
+        <div>
+          {" "}
+          You are not logged in click{" "}
+          <Link to="/Login" style={{ color: "green" }}>
+            here to login
+          </Link>{" "}
         </div>
-      )}
-    </div>
+        <div>Or</div>
+        <div>
+          {" "}
+          click{" "}
+          <Link to="/Register" style={{ color: "green" }}>
+            here to Register
+          </Link>{" "}
+        </div>
+      </div>
+    )}
+   
+  </div>
   );
 };
 export default Profile;
