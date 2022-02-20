@@ -23,57 +23,44 @@ export const Guest = ({ Friend, SetFriend }) => {
       "This is a full stack social media website that allows comments, likes, friends, and posts that can all be stored in real time in a MongoDB database. The user is stored in a local session once logged in and JWT technology ensures safe data transfer for security.",
   
   });
-  const { nickname, location, description, age, header, about } = formData;
+  const { nickname, location, description, header, about } = formData;
 
-  useEffect(() => {
-    var data = sessionStorage.getItem("user-info");
+useEffect(() => {
 
-    if (!data){
-    setUser({
-      id: 1,
-      name: "Jennifer Smith",
-      nickname: "Jenny",
-      location: "Toronto, ON",
-      description: "Night Owl Queen",
-      age: 25,
-      scores: [125, 102, 55],
-      header: "About this Project",
-      about:
-        "This is a full stack social media website that allows comments, likes, friends, and posts that can all be stored in real time in a MongoDB database. The user is stored in a local session once logged in and JWT technology ensures safe data transfer for security.",
-      Feed: [
-        { name: "Connie Williams", type: "like", id: 2 },
-        { name: "Matt Russo", type: "request", id: 3 },
-        { name: "James Santos", type: "request", id: 4 },
-      ],
-      profilePic:
-        "https://images.pexels.com/photos/1090387/pexels-photo-1090387.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-      followerCount: 26,
-      login: true,
-      Notifications: 2,
-      Friends: [2, 3, 4],
-      Posts: [6, 5, 1],
-    })
-    }
-    
-    ;
 
-    
-    // setFormData({
-    //   nickname: user.nickname,
-    //   location: user.location,
-    //   description: user.description,
-    //   age: user.age,
-    //   header: user.header,
-    //   about: user.about,
-    // })
- 
-  }, []);
-  useEffect(() => {
-    console.log("it changed", user);
-  
-      sessionStorage.setItem("user-info", JSON.stringify(user));
-    
-  }, [user]);
+
+  if (user===''){
+    console.log('user is void')
+setUser({
+  id: 1,
+  name: "Jennifer Smith",
+  nickname: "Jenny",
+  location: "Toronto, ON",
+  description: "Night Owl Queen",
+  age: 25,
+  scores: [125, 102, 55],
+  header: "About this Project",
+  about:
+    "This is a full stack social media website that allows comments, likes, friends, and posts that can all be stored in real time in a MongoDB database. The user is stored in a local session once logged in and JWT technology ensures safe data transfer for security.",
+  Feed: [
+    { name: "Connie Williams", type: "like", id: 2 },
+    { name: "Matt Russo", type: "request", id: 3 },
+    { name: "James Santos", type: "request", id: 4 },
+  ],
+  profilePic:
+    "https://images.pexels.com/photos/1090387/pexels-photo-1090387.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+  followerCount: 26,
+  login: true,
+  Notifications: 2,
+  Friends: [2, 3, 4],
+  Posts: [6, 5, 1]})
+} else {
+  console.log("user exists")
+var data = sessionStorage.getItem('user-info',user)
+ setUser(JSON.parse(data))
+}
+},[])
+
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 

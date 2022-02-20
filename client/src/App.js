@@ -20,11 +20,34 @@ import { Guest } from "./pages/Portfolio/Guest";
 
 function getUserInfo() {
   var data = sessionStorage.getItem("user-info");
+var profile ={
+  id: 1,
+  name: "Jennifer Smith",
+  nickname: "Jenny",
+  location: "Toronto, ON",
+  description: "Night Owl Queen",
+  age: 25,
+  scores: [125, 102, 55],
+  header: "About this Project",
+  about:
+    "This is a full stack social media website that allows comments, likes, friends, and posts that can all be stored in real time in a MongoDB database. The user is stored in a local session once logged in and JWT technology ensures safe data transfer for security.",
+  Feed: [
+    { name: "Connie Williams", type: "like", id: 2 },
+    { name: "Matt Russo", type: "request", id: 3 },
+    { name: "James Santos", type: "request", id: 4 },
+  ],
+  profilePic:
+    "https://images.pexels.com/photos/1090387/pexels-photo-1090387.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+  followerCount: 26,
+  login: true,
+  Notifications: 2,
+  Friends: [2, 3, 4],
+  Posts: [6, 5, 1]}
 
-  if (data) {
+  if (data!=null) {
     console.log(data);
     return JSON.parse(data);
-  }
+  } else {return profile;}
 }
 function App() {
   const { friend, setFriend } = useAuth();
@@ -35,12 +58,7 @@ function App() {
   const [user, setUser] = useState(getUserInfo());
   const [guest, setGuest] = useState({ login: "true" });
 
-  useEffect(() => {
-    console.log("it changed", user);
-    if (user) {
-      sessionStorage.setItem("user-info", JSON.stringify(user));
-    }
-  }, [user]);
+
 
   return (
     <Router>
