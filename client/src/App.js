@@ -19,8 +19,12 @@ import { Friends } from "./pages/Portfolio/Friends";
 import { Guest } from "./pages/Portfolio/Guest";
 
 function getUserInfo() {
-  var data = sessionStorage.getItem("user-info");
-var profile ={
+  var data =sessionStorage.getItem("user-info")
+  if (data) {
+    var User = JSON.parse(data)
+    return User
+  } else {
+    var profile ={
   id: 1,
   name: "Jennifer Smith",
   nickname: "Jenny",
@@ -43,11 +47,13 @@ var profile ={
   Notifications: 2,
   Friends: [2, 3, 4],
   Posts: [6, 5, 1]}
+  var User = JSON.stringify(profile)
+sessionStorage.setItem("user-info",User);
+ 
+    
+    return profile;
+  }
 
-  if (data!=null) {
-    console.log(data);
-    return JSON.parse(data);
-  } else {return profile;}
 }
 function App() {
   const { friend, setFriend } = useAuth();
@@ -58,7 +64,11 @@ function App() {
   const [user, setUser] = useState(getUserInfo());
   const [guest, setGuest] = useState({ login: "true" });
 
+useEffect(() => {
+const data = JSON.stringify(user);
+sessionStorage.setItem("user-info",data)
 
+},[user])
 
   return (
     <Router>
