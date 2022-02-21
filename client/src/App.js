@@ -17,7 +17,7 @@ import { useAuth } from "./utils/AuthLogin";
 import { UserContext } from "./UserContext";
 import { Friends } from "./pages/Portfolio/Friends";
 import { Guest } from "./pages/Portfolio/Guest";
-
+import {Posts} from "./pages/Portfolio/Posts"
 function getUserInfo() {
   var data =sessionStorage.getItem("user-info")
   if (data) {
@@ -63,6 +63,7 @@ function App() {
   //  Messages
   const [user, setUser] = useState(getUserInfo());
   const [guest, setGuest] = useState({ login: "true" });
+  const post = {id:1}
 
 useEffect(() => {
 const data = JSON.stringify(user);
@@ -95,6 +96,10 @@ sessionStorage.setItem("user-info",data)
             <Route
               path="/Friends"
               element={<Friends isAuth={friend} SetAuth={setFriend} />}
+            />
+              <Route
+              path="/Posts"
+              element={<Posts Friend={friend} SetFriend={setFriend} post={post} />}
             />
 
             <Route path="/RT" element={<RT />} />

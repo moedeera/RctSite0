@@ -274,7 +274,9 @@ console.log(profile);
               <div className="Feed">
                 <div className="Post-Feed">
                   {posts.map((Post) => (
-                    <div className="Posts">
+                    <Link key={Post.id}
+                    to="/Posts">
+                       <div className="Posts">
                       <img src={Post.postPic} alt="" className="PostPic" />
                       <div className=" Poster">
                         {" "}
@@ -313,6 +315,8 @@ console.log(profile);
                         />
                       </div>
                     </div>
+                    </Link>
+                   
                   ))}
                 </div>
               </div>
