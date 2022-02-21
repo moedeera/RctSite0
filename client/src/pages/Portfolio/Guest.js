@@ -35,7 +35,7 @@ console.log(profile);
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const { posts, likeCount } = usePosts();
-
+console.log(posts)
   const FriendsProfile = async (id) => {
     console.log("hey", id);
 
@@ -274,12 +274,15 @@ console.log(profile);
               <div className="Feed">
                 <div className="Post-Feed">
                   {posts.map((Post) => (
-                    <Link key={Post.id}
-                    to="/Posts">
+                   
                        <div className="Posts">
+                          <Link key={Post.id}
+                    style={{color:'black'}}
+                    to="/Posts">
                       <img src={Post.postPic} alt="" className="PostPic" />
+                       </Link>
                       <div className=" Poster">
-                        {" "}
+                       
                         <div className="PosterInfo">
                           <img src={Post.PosterPic} alt="" />
                           {Post.PosterName}
@@ -315,7 +318,7 @@ console.log(profile);
                         />
                       </div>
                     </div>
-                    </Link>
+                    
                    
                   ))}
                 </div>
