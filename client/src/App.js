@@ -47,7 +47,7 @@ function getUserInfo() {
   Notifications: 2,
   Friends: [2, 3, 4],
   Posts: [6, 5, 1]}
-  var User = JSON.stringify(profile)
+  User = JSON.stringify(profile)
 sessionStorage.setItem("user-info",User);
  
     
@@ -63,7 +63,7 @@ function App() {
   //  Messages
   const [user, setUser] = useState(getUserInfo());
   const [guest, setGuest] = useState({ login: "true" });
-  const post = {id:1}
+  const [postPage,setPostpage] = useState()
 
 useEffect(() => {
 const data = JSON.stringify(user);
@@ -74,7 +74,7 @@ sessionStorage.setItem("user-info",data)
   return (
     <Router>
       <div className="App">
-        <UserContext.Provider value={{ user, setUser, guest, setGuest }}>
+        <UserContext.Provider value={{ user, setUser, guest, setGuest, postPage , setPostpage }}>
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/Table" element={<Table />} />
@@ -99,7 +99,7 @@ sessionStorage.setItem("user-info",data)
             />
               <Route
               path="/Posts"
-              element={<Posts Friend={friend} SetFriend={setFriend} post={post} />}
+              element={<Posts Friend={friend} SetFriend={setFriend} />}
             />
 
             <Route path="/RT" element={<RT />} />

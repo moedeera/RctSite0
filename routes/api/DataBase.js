@@ -204,32 +204,37 @@ var Posts = [
   {},
 ];
 
-var comments = [
+var Comments = [
 
 {id:1, author:6, name: "Mitch Wiz", picture:"https://cdn.pixabay.com/photo/2019/11/10/11/13/couple-4615557_960_720.jpg",
 date:'Feb 1',
+post:5,
  text:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco'
 
 },
 {id:2, author:5, name: "Jimmy", picture:"https://images.pexels.com/photos/1693085/pexels-photo-1693085.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
 date:'Feb 11',
+post:6,
  text:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco'
 
 },
 
-{id:3, author:1, name: "Jenny", picture:"https://cdn.pixabay.com/photo/2019/11/10/11/13/couple-4615557_960_720.jpg",
+{id:3, author:1, name: "Jenny", picture: "https://images.pexels.com/photos/1090387/pexels-photo-1090387.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
 date:'Jan 1',
+post:1,
  text:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco'
 
 },
 {id:4, author:4, name: "James", picture:"https://images.pexels.com/photos/1693085/pexels-photo-1693085.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
 date:'Feb 11',
+post:6,
  text:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco'
 
 }
 ,
 {id:5, author:4, name: "Matt", picture: "https://images.pexels.com/photos/1819483/pexels-photo-1819483.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
 date:'Feb 4',
+post:5,
  text:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco'
 
 }
@@ -239,4 +244,4 @@ date:'Feb 4',
 ]
 
 
-module.exports = { DataBase, Users, Posts };
+module.exports = { DataBase, Users, Posts, Comments };

@@ -4,6 +4,7 @@ import axios from "axios";
 
 export const usePosts = () => {
   const [posts, setPosts] = useState([]);
+  const [comments, setComments] = useState([]) 
   const { user, setUser } = useContext(UserContext);
 
   const getPosts = async (array) => {
@@ -23,6 +24,26 @@ export const usePosts = () => {
       console.log(error);
     }
   };
+
+  const FetchComments = async (array) => {
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+
+      const body = JSON.stringify(array);
+      const res = await axios.post("/api/post/comments", body, config);
+
+      setComments(res.data);
+      
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+
 
   const likeCount = async (id) => {
     let newPosts = posts.map((post) =>
@@ -52,6 +73,8 @@ export const usePosts = () => {
   useEffect(() => {
     if (user?.Posts != null) {
       getPosts(user.Posts);
+      
+      
     } else {
       var Mock = {
         id: 1,
@@ -83,5 +106,20 @@ export const usePosts = () => {
     }
   }, []);
 
-  return { posts, likeCount };
+useEffect(() => {
+console.log(posts)
+var postComments = []
+for(var j=0; j<posts.length; j++){
+  for (var i=0; i<posts[j].comments.length; i++){
+     postComments.push(posts[j].comments[i])
+  }}
+ console.log(postComments)
+
+ FetchComments(postComments)
+
+},[posts])
+
+
+
+  return { posts, likeCount, setPosts, comments, FetchComments };
 };

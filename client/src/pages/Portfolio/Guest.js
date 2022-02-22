@@ -9,9 +9,14 @@ import Searchbar from "../../components/Searchbar";
 import { usePosts } from "../../utils/PostAuth";
 
 export const Guest = ({ Friend, SetFriend }) => {
-  const { user, setUser } = useContext(UserContext);
+  const { user, setUser, setPostpage } = useContext(UserContext);
   const { edit, setEdit } = Edit();
+  const { posts, likeCount } = usePosts();
+const onLinkClick = (postID) =>{
 
+  setPostpage({id:postID});
+}
+ 
   const [formData, setFormData] = useState({
     name: user.name,
     nickname: user.nickname,
@@ -24,18 +29,12 @@ export const Guest = ({ Friend, SetFriend }) => {
   });
   const { nickname, location, description, header, about } = formData;
 
-useEffect(() => {
-var users = sessionStorage.getItem("user-info");
-const profile = JSON.parse(users)
-console.log(profile);
-
-},[])
 
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const { posts, likeCount } = usePosts();
-console.log(posts)
+
+
   const FriendsProfile = async (id) => {
     console.log("hey", id);
 
@@ -277,6 +276,7 @@ console.log(posts)
                    
                        <div className="Posts">
                           <Link key={Post.id}
+                         onClick={()=>{onLinkClick(Post.id)}}
                     style={{color:'black'}}
                     to="/Posts">
                       <img src={Post.postPic} alt="" className="PostPic" />

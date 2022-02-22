@@ -2,13 +2,16 @@ import React from 'react'
 import Searchbar from '../../components/Searchbar'
 import { usePosts } from '../../utils/PostAuth'
 import pic from "../../blank-avatar.png";
+import { useContext} from "react";
+import { UserContext } from "../../UserContext";
 
 
-export const Posts = ( Friend, SetFriend, post) => {
+export const Posts = ( {Friend, SetFriend}) => {
 
-    const { posts, likeCount } = usePosts();
+    const { posts, likeCount, comments, } = usePosts();
 
-console.log(post)
+    const { postPage } = useContext(UserContext);
+console.log(comments)
 
   return (
      
@@ -18,19 +21,10 @@ console.log(post)
          <div className="MainCard">
       <div className="Post-Feed">
      
-          {posts.map((Post) =>Post.id===1?( <div className="Posts">
-                      <img src={Post.postPic} alt="" className="PostPic" />
-                      <div className=" Poster">
-                        {" "}
-                        <div className="PosterInfo">
-                          <img src={Post.PosterPic} alt="" />
-                          {Post.PosterName}
-                        </div>
-                        {Post.text}
-                      </div>
-                      <div className="Interactions">
+          {posts.map((Post) =>Post.id===postPage.id?( <div className="Posts" id={Post.id}>
+          <div className="Interactions">
                         <div>{Post.date}</div>
-                        <div onClick={() => likeCount(post.id)}>
+                        <div onClick={() => likeCount(Post.id)}>
                           {Post.likes}{" "}
                           <i
                             className="fas fa-heart"
@@ -47,6 +41,29 @@ console.log(post)
                           ></i>
                         </div>
                       </div>
+                      <img src={Post.postPic} alt="" className="PostPic" />
+                      <div className=" Poster">
+                        {" "}
+                        <div className="PosterInfo">
+                          <img src={Post.PosterPic} alt="" />
+                          {Post.PosterName}
+                        </div>
+                        {Post.text}
+                      </div>
+                    
+                  
+                      <div style={{fontWeight:'bold'}}>Comments</div>
+{comments.map((comment) => comment.post === Post.id?( <><div className=" Poster">
+                        {" "}
+                        <div className="PosterInfo">
+                          <img src={comment.picture} alt="" />
+                          {comment.name}
+                        </div>
+                        {comment.text}
+                      </div></>):'')}
+
+                      
+                    
                       <div className="Create-Post">
                         {" "}
                         <img src={pic} alt="" />
@@ -59,7 +76,9 @@ console.log(post)
                     </div>
 ):'')}
           
-      </div></div>
+      </div>
+      
+      </div>
         </div>
   )
 }
