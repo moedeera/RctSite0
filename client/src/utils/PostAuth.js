@@ -45,9 +45,29 @@ export const usePosts = () => {
 
 
 
-  const likeCount = async (id) => {
+  const likeCount = async (id,userID) => {
+    var newLikers = []
+    var match 
+for (var j=0; j<posts.length; j++) {
+ if (posts[j].id === id) {
+   console.log(posts[j].likers)
+   match = posts[j].likers.some((person) => person===userID);
+    
+if (match) {
+  newLikers = posts[j].likers.filter((person) => person!==userID);
+   console.log(newLikers);
+  // eslint-disable-next-line no-loop-func
+  // setPosts(posts.map((post) =>post.id === id?{...post,likers:newLikers}:{post}))
+} else {
+  newLikers = [...posts[j].likers,userID]
+  console.log(newLikers);
+  }
+}}
+
+
+
     let newPosts = posts.map((post) =>
-      post.id === id ? { ...post, likes: ++post.likes } : post
+      post.id === id ? { ...post, likers: newLikers } : post
     );
 
     setPosts(newPosts);
@@ -107,13 +127,13 @@ export const usePosts = () => {
   }, []);
 
 useEffect(() => {
-console.log(posts)
+
 var postComments = []
 for(var j=0; j<posts.length; j++){
   for (var i=0; i<posts[j].comments.length; i++){
      postComments.push(posts[j].comments[i])
   }}
- console.log(postComments)
+
 
  FetchComments(postComments)
 

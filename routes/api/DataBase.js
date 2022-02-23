@@ -144,7 +144,7 @@ var DataBase = [
     followerCount: 6,
     login: false,
     Notifications: 3,
-    Friends: [2, 4],
+    Friends: [1,2,3,4],
     Posts: [1, 6],
   },
 ];
@@ -171,7 +171,8 @@ var Posts = [
     text: "Teddy was just enjoying the sun",
     date: "March 6",
     comments: [3],
-    likes: 16,
+    likes: 2,
+    likers:[1,2],
   },
   {
     id: 5,
@@ -185,7 +186,8 @@ var Posts = [
     text: "Enjoying some quite time at the cabin",
     comments: [1,5],
     date: "March 6",
-    likes: 52,
+    likes: 2,
+    likers:[2,5],
   },
   {
     id: 6,
@@ -198,7 +200,8 @@ var Posts = [
     text: "Happy Anniversary Babe",
     date: "February 22",
     comments: [2, 4],
-    likes: 12,
+    likes: 4,
+    likers:[1,2,3,4],
   },
   {},
   {},

@@ -291,8 +291,8 @@ const onLinkClick = (postID) =>{
                       </div>
                       <div className="Interactions">
                         <div>{Post.date}</div>
-                        <div onClick={() => likeCount(Post.id)}>
-                          {Post.likes}{" "}
+                        <div onClick={() => likeCount(Post.id, user.id)}>
+                          {Post.likers.length}{" "}
                           <i
                             className="fas fa-heart"
                             style={{ color: "red" }}
