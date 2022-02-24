@@ -805,7 +805,7 @@ img {
   .Posts:hover {
     opacity: 0.8;
     transform: scale(1.005);
-    background-color:rgba(128, 128, 128, 0.14);
+    background-color:rgba(128, 128, 128, 0.07);
   }
   .Profile-Pic img:hover {
     opacity: 0.9;
