@@ -42,7 +42,44 @@ export const usePosts = () => {
       console.log(error);
     }
   };
+const postComment = async (comment,person,postID)=>{
+  var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  
+console.log('postComment initiated', comment, person.nickname,postID)
+var Id = Math.floor(Math.random() * 1000 + 1)
+var CurrentDate = new Date();
+var day = JSON.stringify(days[ CurrentDate.getDay() ]);
+var month = JSON.stringify(months[ CurrentDate.getMonth() ]);
+var Year = JSON.stringify(CurrentDate.getUTCFullYear())
 
+const newDate = day.substring(1,4) + ' ' + month.substring(1,4) + ' ' + Year.substring(2,4)  ;
+console.log(newDate);
+var newComment = {
+  id:Id, author:person.name,
+   name: person.nickname,
+    picture:person.profilePic,
+    date:newDate,
+post:postID,
+text:comment,
+
+}
+
+try {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+  const body = JSON.stringify(newComment);
+  const res = await axios.post("/api/post/newcomment", body, config);
+  console.log(res.data)
+  
+} catch (error) {
+  console.log(error)
+}
+
+}
 
 
   const likeCount = async (id,userID) => {
@@ -141,5 +178,5 @@ for(var j=0; j<posts.length; j++){
 
 
 
-  return { posts, likeCount, setPosts, comments, FetchComments };
+  return { posts, likeCount, setPosts, comments, FetchComments, postComment };
 };

@@ -11,7 +11,7 @@ import { usePosts } from "../../utils/PostAuth";
 export const Guest = ({ Friend, SetFriend }) => {
   const { user, setUser, setPostpage } = useContext(UserContext);
   const { edit, setEdit } = Edit();
-  const { posts, likeCount } = usePosts();
+  const { posts, likeCount, postComment } = usePosts();
 const onLinkClick = (postID) =>{
 
   setPostpage({id:postID});
@@ -59,19 +59,19 @@ const [postID, setPostID] = useState([])
   var submitComment = false
 const onCommentChange = (e,id)=>{
   setPostID(id)
-console.log('You opened submit button')
+console.log('You opened submit button',id)
   
   if (e.target.value.length > 0) {
    
 document.addEventListener("click", (e) => {
-      if (e.target.className !== "PostComment") {
+      if (e.target.className !== "PostComment" && e.target.className !== "SCButton") {
         console.log('you clicked outside',e.target.className, 'you closed submit button ');
      setFormComment([])
       }
     });
   }
   setFormComment(e.target.value)
-console.log(e.target.value,'state:', formComment);
+
 }
 
   const onSubmission = (e)=>{
@@ -338,7 +338,7 @@ console.log(e.target.value,'state:', formComment);
                         />
                         <div></div>
                        {formComment.length>0 && postID === Post.id?( <div className="SubmitComment">
-                          <button>Post</button>
+                          <button className= "SCButton" onClick={()=>{postComment(formComment,user, Post.id)}}>Post</button>
                         </div>):''}
                        
                       </div>

@@ -29,6 +29,10 @@ router.post("/update", async (req, res) => {
   res.send(Posts);
 });
 
+
+
+
+
 router.post("/comments", async (req, res) => {
   console.log("comments get request", req.body);
 var response = []
@@ -45,6 +49,18 @@ res.send(response)
 
 });
 
+router.post("/newcomment", async (req,res) => {
+  Comments.push(req.body)
+for (var j=0; j<Posts.length; j++) {
+if (Posts[j].id === req.body.post){
+  Posts[j].comments.push(req.body.id)
+}
+
+}
+
+res.send('thank you')
+
+})
 
 
 
