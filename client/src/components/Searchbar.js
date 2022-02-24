@@ -38,7 +38,7 @@ const Searchbar = ({ setAuth }) => {
       });
     }
 
-    console.log(matches);
+    
     setSuggestions(matches);
     setText(text);
   };
