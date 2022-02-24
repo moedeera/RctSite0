@@ -16,8 +16,7 @@ const onLinkClick = (postID) =>{
 
   setPostpage({id:postID});
 }
- 
-  const [formData, setFormData] = useState({
+   const [formData, setFormData] = useState({
     name: user.name,
     nickname: user.nickname,
     location:user.location,
@@ -28,7 +27,8 @@ const onLinkClick = (postID) =>{
    
   });
   const { nickname, location, description, header, about } = formData;
-
+const [formComment, setFormComment]= useState([])
+const [postID, setPostID] = useState([])
 
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -56,7 +56,23 @@ const onLinkClick = (postID) =>{
 
     // navigate("../Friends");
   };
-
+  var submitComment = false
+const onCommentChange = (e,id)=>{
+  setPostID(id)
+console.log('You opened submit button')
+  
+  if (e.target.value.length > 0) {
+   
+document.addEventListener("click", (e) => {
+      if (e.target.className !== "PostComment") {
+        console.log('you clicked outside',e.target.className, 'you closed submit button ');
+     setFormComment([])
+      }
+    });
+  }
+  setFormComment(e.target.value)
+console.log(e.target.value,'state:', formComment);
+}
 
   const onSubmission = (e)=>{
 
@@ -313,10 +329,20 @@ const onLinkClick = (postID) =>{
                         <img src={pic} alt="" />
                         <input
                           type="textarea"
-                          name="textValue"
-                          placeholder="Comment"
+                          name="comment"
+                        
+                          className="PostComment"
+                      
+                        value={postID === Post.id ?formComment:''}
+                        onChange={(e) => {onCommentChange(e,Post.id)}}
                         />
+                        <div></div>
+                       {formComment.length>0 && postID === Post.id?( <div className="SubmitComment">
+                          <button>Post</button>
+                        </div>):''}
+                       
                       </div>
+                       
                     </div>
                     
                    
