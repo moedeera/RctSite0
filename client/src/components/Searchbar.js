@@ -38,7 +38,6 @@ const Searchbar = ({ setAuth }) => {
       });
     }
 
-    
     setSuggestions(matches);
     setText(text);
   };
@@ -70,8 +69,9 @@ const Searchbar = ({ setAuth }) => {
       {user?.login && (
         <div className="upper-sect">
           <div>
-          <Link to="/Profile" >
-            <i className="fas fa-home fa-2x"></i></Link>
+            <Link to="/Guest">
+              <i className="fas fa-home fa-2x"></i>
+            </Link>
           </div>
           <div>
             <i className="fas fa-users fa-2x"></i>

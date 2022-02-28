@@ -185,14 +185,14 @@ a:visited {
 textarea {
   width: 100%;
   height: 150px;
-padding: 0;
-  margin:16px 0;
+  padding: 0;
+  margin: 16px 0;
   box-sizing: border-box;
   border: 1px solid #ccc;
   border-radius: 4px;
- line-height: 1.6em;
+  line-height: 1.6em;
   font-size: 16px;
-  font-family:  "Roboto", sans-serif;
+  font-family: "Roboto", sans-serif;
   resize: none;
 }
 
@@ -364,7 +364,7 @@ img {
   text-align: left;
   padding: 0 5px;
 }
-.AMU-Name p{
+.AMU-Name p {
   color: grey;
   font-size: 12px;
   font-style: italic;
@@ -373,21 +373,20 @@ img {
 .AMU-NameEdit {
   display: flex;
   flex-direction: column;
-  justify-content:space-evenly;
+  justify-content: space-evenly;
 }
-.AMU-NameEdit input{
-  
+.AMU-NameEdit input {
   color: grey;
   font-size: 12px;
   font-style: italic;
   font-weight: 500;
   border: 1px solid grey;
-  padding:2px;
-  border-radius:2px;
+  padding: 2px;
+  border-radius: 2px;
 }
-.AMUHeader input{
-  font-family:"Roboto",sans-serif;
-  font-size:16px; 
+.AMUHeader input {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
 }
 
 #first {
@@ -425,6 +424,7 @@ img {
   flex-direction: column;
   gap: 10px;
 }
+
 .Follow {
   background: goldenrod;
   padding: 10px;
@@ -702,17 +702,16 @@ img {
   margin: 10px auto;
 }
 
-.SubmitComment{
-
+.SubmitComment {
   width: 100%;
   display: flex;
-  justify-content:flex-end;
+  justify-content: flex-end;
   padding: 10px;
 }
-.SubmitComment button{
+.SubmitComment button {
   padding: 7px, 20px;
   border-radius: 5px;
-  font-size:16px;
+  font-size: 16px;
 }
 
 /* Extra small devices (phones, 768px and down) */
@@ -805,7 +804,6 @@ img {
   .Posts:hover {
     opacity: 0.8;
     transform: scale(1.005);
-    background-color:rgba(128, 128, 128, 0.07);
   }
   .Profile-Pic img:hover {
     opacity: 0.9;
