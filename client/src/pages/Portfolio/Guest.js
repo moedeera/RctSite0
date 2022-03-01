@@ -355,6 +355,7 @@ export const Guest = ({ Friend, SetFriend }) => {
                                 className="SCButton"
                                 onClick={() => {
                                   postComment(formComment, user, Post.id);
+                                  setFormComment("");
                                 }}
                               >
                                 Post
