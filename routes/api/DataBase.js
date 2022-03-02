@@ -144,7 +144,7 @@ var DataBase = [
     followerCount: 6,
     login: false,
     Notifications: 3,
-    Friends: [1,2,3,4],
+    Friends: [1, 2, 3, 4],
     Posts: [1, 6],
   },
 ];
@@ -172,7 +172,7 @@ var Posts = [
     date: "March 6",
     comments: [3],
     likes: 2,
-    likers:[1,2],
+    likers: [1, 2],
   },
   {
     id: 5,
@@ -184,10 +184,10 @@ var Posts = [
     postPic:
       "https://images.pexels.com/photos/463734/pexels-photo-463734.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
     text: "Enjoying some quite time at the cabin",
-    comments: [1,5],
+    comments: [1, 5],
     date: "March 6",
     likes: 2,
-    likers:[2,5],
+    likers: [2, 5],
   },
   {
     id: 6,
@@ -201,50 +201,62 @@ var Posts = [
     date: "February 22",
     comments: [2, 4],
     likes: 4,
-    likers:[1,2,3,4],
+    likers: [1, 2, 3, 4],
   },
-  {},
-  {},
 ];
 
 var Comments = [
+  {
+    id: 1,
+    author: 6,
+    name: "Mitch Wiz",
+    picture:
+      "https://cdn.pixabay.com/photo/2019/11/10/11/13/couple-4615557_960_720.jpg",
+    date: "Feb 1",
+    post: 5,
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco",
+  },
+  {
+    id: 2,
+    author: 5,
+    name: "Jimmy",
+    picture:
+      "https://images.pexels.com/photos/1693085/pexels-photo-1693085.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+    date: "Feb 11",
+    post: 6,
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco",
+  },
 
-{id:1, author:6, name: "Mitch Wiz", picture:"https://cdn.pixabay.com/photo/2019/11/10/11/13/couple-4615557_960_720.jpg",
-date:'Feb 1',
-post:5,
- text:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco'
-
-},
-{id:2, author:5, name: "Jimmy", picture:"https://images.pexels.com/photos/1693085/pexels-photo-1693085.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-date:'Feb 11',
-post:6,
- text:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco'
-
-},
-
-{id:3, author:1, name: "Jenny", picture: "https://images.pexels.com/photos/1090387/pexels-photo-1090387.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-date:'Jan 1',
-post:1,
- text:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco'
-
-},
-{id:4, author:4, name: "James", picture:"https://images.pexels.com/photos/1693085/pexels-photo-1693085.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-date:'Feb 11',
-post:6,
- text:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco'
-
-}
-,
-{id:5, author:4, name: "Matt", picture: "https://images.pexels.com/photos/1819483/pexels-photo-1819483.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-date:'Feb 4',
-post:5,
- text:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco'
-
-}
-
-
-
-]
-
+  {
+    id: 3,
+    author: 1,
+    name: "Jenny",
+    picture:
+      "https://images.pexels.com/photos/1090387/pexels-photo-1090387.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+    date: "Jan 1",
+    post: 1,
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco",
+  },
+  {
+    id: 4,
+    author: 4,
+    name: "James",
+    picture:
+      "https://images.pexels.com/photos/1693085/pexels-photo-1693085.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+    date: "Feb 11",
+    post: 6,
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco",
+  },
+  {
+    id: 5,
+    author: 4,
+    name: "Matt",
+    picture:
+      "https://images.pexels.com/photos/1819483/pexels-photo-1819483.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+    date: "Feb 4",
+    post: 5,
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco",
+  },
+];
 
 module.exports = { DataBase, Users, Posts, Comments };

@@ -280,6 +280,27 @@ textarea {
 }
 .SideCase {
 }
+/*-----------------Portfolio--------------------*/
+.Showcase {
+  border: 1px solid black;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.Project {
+  border: 1px solid white;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: #203864;
+}
+.Project:hover {
+  background-color: #0f3885;
+}
+.Project a {
+  font-size: 20px;
+}
 /*------------------Profile---------------------*/
 
 .main-prof {

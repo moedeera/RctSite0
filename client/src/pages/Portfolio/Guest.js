@@ -32,11 +32,11 @@ export const Guest = ({ Friend, SetFriend }) => {
     PstText: "",
     picture: "",
   });
-
+  console.log();
   const { PstText, PstPicture } = postText;
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
-
+  console.log(posts);
   const FriendsProfile = async (id) => {
     console.log("hey", id);
 
@@ -351,24 +351,32 @@ export const Guest = ({ Friend, SetFriend }) => {
                     {posts.map((Post) => (
                       <div className="Posts">
                         <Link
-                          key={Post.id}
+                          key={Post && Post.id}
                           onClick={() => {
                             onLinkClick(Post.id);
                           }}
                           style={{ color: "black" }}
                           to="/Posts"
                         >
-                          <img src={Post.postPic} alt="" className="PostPic" />
+                          {Post && Post.postPic !== "" ? (
+                            <img
+                              src={Post.postPic}
+                              alt=""
+                              className="PostPic"
+                            />
+                          ) : (
+                            ""
+                          )}
                         </Link>
                         <div className=" Poster">
                           <div className="PosterInfo">
-                            <img src={Post.PosterPic} alt="" />
+                            <img src={Post && Post.PosterPic} alt="" />
                             {Post.PosterName}
                           </div>
                           {Post.text}
                         </div>
                         <div className="Interactions">
-                          <div>{Post.date}</div>
+                          <div>{Post && Post.date}</div>
                           <div onClick={() => likeCount(Post.id, user.id)}>
                             {Post.likers.length}{" "}
                             <i

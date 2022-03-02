@@ -1,10 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const { DataBase, Users, Posts, Comments } = require("./DataBase");
+var { DataBase, Users, Posts, Comments } = require("./DataBase");
 
 router.post("/", async (req, res) => {
-  console.log("post get request", req.body);
-
   var response = [];
 
   for (var j = 0; j < req.body.length; j++) {
@@ -18,51 +16,57 @@ router.post("/", async (req, res) => {
 });
 
 router.post("/update", async (req, res) => {
-  console.log("post get request", req.body, Posts);
-
   var response = [];
 
   for (var j = 0; j < req.body.length; j++) {
     Posts[j] = req.body[j];
   }
-  console.log("xox", Posts);
+
   res.send(Posts);
 });
 
-
-
-
-
 router.post("/comments", async (req, res) => {
-  console.log("comments get request", req.body);
-var response = []
-for (var j = 0; j < req.body.length; j++) {
-  var match = Comments.some((comment) => comment.id === req.body[j])
-  if (match){
-    var matchedComment = Comments.find((comment)=> comment.id=== req.body[j])
-    response.push(matchedComment) 
+  var response = [];
+  for (var j = 0; j < req.body.length; j++) {
+    var match = Comments.some((comment) => comment.id === req.body[j]);
+    if (match) {
+      var matchedComment = Comments.find(
+        (comment) => comment.id === req.body[j]
+      );
+      response.push(matchedComment);
+    }
   }
 
-}
- console.log(response)
-res.send(response)
-
+  res.send(response);
 });
 
-router.post("/newcomment", async (req,res) => {
-  Comments.push(req.body)
-for (var j=0; j<Posts.length; j++) {
-if (Posts[j].id === req.body.post){
-  Posts[j].comments.push(req.body.id)
-}
+router.post("/newcomment", async (req, res) => {
+  Comments.push(req.body);
+  for (var j = 0; j < Posts.length; j++) {
+    if (Posts[j].id === req.body.post) {
+      Posts[j].comments.push(req.body.id);
+    }
+  }
 
-}
+  res.send("thank you");
+});
 
-res.send('thank you')
+router.post("/newpost", async (req, res) => {
+  Posts.push(req.body);
+  DataBase = DataBase.map((profile) =>
+    profile.id === req.body.Poster
+      ? { ...profile, Posts: [...profile.Posts, req.body.id] }
+      : profile
+  );
+  var match = 99;
+  for (var j = 0; j < DataBase.length; j++) {
+    if (DataBase[j].id === req.body.Poster) {
+      match = j;
+    }
+  }
 
-})
-
-
-
+  console.log(Posts);
+  res.send("thanks");
+});
 
 module.exports = router;

@@ -7,6 +7,39 @@ export const usePosts = () => {
   const [comments, setComments] = useState([]);
   const { user, setUser } = useContext(UserContext);
 
+  const isImgLink = (url) => {
+    if (typeof url !== "string") {
+      return false;
+    }
+    return (
+      url.match(/^http[^\?]*.(jpg|jpeg|gif|png|tiff|bmp)(\?(.*))?$/gim) !== null
+    );
+  };
+
+  var days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  var months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
   const getPosts = async () => {
     var postIDs = [];
 
@@ -53,6 +86,7 @@ export const usePosts = () => {
       const res = await axios.post("/api/post", body, config);
 
       setPosts(res.data);
+      console.log("retrieved posts", res.data);
       return res.data;
     } catch (error) {
       console.log(error);
@@ -76,30 +110,6 @@ export const usePosts = () => {
     }
   };
   const postComment = async (comment, person, postID) => {
-    var days = [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-    ];
-    var months = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December",
-    ];
-
     console.log("postComment initiated", comment, person.nickname, postID);
     var Id = Math.floor(Math.random() * 1000 + 1);
     var CurrentDate = new Date();
@@ -113,7 +123,7 @@ export const usePosts = () => {
       month.substring(1, 4) +
       " " +
       Year.substring(2, 4);
-    console.log(newDate);
+
     var newComment = {
       id: Id,
       author: person.name,
@@ -187,7 +197,59 @@ export const usePosts = () => {
   };
 
   const CreatePost = async (post) => {
-    console.log("post was created", post);
+    var PostID = Math.floor(Math.random() * 1000 + 1);
+    var CurrentDate = new Date();
+    var day = JSON.stringify(days[CurrentDate.getDay()]);
+    var month = JSON.stringify(months[CurrentDate.getMonth()]);
+    var Year = JSON.stringify(CurrentDate.getUTCFullYear());
+
+    const newDate =
+      day.substring(1, 4) +
+      " " +
+      month.substring(1, 4) +
+      " " +
+      Year.substring(2, 4);
+
+    const ValidImage = isImgLink(post.PstPicture);
+
+    var Image = "";
+    if (ValidImage) {
+      const img = post.PstPicture;
+      Image = img;
+    }
+
+    const newPost = {
+      id: PostID,
+      Poster: user.id,
+      PosterName: user.nickname,
+      PosterPic: user.profilePic,
+      postPic: Image,
+      text: post.PstText,
+      date: newDate,
+      comments: [],
+      likes: 0,
+      likers: [user.id],
+    };
+
+    console.log("post was created", newPost);
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+      const body = JSON.stringify(newPost);
+
+      const res = await axios.post("/api/post/newpost", body, config);
+      var newPosts = [...posts, newPost];
+
+      setPosts(newPosts);
+      setUser({ ...user, Posts: [...user.Posts, newPost.id] });
+      console.log(newPosts, posts);
+      console.log(res.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {

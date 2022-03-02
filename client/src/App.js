@@ -7,7 +7,7 @@ import { Econnect } from "./pages/Portfolio/Econnect";
 import Profile from "./pages/Portfolio/Profile";
 import RT from "./components/RT";
 import Login from "./pages/Portfolio/Login";
-
+import { SportsTable } from "./pages/Portfolio/SportsTable";
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
@@ -17,43 +17,42 @@ import { useAuth } from "./utils/AuthLogin";
 import { UserContext } from "./UserContext";
 import { Friends } from "./pages/Portfolio/Friends";
 import { Guest } from "./pages/Portfolio/Guest";
-import {Posts} from "./pages/Portfolio/Posts"
+import { Posts } from "./pages/Portfolio/Posts";
 function getUserInfo() {
-  var data =sessionStorage.getItem("user-info")
+  var data = sessionStorage.getItem("user-info");
   if (data) {
-    var User = JSON.parse(data)
-    return User
+    var User = JSON.parse(data);
+    return User;
   } else {
-    var profile ={
-  id: 1,
-  name: "Jennifer Smith",
-  nickname: "Jenny",
-  location: "Toronto, ON",
-  description: "Night Owl Queen",
-  age: 25,
-  scores: [125, 102, 55],
-  header: "About this Project",
-  about:
-    "This is a full stack social media website that allows comments, likes, friends, and posts that can all be stored in real time in a MongoDB database. The user is stored in a local session once logged in and JWT technology ensures safe data transfer for security.",
-  Feed: [
-    { name: "Connie Williams", type: "like", id: 2 },
-    { name: "Matt Russo", type: "request", id: 3 },
-    { name: "James Santos", type: "request", id: 4 },
-  ],
-  profilePic:
-    "https://images.pexels.com/photos/1090387/pexels-photo-1090387.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-  followerCount: 26,
-  login: true,
-  Notifications: 2,
-  Friends: [2, 3, 4],
-  Posts: [6, 5, 1]}
-  User = JSON.stringify(profile)
-sessionStorage.setItem("user-info",User);
- 
-    
+    var profile = {
+      id: 1,
+      name: "Jennifer Smith",
+      nickname: "Jenny",
+      location: "Toronto, ON",
+      description: "Night Owl Queen",
+      age: 25,
+      scores: [125, 102, 55],
+      header: "About this Project",
+      about:
+        "This is a full stack social media website that allows comments, likes, friends, and posts that can all be stored in real time in a MongoDB database. The user is stored in a local session once logged in and JWT technology ensures safe data transfer for security.",
+      Feed: [
+        { name: "Connie Williams", type: "like", id: 2 },
+        { name: "Matt Russo", type: "request", id: 3 },
+        { name: "James Santos", type: "request", id: 4 },
+      ],
+      profilePic:
+        "https://images.pexels.com/photos/1090387/pexels-photo-1090387.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+      followerCount: 26,
+      login: true,
+      Notifications: 2,
+      Friends: [2, 3, 4],
+      Posts: [6, 5, 1],
+    };
+    User = JSON.stringify(profile);
+    sessionStorage.setItem("user-info", User);
+
     return profile;
   }
-
 }
 function App() {
   const { friend, setFriend } = useAuth();
@@ -63,18 +62,19 @@ function App() {
   //  Messages
   const [user, setUser] = useState(getUserInfo());
   const [guest, setGuest] = useState({ login: "true" });
-  const [postPage,setPostpage] = useState()
+  const [postPage, setPostpage] = useState();
 
-useEffect(() => {
-const data = JSON.stringify(user);
-sessionStorage.setItem("user-info",data)
-
-},[user])
+  useEffect(() => {
+    const data = JSON.stringify(user);
+    sessionStorage.setItem("user-info", data);
+  }, [user]);
 
   return (
     <Router>
       <div className="App">
-        <UserContext.Provider value={{ user, setUser, guest, setGuest, postPage , setPostpage }}>
+        <UserContext.Provider
+          value={{ user, setUser, guest, setGuest, postPage, setPostpage }}
+        >
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/Table" element={<Table />} />
@@ -82,6 +82,7 @@ sessionStorage.setItem("user-info",data)
             <Route path="/About" element={<About />} />
             <Route path="/Contact" element={<Contact />} />
             <Route path="/Econnect" element={<Econnect />} />
+            <Route path="/SportsTable" element={<SportsTable />} />
             <Route path="/Register" element={<Econnect />} />
 
             <Route path="/Login" element={<Login />} />
@@ -97,7 +98,7 @@ sessionStorage.setItem("user-info",data)
               path="/Friends"
               element={<Friends isAuth={friend} SetAuth={setFriend} />}
             />
-              <Route
+            <Route
               path="/Posts"
               element={<Posts Friend={friend} SetFriend={setFriend} />}
             />

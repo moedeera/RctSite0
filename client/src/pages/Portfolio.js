@@ -6,9 +6,11 @@ export const Portfolio = () => {
     <div>
       <Navbar />{" "}
       <div className="Showcase">
-        <div className="Project">
+        <div className="Project" id="ECONNECT">
           <a href="/Econnect">Econnect</a>
-          <div className="image"></div>
+        </div>
+        <div className="Project" id="ECONNECT">
+          <a href="/SportsTable">Sports League</a>
         </div>
       </div>
     </div>
