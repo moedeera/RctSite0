@@ -27,7 +27,12 @@ export const Guest = ({ Friend, SetFriend }) => {
   const { nickname, location, description, header, about } = formData;
   const [formComment, setFormComment] = useState([]);
   const [postID, setPostID] = useState([]);
+  const [postText, setPostText] = useState({
+    PstText: "",
+    picture: "",
+  });
 
+  const { PstText } = postText;
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
@@ -288,9 +293,31 @@ export const Guest = ({ Friend, SetFriend }) => {
                         <img src={pic} alt="" />
                         <input
                           type="textarea"
-                          name="textValue"
-                          placeholder="Create a Post"
+                          name="comment"
+                          className="PostComment"
+                          value={PstText}
+                          onChange={(e) => {
+                            setPostText({
+                              ...postText,
+                              PstText: e.target.value,
+                            });
+                          }}
                         />
+                        <div></div>
+                        {PstText.length > 0 ? (
+                          <div className="SubmitComment">
+                            <button
+                              className="SCButton"
+                              onClick={() => {
+                                setFormComment("");
+                              }}
+                            >
+                              Post
+                            </button>
+                          </div>
+                        ) : (
+                          ""
+                        )}
                       </div>
                     </div>
                   </div>
