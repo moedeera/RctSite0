@@ -186,6 +186,10 @@ export const usePosts = () => {
     getPosts(user.Posts);
   };
 
+  const CreatePost = async (post) => {
+    console.log("post was created", post);
+  };
+
   useEffect(() => {
     getPosts();
   }, []);
@@ -201,5 +205,13 @@ export const usePosts = () => {
     FetchComments(postComments);
   }, [posts]);
 
-  return { posts, likeCount, setPosts, comments, FetchComments, postComment };
+  return {
+    posts,
+    likeCount,
+    setPosts,
+    comments,
+    FetchComments,
+    postComment,
+    CreatePost,
+  };
 };

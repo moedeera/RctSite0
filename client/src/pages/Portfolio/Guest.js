@@ -11,7 +11,7 @@ import { usePosts } from "../../utils/PostAuth";
 export const Guest = ({ Friend, SetFriend }) => {
   const { user, setUser, setPostpage } = useContext(UserContext);
   const { edit, setEdit } = Edit();
-  const { posts, likeCount, postComment } = usePosts();
+  const { posts, likeCount, postComment, CreatePost } = usePosts();
   const onLinkClick = (postID) => {
     setPostpage({ id: postID });
   };
@@ -26,13 +26,14 @@ export const Guest = ({ Friend, SetFriend }) => {
   });
   const { nickname, location, description, header, about } = formData;
   const [formComment, setFormComment] = useState([]);
+  const [formPost, setFormPost] = useState([]);
   const [postID, setPostID] = useState([]);
   const [postText, setPostText] = useState({
     PstText: "",
     picture: "",
   });
 
-  const { PstText } = postText;
+  const { PstText, PstPicture } = postText;
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
@@ -57,7 +58,7 @@ export const Guest = ({ Friend, SetFriend }) => {
 
     // navigate("../Friends");
   };
-  var submitComment = false;
+  // Comment Submission
   const onCommentChange = (e, id) => {
     setPostID(id);
 
@@ -78,7 +79,12 @@ export const Guest = ({ Friend, SetFriend }) => {
     }
     setFormComment(e.target.value);
   };
-
+  // Post Submission
+  const onPostSubmission = (e) => {
+    e.preventDefault();
+    CreatePost(postText);
+    setPostText({ ...postText, PstText: "", PstPicture: "" });
+  };
   const onSubmission = (e) => {
     e.preventDefault();
 
@@ -295,7 +301,7 @@ export const Guest = ({ Friend, SetFriend }) => {
                           type="textarea"
                           name="comment"
                           className="PostComment"
-                          value={PstText}
+                          value={postText.PstText}
                           onChange={(e) => {
                             setPostText({
                               ...postText,
@@ -304,17 +310,34 @@ export const Guest = ({ Friend, SetFriend }) => {
                           }}
                         />
                         <div></div>
-                        {PstText.length > 0 ? (
-                          <div className="SubmitComment">
-                            <button
-                              className="SCButton"
-                              onClick={() => {
-                                setFormComment("");
+                        {PstText !== "" ? (
+                          <>
+                            {" "}
+                            <div className="SubmitComment">
+                              <button
+                                className="SCButton"
+                                onClick={(e) => {
+                                  onPostSubmission(e);
+                                }}
+                              >
+                                Post
+                              </button>
+                            </div>
+                            <div> </div>
+                            <input
+                              type="text"
+                              name="url"
+                              className="PostComment"
+                              value={PstPicture}
+                              placeholder="Enter Image Url"
+                              onChange={(e) => {
+                                setPostText({
+                                  ...postText,
+                                  PstPicture: e.target.value,
+                                });
                               }}
-                            >
-                              Post
-                            </button>
-                          </div>
+                            />
+                          </>
                         ) : (
                           ""
                         )}
