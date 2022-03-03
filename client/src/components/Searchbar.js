@@ -77,12 +77,14 @@ const Searchbar = ({ setAuth }) => {
             <i className="fas fa-users fa-2x"></i>
           </div>
           <div className="notifications">
-            <div className="internal">
-              <i className="fas fa-bell fa-2x"></i>
-              <div className="number">
-                {user && user.Notifications !== 0 ? user.Notifications : ""}
+            <Link to="/Notifications">
+              <div className="internal">
+                <i className="fas fa-bell fa-2x"></i>
+                <div className="number">
+                  {user && user.Notifications !== 0 ? user.Notifications : ""}
+                </div>
               </div>
-            </div>
+            </Link>
           </div>
 
           <div>

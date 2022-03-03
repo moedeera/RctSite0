@@ -663,6 +663,14 @@ img {
   align-items: center;
 }
 
+.notice {
+  border-bottom: 1px solid black;
+}
+.message {
+  border: 1px solid grey;
+  background: green;
+  color: white;
+}
 .Poster img {
   border: 1px solid;
   vertical-align: middle;

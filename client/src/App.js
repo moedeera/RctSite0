@@ -8,6 +8,7 @@ import Profile from "./pages/Portfolio/Profile";
 import RT from "./components/RT";
 import Login from "./pages/Portfolio/Login";
 import { SportsTable } from "./pages/Portfolio/SportsTable";
+import { Notifications } from "./pages/Portfolio/Notifications";
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
@@ -45,6 +46,26 @@ function getUserInfo() {
       followerCount: 26,
       login: true,
       Notifications: 2,
+      Notices: [
+        {
+          id: 50,
+          type: "message",
+          user: 2,
+          from: "Connie",
+          date: new Date("2022-03-01"),
+          text: "Hey do you wanna go skiing tomorrow?",
+          pending: true,
+        },
+        {
+          id: 20,
+          type: "message",
+          user: 6,
+          from: "Mitch Wiz",
+          date: new Date("2022-02-25"),
+          text: "Thanks for the gift yo sent!",
+          pending: true,
+        },
+      ],
       Friends: [2, 3, 4],
       Posts: [6, 5, 1],
     };
@@ -103,6 +124,10 @@ function App() {
             <Route
               path="/Posts"
               element={<Posts Friend={friend} SetFriend={setFriend} />}
+            />
+            <Route
+              path="/Notifications"
+              element={<Notifications Friend={friend} SetFriend={setFriend} />}
             />
 
             <Route path="/RT" element={<RT />} />

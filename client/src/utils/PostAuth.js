@@ -68,6 +68,26 @@ export const usePosts = () => {
         followerCount: 26,
         login: false,
         Notifications: 2,
+        Notices: [
+          {
+            id: 50,
+            type: "message",
+            user: 2,
+            from: "Connie",
+            date: new Date("2022-03-01"),
+            text: "Hey do you wanna go skiing tomorrow?",
+            pending: true,
+          },
+          {
+            id: 20,
+            type: "message",
+            user: 6,
+            from: "Mitch Wiz",
+            date: new Date("2022-02-25"),
+            text: "Thanks for the gift yo sent!",
+            pending: true,
+          },
+        ],
         Friends: [2, 3, 4],
         Posts: [6, 5, 1],
       };
