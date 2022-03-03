@@ -169,10 +169,11 @@ var Posts = [
     postPic:
       "https://images.pexels.com/photos/1842182/pexels-photo-1842182.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
     text: "Teddy was just enjoying the sun",
-    date: "March 6",
+    date: "March 1",
     comments: [3],
     likes: 2,
     likers: [1, 2],
+    datePosted: new Date("2022-03-01"),
   },
   {
     id: 5,
@@ -185,9 +186,10 @@ var Posts = [
       "https://images.pexels.com/photos/463734/pexels-photo-463734.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
     text: "Enjoying some quite time at the cabin",
     comments: [1, 5],
-    date: "March 6",
+    date: "March 2",
     likes: 2,
     likers: [2, 5],
+    datePosted: new Date("2022-03-02"),
   },
   {
     id: 6,
@@ -202,6 +204,7 @@ var Posts = [
     comments: [2, 4],
     likes: 4,
     likers: [1, 2, 3, 4],
+    datePosted: new Date("2022-02-22"),
   },
 ];
 

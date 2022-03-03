@@ -11,7 +11,9 @@ router.post("/", async (req, res) => {
       response.push(match);
     }
   }
-
+  response.sort(function (a, b) {
+    return new Date(b.datePosted) - new Date(a.datePosted);
+  });
   res.send(response);
 });
 
@@ -53,6 +55,9 @@ router.post("/newcomment", async (req, res) => {
 
 router.post("/newpost", async (req, res) => {
   Posts.unshift(req.body);
+  Posts.sort(function (a, b) {
+    return new Date(b.datePosted) - new Date(a.datePosted);
+  });
   DataBase = DataBase.map((profile) =>
     profile.id === req.body.Poster
       ? { ...profile, Posts: [...profile.Posts, req.body.id] }

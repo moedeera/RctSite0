@@ -217,7 +217,7 @@ export const usePosts = () => {
       const img = post.PstPicture;
       Image = img;
     }
-
+    var date = new Date();
     const newPost = {
       id: PostID,
       Poster: user.id,
@@ -229,6 +229,7 @@ export const usePosts = () => {
       comments: [],
       likes: 0,
       likers: [user.id],
+      datePosted: date,
     };
 
     console.log("post was created", newPost);
@@ -243,6 +244,11 @@ export const usePosts = () => {
       const res = await axios.post("/api/post/newpost", body, config);
       var newPosts = [...posts];
       newPosts.unshift(newPost);
+      newPosts.sort(function (a, b) {
+        return new Date(b.datePosted) - new Date(a.datePosted);
+      });
+
+      console.log(newPosts);
 
       setPosts(newPosts);
       setUser({ ...user, Posts: [...user.Posts, newPost.id] });
