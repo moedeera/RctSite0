@@ -41,7 +41,7 @@ router.post("/comments", async (req, res) => {
 });
 
 router.post("/newcomment", async (req, res) => {
-  Comments.push(req.body);
+  Comments.unshift(req.body);
   for (var j = 0; j < Posts.length; j++) {
     if (Posts[j].id === req.body.post) {
       Posts[j].comments.push(req.body.id);
@@ -52,7 +52,7 @@ router.post("/newcomment", async (req, res) => {
 });
 
 router.post("/newpost", async (req, res) => {
-  Posts.push(req.body);
+  Posts.unshift(req.body);
   DataBase = DataBase.map((profile) =>
     profile.id === req.body.Poster
       ? { ...profile, Posts: [...profile.Posts, req.body.id] }

@@ -241,7 +241,8 @@ export const usePosts = () => {
       const body = JSON.stringify(newPost);
 
       const res = await axios.post("/api/post/newpost", body, config);
-      var newPosts = [...posts, newPost];
+      var newPosts = [...posts];
+      newPosts.unshift(newPost);
 
       setPosts(newPosts);
       setUser({ ...user, Posts: [...user.Posts, newPost.id] });
