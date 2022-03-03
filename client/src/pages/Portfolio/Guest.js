@@ -32,11 +32,11 @@ export const Guest = ({ Friend, SetFriend }) => {
     PstText: "",
     picture: "",
   });
-  console.log();
+
   const { PstText, PstPicture } = postText;
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
-  console.log(posts);
+
   const FriendsProfile = async (id) => {
     console.log("hey", id);
 
