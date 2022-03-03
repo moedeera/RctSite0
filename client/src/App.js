@@ -53,6 +53,9 @@ function getUserInfo() {
           user: 2,
           from: "Connie",
           date: new Date("2022-03-01"),
+          Date: "March 1 22",
+          picture:
+            "https://images.pexels.com/photos/762020/pexels-photo-762020.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
           text: "Hey do you wanna go skiing tomorrow?",
           pending: true,
         },
@@ -62,7 +65,11 @@ function getUserInfo() {
           user: 6,
           from: "Mitch Wiz",
           date: new Date("2022-02-25"),
+          Date: "March 3 22",
           text: "Thanks for the gift yo sent!",
+          picture:
+            "https://cdn.pixabay.com/photo/2019/11/10/11/13/couple-4615557_960_720.jpg",
+
           pending: true,
         },
       ],

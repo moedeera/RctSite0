@@ -14,7 +14,11 @@ export const Notifications = ({ Friend, SetFriend }) => {
     <div className="main-prof">
       <Searchbar setAuth={SetFriend} />
       <div className="MainCard">
-        <div style={{ fontWeight: "bold" }}>Notices</div>
+        <div style={{ fontWeight: "bold" }}>
+          {user.Notices.length > 1
+            ? "You have some notifications!"
+            : "You are all up to date"}
+        </div>
         {user.Notices.map((notice) =>
           notice.type === "message" ? (
             <>
@@ -24,8 +28,14 @@ export const Notifications = ({ Friend, SetFriend }) => {
                   <img src={notice.picture ? notice.picture : pic} alt="" />
                   {notice.from}
                 </div>
-                <div> {notice.text}</div>
-                <div className="message">Message</div>
+                <div className="msg-text">
+                  {" "}
+                  <div>{notice.text}</div> <div className="msg-rsp">Reply</div>
+                </div>
+                <div className="message">
+                  {notice.Date ? notice.Date : "March 2 22"}
+                </div>
+                <div className="msg">Inbox</div>
               </div>
             </>
           ) : (

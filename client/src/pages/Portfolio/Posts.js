@@ -50,7 +50,7 @@ export const Posts = ({ Friend, SetFriend }) => {
                   <div className="InteractionsIP">
                     <div>{Post.date}</div>
                     <div onClick={() => likeCount(Post.id)}>
-                      {Post.likes}{" "}
+                      {Post.likers.length}{" "}
                       <i
                         className="fas fa-heart fa-3x"
                         style={{ color: "red" }}
