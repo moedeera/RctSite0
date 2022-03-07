@@ -678,6 +678,13 @@ img {
   text-align: left;
   padding-left: 5px;
 }
+.pst {
+  background-color: #203864;
+  color: white;
+  text-align: left;
+  padding-left: 5px;
+}
+
 .msg-text {
   display: flex;
   justify-content: space-between;
@@ -688,7 +695,12 @@ img {
   color: white;
   cursor: pointer;
 }
-
+.pst-link {
+  cursor: pointer;
+  padding: 5px;
+  background: #1c8be3;
+  color: white;
+}
 .Poster img {
   border: 1px solid;
   vertical-align: middle;

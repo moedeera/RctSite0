@@ -38,10 +38,43 @@ export const Notifications = ({ Friend, SetFriend }) => {
                 <div className="msg">Inbox</div>
               </div>
             </>
+          ) : notice.type === "post" ? (
+            "Post"
           ) : (
-            ""
+            <div className=" Poster notice">
+              {" "}
+              <div className="PosterInfo">
+                <img src={notice.picture ? notice.picture : pic} alt="" />
+                {notice.from}
+              </div>
+              <div className="msg-text">
+                {" "}
+                <div>{notice.text}</div> <div className="msg-rsp">Reply</div>
+              </div>
+              <div className="message">
+                {notice.Date ? notice.Date : "March 2 22"}
+              </div>
+              <div className="msg">Inbox</div>
+            </div>
           )
         )}
+        <>
+          {" "}
+          <div className=" Poster notice">
+            {" "}
+            <div className="PosterInfo">
+              <img src={user.profilePic} alt="" />
+              {user.nickname}
+            </div>
+            <div className="msg-text">
+              {" "}
+              <div>Pray for Ukraine</div> <div>just made a post !</div>{" "}
+              <div className="pst-link">Go to Post</div>
+            </div>
+            <div className="message">"March 2 22"</div>
+            <div className="pst">Feed</div>
+          </div>
+        </>
       </div>
       ;
     </div>

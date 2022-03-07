@@ -1,20 +1,19 @@
 import React from "react";
 import pic from "../../blank-avatar.png";
 import { Edit } from "../../utils/Edit";
-import { useEffect, useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { UserContext } from "../../UserContext";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Searchbar from "../../components/Searchbar";
 import { usePosts } from "../../utils/PostAuth";
+import { PostFeed } from "./PostFeed";
 
 export const Guest = ({ Friend, SetFriend }) => {
-  const { user, setUser, setPostpage } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
   const { edit, setEdit } = Edit();
-  const { posts, likeCount, postComment, CreatePost } = usePosts();
-  const onLinkClick = (postID) => {
-    setPostpage({ id: postID });
-  };
+  const { CreatePost } = usePosts();
+
   const [formData, setFormData] = useState({
     name: user.name,
     nickname: user.nickname,
@@ -25,9 +24,7 @@ export const Guest = ({ Friend, SetFriend }) => {
     about: user.about,
   });
   const { nickname, location, description, header, about } = formData;
-  const [formComment, setFormComment] = useState([]);
-  const [formPost, setFormPost] = useState([]);
-  const [postID, setPostID] = useState([]);
+
   const [postText, setPostText] = useState({
     PstText: "",
     picture: "",
@@ -59,26 +56,7 @@ export const Guest = ({ Friend, SetFriend }) => {
     // navigate("../Friends");
   };
   // Comment Submission
-  const onCommentChange = (e, id) => {
-    setPostID(id);
 
-    if (e.target.value.length > 0) {
-      document.addEventListener("click", (e) => {
-        if (
-          e.target.className !== "PostComment" &&
-          e.target.className !== "SCButton"
-        ) {
-          console.log(
-            "you clicked outside",
-            e.target.className,
-            "you closed submit button "
-          );
-          setFormComment([]);
-        }
-      });
-    }
-    setFormComment(e.target.value);
-  };
   // Post Submission
   const onPostSubmission = (e) => {
     e.preventDefault();
@@ -345,88 +323,7 @@ export const Guest = ({ Friend, SetFriend }) => {
                     </div>
                   </div>
                 </div>
-
-                <div className="Feed">
-                  <div className="Post-Feed">
-                    {posts.map((Post) => (
-                      <div className="Posts">
-                        <Link
-                          key={Post && Post.id}
-                          onClick={() => {
-                            onLinkClick(Post.id);
-                          }}
-                          style={{ color: "black" }}
-                          to="/Posts"
-                        >
-                          {Post && Post.postPic !== "" ? (
-                            <img
-                              src={Post.postPic}
-                              alt=""
-                              className="PostPic"
-                            />
-                          ) : (
-                            ""
-                          )}
-                        </Link>
-                        <div className=" Poster">
-                          <div className="PosterInfo">
-                            <img src={Post && Post.PosterPic} alt="" />
-                            {Post.PosterName}
-                          </div>
-                          {Post.text}
-                        </div>
-                        <div className="Interactions">
-                          <div>{Post && Post.date}</div>
-                          <div onClick={() => likeCount(Post.id, user.id)}>
-                            {Post.likers.length}{" "}
-                            <i
-                              className="fas fa-heart"
-                              style={{ color: "red" }}
-                            ></i>
-                          </div>
-
-                          <div>
-                            {" "}
-                            {Post.comments.length}
-                            <i
-                              className="fas fa-comment"
-                              style={{ color: "grey" }}
-                            ></i>
-                          </div>
-                        </div>
-                        <div className="Create-Post">
-                          {" "}
-                          <img src={pic} alt="" />
-                          <input
-                            type="textarea"
-                            name="comment"
-                            className="PostComment"
-                            value={postID === Post.id ? formComment : ""}
-                            onChange={(e) => {
-                              onCommentChange(e, Post.id);
-                            }}
-                          />
-                          <div></div>
-                          {formComment.length > 0 && postID === Post.id ? (
-                            <div className="SubmitComment">
-                              <button
-                                className="SCButton"
-                                onClick={() => {
-                                  postComment(formComment, user, Post.id);
-                                  setFormComment("");
-                                }}
-                              >
-                                Post
-                              </button>
-                            </div>
-                          ) : (
-                            ""
-                          )}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+                <PostFeed />
               </div>
             </form>
           </div>
