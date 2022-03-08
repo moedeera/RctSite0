@@ -1,12 +1,11 @@
 import React from "react";
 import { usePosts } from "../../utils/PostAuth";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { UserContext } from "../../UserContext";
 import { Link } from "react-router-dom";
 import pic from "../../blank-avatar.png";
 
-export const PostFeed = () => {
-  const { posts, likeCount, postComment } = usePosts();
+export const PostFeed = ({ Posts, LikeUpdate, CommentUpdate }) => {
   const { user, setPostpage } = useContext(UserContext);
   const [formComment, setFormComment] = useState([]);
 
@@ -39,7 +38,7 @@ export const PostFeed = () => {
   return (
     <div className="Feed">
       <div className="Post-Feed">
-        {posts.map((Post) => (
+        {Posts.map((Post) => (
           <div className="Posts">
             <Link
               key={Post && Post.id}
@@ -64,7 +63,7 @@ export const PostFeed = () => {
             </div>
             <div className="Interactions">
               <div>{Post && Post.date}</div>
-              <div onClick={() => likeCount(Post.id, user.id)}>
+              <div onClick={() => LikeUpdate(Post.id, user.id)}>
                 {Post.likers.length}{" "}
                 <i className="fas fa-heart" style={{ color: "red" }}></i>
               </div>
@@ -93,7 +92,7 @@ export const PostFeed = () => {
                   <button
                     className="SCButton"
                     onClick={() => {
-                      postComment(formComment, user, Post.id);
+                      CommentUpdate(formComment, user, Post.id);
                       setFormComment("");
                     }}
                   >

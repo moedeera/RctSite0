@@ -44,6 +44,7 @@ const Searchbar = ({ setAuth }) => {
   const Reset = () => {
     setSuggestions("");
     setText("");
+    sessionStorage.clear();
   };
   const FriendsProfile = async (id) => {
     try {

@@ -12,7 +12,7 @@ import { PostFeed } from "./PostFeed";
 export const Guest = ({ Friend, SetFriend }) => {
   const { user, setUser } = useContext(UserContext);
   const { edit, setEdit } = Edit();
-  const { CreatePost } = usePosts();
+  const { CreatePost, posts, likeCount, postComment } = usePosts();
 
   const [formData, setFormData] = useState({
     name: user.name,
@@ -323,7 +323,11 @@ export const Guest = ({ Friend, SetFriend }) => {
                     </div>
                   </div>
                 </div>
-                <PostFeed />
+                <PostFeed
+                  Posts={posts}
+                  LikeUpdate={likeCount}
+                  CommentUpdate={postComment}
+                />
               </div>
             </form>
           </div>
