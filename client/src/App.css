@@ -80,7 +80,7 @@ a:visited {
 .Main {
   color: white;
   width: 100%;
-  max-width: 900px;
+  max-width: 1400px;
   margin: 150px auto;
 
   display: flex;
@@ -411,7 +411,7 @@ textarea {
 
 .MainCard {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1400px;
   height: 100%;
   margin: 10px auto;
   background: white;
@@ -762,10 +762,15 @@ img {
 }
 
 .notice {
-  border: 1px solid black;
+  border: 1px solid rgba(128, 128, 128, 0.474);
+  margin: 10px 0;
+  border-radius: 10px;
+}
+.notice:hover{
+background-color: rgba(128, 128, 128, 0.35);
 }
 .message {
-  border: 1px solid grey;
+ 
   background: burlywood;
   color: black;
 }
@@ -775,12 +780,15 @@ img {
   color: white;
   text-align: left;
   padding-left: 5px;
+  
+  border-bottom-right-radius: 5px;
 }
 .pst {
   background-color: #203864;
   color: white;
   text-align: left;
   padding-left: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .msg-text {
@@ -788,16 +796,18 @@ img {
   justify-content: space-between;
 }
 .msg-rsp {
-  padding: 5px;
+  padding: 10px;
   background: green;
   color: white;
   cursor: pointer;
+  border-radius: 5px;
 }
 .pst-link {
   cursor: pointer;
-  padding: 5px;
+  padding: 10px;
   background: #1c8be3;
   color: white;
+  border-radius: 5px;
 }
 .Poster img {
   border: 1px solid;
