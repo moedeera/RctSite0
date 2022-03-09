@@ -4,6 +4,7 @@
 
 body {
   background-color: #203864;
+  box-sizing: border-box;
 }
 
 .App {
@@ -126,7 +127,104 @@ a:visited {
   font-size: 30px;
   color: steelblue;
 }
+/*-------------------Connections page-----------------------------*/
+.ConnectMain {
+  background-color: white;
+  border: 1px solid grey;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 5px 15px;
 
+}
+
+.UpperConnect {
+ 
+  display: grid;
+ grid-template-columns: 2fr 3fr;
+ 
+  width: 100%;
+}
+.LeftUC {
+  
+}
+.UCSearch{
+
+  display: grid;
+  grid-template-columns: 1fr 10fr;
+  align-items: center;
+  padding: 5px;
+  margin: 0 auto;
+}
+.UCSearch input{
+min-width: 12rem;
+  width: 80%;
+  height: 3rem;
+  border: 2px solid rgba(128, 128, 128, 0.568);
+  padding: 3px;
+  border-radius: 5px;
+  font-size:14px ;
+  
+}
+.RightUC {
+
+min-width: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.UCList{
+  margin: 10px auto;
+}
+.UCList ul {
+  font-size: 16px;
+  max-width:70% ;
+ gap:25px;
+  list-style: none;
+  display: flex;
+  justify-content: space-evenly;
+  
+  align-items: center;
+ }
+ .UCList li {
+   cursor: pointer;
+ }
+
+.LowerConnect {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap:10px;
+  margin:40px auto;
+}
+.CProfile {
+/* border: 1px solid rgba(128, 128, 128, 0.466);
+border-radius: 10px; */
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 300px;
+}
+.PSelected{
+  border:1px solid #2038649f;
+  border-radius: 10px;
+}
+
+.CProfile img{
+width: 90px;
+height: 90px;
+}
+.tag{
+
+  border-radius: 5px;
+  padding:5px 2px ;
+  cursor: pointer;
+}
+.UCSelected{
+  border: 1px solid grey;
+  background: #203864;
+  color:white;
+  border-radius: 5px;
+  padding: 5px;
+}
 /*------------------------------------------------------------------Table component-----------------------------------------------------------------*/
 .Table {
   background-color: teal;
@@ -802,6 +900,31 @@ img {
 
 /* Extra small devices (phones, 768px and down) */
 @media only screen and (max-width: 768px) {
+  .UpperConnect {
+
+display: grid;
+justify-content: center;
+
+  }
+.RightUC{
+  min-width: 100px;
+  justify-content: center;
+  font-size: 14px;
+}
+.UCList ul{
+display: grid;
+grid-template-columns: repeat(4,1fr);
+padding: 3px;
+
+}
+.UpperConnect {
+  grid-template-columns: 1fr;
+}
+.LowerConnect{
+
+  grid-template-columns: 1fr 1fr;
+}
+
   .InteractionsIP {
     display: none;
   }
@@ -883,7 +1006,12 @@ img {
   }
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 769px) {
+  .CProfile:hover{
+  border: 1px solid grey;
+  border-radius:7px ;
+  background-color: rgba(128, 128, 128, 0.214);
+  }
   .InteractionsIP > div:hover {
     opacity: 0.8;
   }
@@ -900,13 +1028,24 @@ img {
     opacity: 0.9;
   }
 }
-@media only screen and (max-width: 625px) {
+@media only screen and (max-width: 575px) {
   .fa-chevron-down {
     display: none;
   }
   .notifications {
     display: grid;
   }
+  .UCList ul{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+    grid-row-gap:30px;
+    
+    }
+    .LowerConnect{
+
+      grid-template-columns: 1fr;
+    }
+
 }
 
 @media only screen and (max-width: 925px) {

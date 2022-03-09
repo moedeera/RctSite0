@@ -9,6 +9,7 @@ import RT from "./components/RT";
 import Login from "./pages/Portfolio/Login";
 import { SportsTable } from "./pages/Portfolio/SportsTable";
 import { Notifications } from "./pages/Portfolio/Notifications";
+import { Connections } from "./pages/Portfolio/FriendsPage";
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
@@ -135,6 +136,10 @@ function App() {
             <Route
               path="/Notifications"
               element={<Notifications Friend={friend} SetFriend={setFriend} />}
+            />
+            <Route
+              path="/Connections"
+              element={<Connections setFriend={setFriend} />}
             />
 
             <Route path="/RT" element={<RT />} />

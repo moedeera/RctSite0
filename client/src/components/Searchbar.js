@@ -74,9 +74,11 @@ const Searchbar = ({ setAuth }) => {
               <i className="fas fa-home fa-2x"></i>
             </Link>
           </div>
-          <div>
-            <i className="fas fa-users fa-2x"></i>
-          </div>
+          <Link to="/Connections">
+            <div className="internal">
+              <i className="fas fa-users fa-2x"></i>
+            </div>
+          </Link>
           <div className="notifications">
             <Link to="/Notifications">
               <div className="internal">
