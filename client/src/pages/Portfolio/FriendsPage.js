@@ -22,11 +22,10 @@ export const Connections = ({ SetFriend }) => {
       <div className="ConnectMain">
         <div className="UpperConnect">
           <div className="LeftUC">
-            <div>
+            <div className="LUCtitle">
               <h3>Users</h3>
             </div>
             <div className="UCSearch">
-              <i className="fas fa-search fa-2x" style={{ color: "grey" }}></i>
               <input type="text" placeholder="Search for people" name="text" />
             </div>
           </div>

@@ -134,94 +134,95 @@ a:visited {
   max-width: 1400px;
   margin: 0 auto;
   padding: 5px 15px;
-
 }
 
 .UpperConnect {
- 
   display: grid;
- grid-template-columns: 2fr 3fr;
- 
+  grid-template-columns: 2fr 3fr;
+
   width: 100%;
 }
 .LeftUC {
-  
-}
-.UCSearch{
-
   display: grid;
-  grid-template-columns: 1fr 10fr;
+
+  text-align: left;
+}
+.LUCtitle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.UCSearch {
+  display: flex;
+  flex-direction: column;
   align-items: center;
   padding: 5px;
   margin: 0 auto;
 }
-.UCSearch input{
-min-width: 12rem;
-  width: 80%;
+.UCSearch input {
+  min-width: 20rem;
+  width: 100%;
   height: 3rem;
   border: 2px solid rgba(128, 128, 128, 0.568);
-  padding: 3px;
+  padding: 3px 10px;
   border-radius: 5px;
-  font-size:14px ;
-  
+  font-size: 14px;
 }
 .RightUC {
-
-min-width: 600px;
+  min-width: 600px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-.UCList{
+.UCList {
   margin: 10px auto;
 }
 .UCList ul {
   font-size: 16px;
-  max-width:70% ;
- gap:25px;
+  max-width: 70%;
+  gap: 25px;
   list-style: none;
   display: flex;
   justify-content: space-evenly;
-  
+
   align-items: center;
- }
- .UCList li {
-   cursor: pointer;
- }
+}
+.UCList li {
+  cursor: pointer;
+}
 
 .LowerConnect {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap:10px;
-  margin:40px auto;
+  grid-gap: 10px;
+  margin: 40px auto;
 }
 .CProfile {
-/* border: 1px solid rgba(128, 128, 128, 0.466);
+  /* border: 1px solid rgba(128, 128, 128, 0.466);
 border-radius: 10px; */
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   height: 300px;
 }
-.PSelected{
-  border:1px solid #2038649f;
+.PSelected {
+  border: 1px solid #2038649f;
   border-radius: 10px;
 }
 
-.CProfile img{
-width: 90px;
-height: 90px;
+.CProfile img {
+  width: 90px;
+  height: 90px;
 }
-.tag{
-
+.tag {
   border-radius: 5px;
-  padding:5px 2px ;
+  padding: 5px 2px;
   cursor: pointer;
 }
-.UCSelected{
+.UCSelected {
   border: 1px solid grey;
   background: #203864;
-  color:white;
+  color: white;
   border-radius: 5px;
   padding: 5px;
 }
@@ -766,11 +767,10 @@ img {
   margin: 10px 0;
   border-radius: 10px;
 }
-.notice:hover{
-background-color: rgba(128, 128, 128, 0.35);
+.notice:hover {
+  background-color: rgba(128, 128, 128, 0.35);
 }
 .message {
- 
   background: burlywood;
   color: black;
 }
@@ -780,7 +780,7 @@ background-color: rgba(128, 128, 128, 0.35);
   color: white;
   text-align: left;
   padding-left: 5px;
-  
+
   border-bottom-right-radius: 5px;
 }
 .pst {
@@ -911,29 +911,25 @@ background-color: rgba(128, 128, 128, 0.35);
 /* Extra small devices (phones, 768px and down) */
 @media only screen and (max-width: 768px) {
   .UpperConnect {
-
-display: grid;
-justify-content: center;
-
+    display: grid;
+    justify-content: center;
   }
-.RightUC{
-  min-width: 100px;
-  justify-content: center;
-  font-size: 14px;
-}
-.UCList ul{
-display: grid;
-grid-template-columns: repeat(4,1fr);
-padding: 3px;
-
-}
-.UpperConnect {
-  grid-template-columns: 1fr;
-}
-.LowerConnect{
-
-  grid-template-columns: 1fr 1fr;
-}
+  .RightUC {
+    min-width: 100px;
+    justify-content: center;
+    font-size: 14px;
+  }
+  .UCList ul {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 3px;
+  }
+  .UpperConnect {
+    grid-template-columns: 1fr;
+  }
+  .LowerConnect {
+    grid-template-columns: 1fr 1fr;
+  }
 
   .InteractionsIP {
     display: none;
@@ -1017,10 +1013,10 @@ padding: 3px;
 }
 
 @media only screen and (min-width: 769px) {
-  .CProfile:hover{
-  border: 1px solid grey;
-  border-radius:7px ;
-  background-color: rgba(128, 128, 128, 0.214);
+  .CProfile:hover {
+    border: 1px solid grey;
+    border-radius: 7px;
+    background-color: rgba(128, 128, 128, 0.214);
   }
   .InteractionsIP > div:hover {
     opacity: 0.8;
@@ -1037,6 +1033,13 @@ padding: 3px;
   .Profile-Pic img:hover {
     opacity: 0.9;
   }
+  .LeftUC {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    text-align: center;
+    align-items: center;
+  }
 }
 @media only screen and (max-width: 575px) {
   .fa-chevron-down {
@@ -1045,17 +1048,14 @@ padding: 3px;
   .notifications {
     display: grid;
   }
-  .UCList ul{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-    grid-row-gap:30px;
-    
-    }
-    .LowerConnect{
-
-      grid-template-columns: 1fr;
-    }
-
+  .UCList ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-row-gap: 30px;
+  }
+  .LowerConnect {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media only screen and (max-width: 925px) {
