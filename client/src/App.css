@@ -157,10 +157,11 @@ a:visited {
   flex-direction: column;
   align-items: center;
   padding: 5px;
-  margin: 0 auto;
+  margin: 0 5px;
+  margin-left: 10px;
 }
 .UCSearch input {
-  min-width: 20rem;
+  min-width: 10rem;
   width: 100%;
   height: 3rem;
   border: 2px solid rgba(128, 128, 128, 0.568);
@@ -1039,6 +1040,9 @@ img {
 
     text-align: center;
     align-items: center;
+  }
+  .UCSearch input {
+    min-width: 14rem;
   }
 }
 @media only screen and (max-width: 575px) {
