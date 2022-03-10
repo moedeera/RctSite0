@@ -39,9 +39,8 @@ export const PostFeed = ({ Posts, LikeUpdate, CommentUpdate }) => {
     <div className="Feed">
       <div className="Post-Feed">
         {Posts.map((Post) => (
-          <div className="Posts">
+          <div key={Post && Post.id} className="Posts">
             <Link
-              key={Post && Post.id}
               onClick={() => {
                 onLinkClick(Post.id);
               }}
@@ -59,7 +58,15 @@ export const PostFeed = ({ Posts, LikeUpdate, CommentUpdate }) => {
                 <img src={Post && Post.PosterPic} alt="" />
                 {Post.PosterName}
               </div>
-              {Post.text}
+              <Link
+                to="/Posts"
+                style={{ color: "black" }}
+                onClick={() => {
+                  onLinkClick(Post.id);
+                }}
+              >
+                {Post.text}
+              </Link>
             </div>
             <div className="Interactions">
               <div>{Post && Post.date}</div>

@@ -42,31 +42,34 @@ export const Posts = ({ Friend, SetFriend }) => {
           {posts.map((Post) =>
             Post.id === postPage.id ? (
               <div className="Posts" id={Post.id}>
-                <div className="InterPic">
-                  {" "}
-                  <div className="ImageIP">
-                    <img src={Post.postPic} alt="" className="PostPic" />
-                  </div>
-                  <div className="InteractionsIP">
-                    <div>{Post.date}</div>
-                    <div onClick={() => likeCount(Post.id)}>
-                      {Post.likers.length}{" "}
-                      <i
-                        className="fas fa-heart fa-3x"
-                        style={{ color: "red" }}
-                      ></i>
+                {Post.postPic !== "" ? (
+                  <div className="InterPic">
+                    {" "}
+                    <div className="ImageIP">
+                      <img src={Post.postPic} alt="" className="PostPic" />
                     </div>
-                    <div>
-                      {" "}
-                      {Post.comments.length}
-                      <i
-                        className="fas fa-comment fa-3x"
-                        style={{ color: "goldenrod" }}
-                      ></i>
+                    <div className="InteractionsIP">
+                      <div>{Post.date}</div>
+                      <div onClick={() => likeCount(Post.id)}>
+                        {Post.likers.length}{" "}
+                        <i
+                          className="fas fa-heart fa-3x"
+                          style={{ color: "red" }}
+                        ></i>
+                      </div>
+                      <div>
+                        {" "}
+                        {Post.comments.length}
+                        <i
+                          className="fas fa-comment fa-3x"
+                          style={{ color: "goldenrod" }}
+                        ></i>
+                      </div>
                     </div>
                   </div>
-                </div>
-
+                ) : (
+                  ""
+                )}
                 <div className=" Poster">
                   {" "}
                   <div className="PosterInfo">
