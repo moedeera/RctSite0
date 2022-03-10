@@ -89,6 +89,8 @@ export const usePosts = () => {
           },
         ],
         Friends: [2, 3, 4],
+        followers: [5, 6],
+        following: [7],
         Posts: [6, 5, 1],
       };
 

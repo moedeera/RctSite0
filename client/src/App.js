@@ -75,6 +75,8 @@ function getUserInfo() {
         },
       ],
       Friends: [2, 3, 4],
+      followers: [5, 6],
+      following: [7],
       Posts: [6, 5, 1],
     };
     User = JSON.stringify(profile);

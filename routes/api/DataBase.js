@@ -47,6 +47,8 @@ var DataBase = [
     ],
 
     Friends: [2, 3, 4],
+    followers: [5, 6],
+    following: [7],
     Posts: [6, 5, 1],
   },
   {
@@ -72,6 +74,8 @@ var DataBase = [
     Notifications: 0,
     Notices: [],
     Friends: [1, 3, 5],
+    followers: [1, 2],
+    following: [5],
     Posts: [5],
   },
   {
@@ -107,6 +111,8 @@ var DataBase = [
       },
     ],
     Friends: [1, 2, 5],
+    followers: [2],
+    following: [1],
     Posts: [6],
   },
   {
@@ -134,6 +140,8 @@ var DataBase = [
     Notifications: 0,
     Notices: [],
     Friends: [1, 4],
+    followers: [2, 3],
+    following: [1],
     Posts: [1],
   },
   {
@@ -161,6 +169,8 @@ var DataBase = [
     Notifications: 0,
     Notices: [],
     Friends: [1, 2, 3],
+    followers: [2, 1],
+    following: [1],
     Posts: [1, 6],
   },
   {
@@ -185,7 +195,61 @@ var DataBase = [
     Notifications: 0,
     Notices: [],
     Friends: [1, 2, 3, 4],
+    followers: [1, 3],
+    following: [7],
     Posts: [1, 6],
+  },
+  {
+    id: 7,
+    name: "Jose Silva",
+    nickname: "Dr Silva",
+    location: "Regina, SK",
+    description: "Emergency Physician",
+    age: 39,
+    scores: [51, 19, 95],
+    header: "Head of Sask Hospital ER",
+    about: "Organizer of StoptheSpread.ca",
+
+    Feed: [
+      { name: "Connie Williams", type: "like", id: 2 },
+      { name: "James Santos", type: "like", id: 4 },
+    ],
+    profilePic:
+      "https://cdn.pixabay.com/photo/2021/02/09/06/45/doctor-5997504_960_720.jpg",
+    followerCount: 6,
+    login: false,
+    Notifications: 0,
+    Notices: [],
+    Friends: [1, 2, 3, 4],
+    followers: [1, 3],
+    following: [1],
+    Posts: [1, 6],
+  },
+  {
+    id: 8,
+    name: "Kendra Watkins",
+    nickname: "RN Kendra",
+    location: "Calgary, Alberta",
+    description: "Emergency Physician",
+    age: 49,
+    scores: [11, 19, 15],
+    header: "Royal Hospital ER Nurse",
+    about: "Proud mom of 2",
+
+    Feed: [
+      { name: "Connie Williams", type: "request", id: 2 },
+      { name: "James Santos", type: "request", id: 4 },
+    ],
+    profilePic:
+      "https://cdn.pixabay.com/photo/2020/11/07/20/29/injection-5722329_960_720.jpg",
+    followerCount: 4,
+    login: false,
+    Notifications: 0,
+    Notices: [],
+    Friends: [7],
+    followers: [2, 5, 6, 7],
+    following: [7],
+    Posts: [],
   },
 ];
 
@@ -209,11 +273,27 @@ var Posts = [
     postPic:
       "https://images.pexels.com/photos/1842182/pexels-photo-1842182.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
     text: "Teddy was just enjoying the sun",
-    date: "Mond March 1",
+    date: "March 1",
     comments: [3],
     likes: 2,
     likers: [1, 2],
     datePosted: new Date("2022-03-01"),
+  },
+  {
+    id: 2,
+    Poster: 7,
+    PosterName: "Dr Silva",
+    PosterPic:
+      "https://cdn.pixabay.com/photo/2021/02/09/06/45/doctor-5997504_960_720.jpg",
+
+    postPic:
+      "https://cdn.pixabay.com/photo/2020/12/15/14/38/covid-19-5833844_960_720.png",
+    text: "Booster shots now available across Canada",
+    date: "Jan 10",
+    comments: [],
+    likes: 2,
+    likers: [1, 2],
+    datePosted: new Date("2022-01-10"),
   },
   {
     id: 5,
@@ -226,7 +306,7 @@ var Posts = [
       "https://images.pexels.com/photos/463734/pexels-photo-463734.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
     text: "Enjoying some quite time at the cabin",
     comments: [1, 5],
-    date: "Tues March 2",
+    date: "March 2",
     likes: 2,
     likers: [2, 5],
     datePosted: new Date("2022-03-02"),
@@ -240,7 +320,7 @@ var Posts = [
     postPic:
       "https://cdn.pixabay.com/photo/2019/11/10/11/13/couple-4615557_960_720.jpg",
     text: "Happy Anniversary Babe",
-    date: "Tues February 22",
+    date: "Feb 22",
     comments: [2, 4],
     likes: 4,
     likers: [1, 2, 3, 4],

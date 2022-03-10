@@ -1,13 +1,24 @@
-import React from 'react'
+import React from "react";
 
-export const SearchProfile = ({profiles}) => {
+export const SearchProfile = ({ profile, selected, setSelected, index }) => {
+  console.log(profile);
+
   return (
-    <div className="CProfile">
-    <img src={profiles.profilePic} alt="" className="images" />
-    <div><h3>{profiles.nickname}</h3>
-    <h5>{profiles.location}</h5>
-    <p className="tag" style={{background:'green', color:'white'}}>message</p>
-    </div>
-  </div>
-  )
-}
+    <>
+      <div
+        key={profile.id}
+        className={selected ? "CProfile  PSelected" : "CProfile"}
+        onClick={() => setSelected(index)}
+      >
+        <img src={profile.profilePic} alt="" className="images" />
+        <div>
+          <h3>{profile.nickname}</h3>
+          <h5>{profile.location}</h5>
+          <p className="tag" style={{ background: "green", color: "white" }}>
+            message
+          </p>
+        </div>
+      </div>
+    </>
+  );
+};

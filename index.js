@@ -28,6 +28,7 @@ app.use(function (req, res, next) {
 
 app.use("/api/users", require("./routes/api/users"));
 app.use("/api/post", require("./routes/api/post"));
+app.use("/api/profiles", require("./routes/api/profiles"));
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
