@@ -26,7 +26,11 @@ export const Connections = ({ SetFriend }) => {
               <h3>Users</h3>
             </div>
             <div className="UCSearch">
-              <input type="text" placeholder="Search for people" name="text" />
+              <input
+                type="text"
+                placeholder="&#x1F50D; Search for people"
+                name="text"
+              />
             </div>
           </div>
           <div className="RightUC">
