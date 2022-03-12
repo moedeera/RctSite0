@@ -251,6 +251,59 @@ var DataBase = [
     following: [7],
     Posts: [],
   },
+  {
+    id: 9,
+    name: "Tarandeep Singh",
+    nickname: "RN Kendra",
+    location: "Edmonton, Alberta",
+    description: "Correctional Officer",
+    age: 29,
+    scores: [3, 9,1 ],
+    header: "Live and let live",
+    about: ":) ",
+
+    Feed: [
+      { name: "Jason Wiegel", type: "request", id: 10 },
+      { name: "Nick Janovic", type: "request", id: 11 },
+    ],
+    profilePic:
+      "https://cdn.pixabay.com/photo/2018/04/13/15/29/ambulance-3316800_960_720.jpg",
+    followerCount: 1,
+    login: false,
+    Notifications: 0,
+    Notices: [],
+    Friends: [10,11],
+    followers: [11],
+    following: [11],
+    Posts: [],
+  },
+  {
+    id: 10,
+    name: "Jason Wiegel",
+    nickname: "Jay",
+    location: "Edmonton, Alberta",
+    description: "Law Enforcement",
+    age: 32,
+    scores: [1, 3,1 ],
+    header: "Long neck ice cold beer never broke my heart... ",
+    about: "If you are a flames fan, get the hell out of my profile page, NOW!",
+
+    Feed: [
+      { name: "Barbara Wiegel", type: "request", id: 12 },
+     
+    ],
+    profilePic:
+      "https://s1.ticketm.net/dam/a/fc6/7f086b40-3c4e-4fdc-b98d-a4e599c13fc6_1277301_TABLET_LANDSCAPE_LARGE_16_9.jpg",
+    followerCount: 1,
+    login: false,
+    Notifications: 1,
+    Notices: [],
+    Friends: [9,11],
+    followers: [10],
+    following: [10],
+    Posts: [],
+  }
+
 ];
 
 var Users = [
@@ -260,6 +313,12 @@ var Users = [
   { id: 4, email: "jsantos@g", password: "123" },
   { id: 5, email: "jjohnson@g", password: "123" },
   { id: 6, email: "mwiz@g", password: "123" },
+  { id: 7, email: "drs@g", password: "123" },
+  { id: 8, email: "kw@g", password: "123" },
+  { id: 9, email: "ts@g", password: "123" },
+  { id: 10, email: "jw@g", password: "123" },
+
+  
 ];
 
 var Posts = [
