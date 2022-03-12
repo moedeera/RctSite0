@@ -6,8 +6,11 @@ import { UserContext } from "../../UserContext";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Searchbar from "../../components/Searchbar";
+import { CreatePosts } from "./components/CreatePost";
 import { usePosts } from "../../utils/PostAuth";
 import { PostFeed } from "./PostFeed";
+import { Intro } from "./components/Intro";
+import { Button } from "@material-ui/core";
 
 export const Guest = ({ Friend, SetFriend }) => {
   const { user, setUser } = useContext(UserContext);
@@ -78,15 +81,17 @@ export const Guest = ({ Friend, SetFriend }) => {
     setEdit(!edit);
   };
   return (
-    <div className="main-prof">
+    <>
+      {" "}
       <Searchbar setAuth={SetFriend} />
-      {user && user.login ? (
-        <div className="Layout-Main">
-          <div>
-            {" "}
-            <form onSubmit={(e) => onSubmission(e)}>
+      <div className="main-prof">
+        {user && user.login ? (
+          <div className="Layout-Main">
+            <div>
+              {" "}
+              {/* <form onSubmit={(e) => onSubmission(e)}>
               <div className="MainCard">
-                <div className="Upper-Half">
+                <div className="Upper-Half" style={{ background: "white" }}>
                   <div className="Profile-Pic Logged-in">
                     <img src={user.profilePic} alt="new" />
                     <div className="PhotoEdit">Change Photo</div>
@@ -224,7 +229,7 @@ export const Guest = ({ Friend, SetFriend }) => {
                     </div>
                   </div>
                 </div>
-                <div className="Lower-Half">
+                <div className="Lower-Half" style={{ background: "white" }}>
                   <div className="Profile-Feed ">
                     <div>
                       <h3> Welcome back {user.nickname}</h3>
@@ -329,28 +334,117 @@ export const Guest = ({ Friend, SetFriend }) => {
                   CommentUpdate={postComment}
                 />
               </div>
-            </form>
+            </form> */}
+              <div className="MainContainer">
+                <div className="SideBar">
+                  <div className="SideBarNav topSB">
+                    <div className="profilePicSB">
+                      <div className="Upb"></div>
+                      <div className="Lpb"> </div>
+                      <div className="SSBT">
+                        {" "}
+                        <img src={user.profilePic} alt="new" />
+                        <br></br>
+                        <small
+                          style={{
+                            fontSize: "18px",
+                            marginBottom: "15px",
+                            fontWeight: "500",
+                          }}
+                        >
+                          {user.nickname}
+                        </small>
+                        <br></br>
+                        <small
+                          style={{ fontSize: "15px", marginBottom: "15px" }}
+                        >
+                          {user.age}
+                        </small>
+                        <br></br>
+                        <small
+                          style={{ fontSize: "13px", marginBottom: "15px" }}
+                        >
+                          {user.description}
+                        </small>
+                        <br></br>
+                        <small style={{ fontSize: "10px" }}>
+                          {user.location}
+                        </small>
+                      </div>
+                    </div>
+                    <div>
+                      <p>Following</p>
+                      <p>{user.following.length}</p>
+                    </div>
+                    <div>
+                      <p>Followers</p>
+                      <p>{user.followers.length}</p>
+                    </div>
+                    <div style={{ paddingBottom: "5px" }}>
+                      {" "}
+                      <Button variant="contained" color="primary" size="large">
+                        Edit Profile
+                      </Button>
+                    </div>
+                  </div>
+                  <div className="SideBarNav lowerSB">
+                    <p style={{ color: "crimson", fontWeight: "500" }}>
+                      Request log
+                    </p>
+                    {user.Feed.map((feed) => (
+                      <div className="request">
+                        <img
+                          src={user.profilePic}
+                          alt="new"
+                          style={{
+                            width: "35px",
+                            height: "35px",
+                            borderRadius: "50%",
+                          }}
+                        />
+                        <p>
+                          {feed.name}{" "}
+                          {feed.type === "request" && "Requested to follow you"}
+                          {feed.type === "like" && "Gave you a like"}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div className="LSidebar"></div>
+                <div className="MiddleMenu">
+                  <Intro user={user} />
+                  <CreatePosts />
+                  <PostFeed
+                    Posts={posts}
+                    LikeUpdate={likeCount}
+                    CommentUpdate={postComment}
+                  />
+                </div>
+                <div className="RSidebar">Hello</div>
+              </div>
+            </div>
           </div>
-        </div>
-      ) : (
-        <div className="MainCard">
-          <div>
-            {" "}
-            You are not logged in click{" "}
-            <Link to="/Login" style={{ color: "green" }}>
-              here to login
-            </Link>{" "}
+        ) : (
+          <div className="MainCard">
+            <div>
+              {" "}
+              You are not logged in click{" "}
+              <Link to="/Login" style={{ color: "green" }}>
+                here to login
+              </Link>{" "}
+            </div>
+            <div>Or</div>
+            <div>
+              {" "}
+              click{" "}
+              <Link to="/Register" style={{ color: "green" }}>
+                here to Register
+              </Link>{" "}
+            </div>
           </div>
-          <div>Or</div>
-          <div>
-            {" "}
-            click{" "}
-            <Link to="/Register" style={{ color: "green" }}>
-              here to Register
-            </Link>{" "}
-          </div>
-        </div>
-      )}
-    </div>
+        )}
+      </div>
+    </>
   );
 };

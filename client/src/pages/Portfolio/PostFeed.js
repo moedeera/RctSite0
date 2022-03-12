@@ -9,6 +9,8 @@ export const PostFeed = ({ Posts, LikeUpdate, CommentUpdate }) => {
   const { user, setPostpage } = useContext(UserContext);
   const [formComment, setFormComment] = useState([]);
 
+  useEffect(() => {}, [Posts]);
+
   const [postID, setPostID] = useState([]);
 
   const onCommentChange = (e, id) => {
@@ -68,7 +70,7 @@ export const PostFeed = ({ Posts, LikeUpdate, CommentUpdate }) => {
                 {Post.text}
               </Link>
             </div>
-            <div className="Interactions">
+            <div className="Interactions" style={{ color: "black" }}>
               <div>{Post && Post.date}</div>
               <div onClick={() => LikeUpdate(Post.id, user.id)}>
                 {Post.likers.length}{" "}
