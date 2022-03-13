@@ -10,7 +10,7 @@ export const Friends = ({ isAuth, SetAuth }) => {
     <div className="main-prof">
       <Searchbar setAuth={SetAuth} />
 
-      <div className="MainCard" style={{backgroundColor:'white',  marginTop:'210px'}} >
+      <div className="MainCard" style={{backgroundColor:'white',  marginTop:'0px'}} >
         <div className="Upper-Half">
           <div className="Profile-Pic Logged-in">
             <img src={isAuth.profilePic} alt="new" />

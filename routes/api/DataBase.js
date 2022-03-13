@@ -254,7 +254,7 @@ var DataBase = [
   {
     id: 9,
     name: "Tarandeep Singh",
-    nickname: "RN Kendra",
+    nickname: "Taran",
     location: "Edmonton, Alberta",
     description: "Correctional Officer",
     age: 29,
