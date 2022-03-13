@@ -19,7 +19,6 @@ export const Connections = ({ SetFriend }) => {
   return (
     <div className="main-prof">
       <Searchbar setAuth={SetFriend} />
-
       <div className="ConnectMain">
         <div className="UpperConnect">
           <div className="LeftUC">
