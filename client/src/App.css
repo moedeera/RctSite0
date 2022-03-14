@@ -48,11 +48,196 @@ body {
     transform: rotate(360deg);
   }
 }
+/*New Layout */
+.MainContainer {
+  color: white;
+  background: transparent;
+  display: grid;
+  position: relative;
+  grid-template-columns: 2fr 5fr 2fr;
+  grid-column-gap: 20px;
+  padding-top: 130px;
+}
+.MainContainer > div {
+}
+.MiddleMenu > div {
+}
+.welcome {
+  color: black;
+  border: 1px solid grey;
+  background-color: rgb(238, 230, 230);
+  border-radius: 5px;
+  margin: 10px auto;
+  width: 80%;
+  height: 200px;
+  padding: 5px 10px;
+  display: grid;
+  grid-template-columns: 1fr 10fr;
+  align-items: center;
+  grid-column-gap: 10px;
+}
+.welcome > div {
+  width: 100%;
+}
+.welcome textarea {
+  border: 1px solid rgba(128, 128, 128, 0.733);
+  height: 5rem;
+  color: rgba(0, 0, 0, 0.74);
+}
+.welcome textarea:hover {
+  color: black;
+}
+.profile-picture img {
+  height: 120px !important;
+  width: 120px !important;
+  border-radius: 50%;
+}
+.MCreatePost {
+  border: 1px solid white;
+  width: 80%;
+  margin: 0 auto;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background: whitesmoke;
+  color: #282c34;
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  align-items: center;
+}
+.MCpost {
+  border: none;
+}
+.MCPostbox {
+  border: none;
+}
+
+.textarea {
+  background-color: white;
+  color: grey;
+  padding: 1em;
+  border: 1px solid transparent;
+  outline: none;
+  font-family: "Heebo", sans-serif;
+  font-weight: 500;
+  line-height: 1.4em;
+  height: 100px;
+  width: 100%;
+  transition: all 0.2s;
+}
+.urlTextArea {
+  background-color: white;
+  color: grey;
+  padding: 1em;
+  border: 1px solid transparent;
+  outline: none;
+  font-family: "Heebo", sans-serif;
+  font-weight: 500;
+  line-height: 1em;
+  height: 40px;
+  width: 100%;
+  transition: all 0.2s;
+}
+.MCreatePost img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+.MCbuttons {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  border: 1px solid rgba(128, 128, 128, 0.471);
+  background-color: white;
+  padding: 5px 0;
+  align-items: center;
+  border-radius: 5px;
+
+  width: 100%;
+}
+.TopNav {
+  position: fixed;
+  z-index: 4;
+  width: 100%;
+  top: 0;
+  background-color: white;
+}
+.SideBar {
+  height: 100%;
+  min-width: 150px;
+  width: 20%;
+  position: fixed;
+  z-index: 2;
+  top: 300;
+  left: 6%;
+  background-color: none;
+  overflow-x: hidden;
+  padding-top: 10px;
+}
+.SideBarNav {
+  width: 95%;
+
+  padding: 0px;
+  margin: 0px 0px;
+  margin-bottom: 10px;
+
+  border-radius: 5px !important;
+  background-color: rgb(238, 230, 230);
+  color: black;
+}
+.topSB {
+  display: grid;
+  grid-template-rows: 5fr 2fr 2fr 1fr;
+  align-items: center;
+  height: 50vh;
+}
+.topSB > div {
+  border-bottom: 1px solid rgba(128, 128, 128, 0.488);
+}
+.profilePicSB {
+  position: relative;
+
+  width: 100%;
+  height: 20vh;
+}
+.Upb {
+  margin-top: -23px;
+  width: 100%;
+  height: 50%;
+  background: #3f51b5;
+}
+.Lpb {
+  width: 100%;
+  height: 50%;
+  background-color: rgb(238, 230, 230);
+}
+
+.SSBT {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.SSBT img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid white;
+}
+.lowerSB {
+  height: 30vh;
+  overflow-y: auto;
+  padding-bottom: 2px;
+}
+.request {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  margin: 5px;
+}
 /* Navbar*/
 .Navbar {
   display: flex;
   justify-content: space-between;
-
   padding: 5px 15px;
   font-weight: 500;
   letter-spacing: 2px;
@@ -80,6 +265,7 @@ a:visited {
 .Main {
   color: white;
   width: 100%;
+
   max-width: 1400px;
   margin: 150px auto;
 
@@ -131,10 +317,9 @@ a:visited {
 .ConnectMain {
   background-color: white;
   border: 1px solid grey;
-  max-width: 1400px;
-  margin: 0 auto;
+  max-width: 1000px;
+  margin: 120px auto;
   padding: 5px 15px;
-  transition: 1s ease-in-out;
 }
 
 .UpperConnect {
@@ -158,11 +343,10 @@ a:visited {
   flex-direction: column;
   align-items: center;
   padding: 5px;
-  margin: 0 5px;
-  margin-left: 10px;
+  margin: 0 auto;
 }
 .UCSearch input {
-  min-width: 10rem;
+  min-width: 20rem;
   width: 100%;
   height: 3rem;
   border: 2px solid rgba(128, 128, 128, 0.568);
@@ -417,7 +601,7 @@ textarea {
   max-width: 1400px;
   height: 100%;
   margin: 10px auto;
-  background: white;
+
   padding: 30px;
   font-family: "Roboto", sans-serif;
 }
@@ -601,6 +785,7 @@ img {
 }
 .Post-Feed {
   width: 100%;
+
   margin: 5px auto;
   display: flex;
   flex-direction: column;
@@ -620,7 +805,8 @@ img {
 /* SearchBar*/
 
 .upper-sect {
-  color: white;
+  color: black;
+  background-color: #3f51b5;
 
   padding: 5px;
   margin: 0px auto 10px;
@@ -637,8 +823,10 @@ img {
 .upper-sect > div {
   cursor: pointer;
 }
-
-.fa-bell {
+.upper-sect i {
+  color: white;
+}
+.upper-sect.fa-bell {
   background: white;
   border-radius: 50%;
   padding: 4px;
@@ -661,12 +849,12 @@ img {
 .Search {
   display: grid;
   grid-template-columns: 5fr 1fr 1fr;
-  border: 1px solid grey;
+  border: 1px solid rgba(128, 128, 128, 0.329);
   padding: 10px;
   border-radius: 10px;
-  max-width: 1400px;
+
   margin: 0 auto;
-  margin-bottom: 100px;
+  margin-bottom: 10px;
   background: white;
 }
 .searchBar {
@@ -878,9 +1066,10 @@ img {
   width: 100%;
 }
 .Posts {
-  width: 70%;
+  width: 80%;
   margin: 5px 0px;
   border: 1px solid grey;
+  background: white;
   padding: 5px 10px;
   border-radius: 5px;
   transition: 2s ease-in-out;
@@ -909,9 +1098,39 @@ img {
   border-radius: 5px;
   font-size: 16px;
 }
+@media only screen and (max-width: 925px) {
+  .MainContainer {
+    grid-template-columns: 2fr 5fr;
+  }
+  .SideBar {
+    height: 100%;
+    min-width: 220px;
+  }
 
+  .RSidebar {
+    display: none;
+  }
+  .Layout-Main {
+    grid-template-columns: 1fr;
+  }
+  .main-side {
+    display: none;
+  }
+
+  .Posts {
+    width: 80%;
+  }
+}
 /* Extra small devices (phones, 768px and down) */
 @media only screen and (max-width: 768px) {
+  .MainContainer {
+    grid-template-columns: 1fr;
+  }
+
+  .LSidebar,
+  .SideBar {
+    display: none;
+  }
   .UpperConnect {
     display: grid;
     justify-content: center;
@@ -1042,11 +1261,14 @@ img {
     text-align: center;
     align-items: center;
   }
-  .UCSearch input {
-    min-width: 14rem;
-  }
 }
 @media only screen and (max-width: 575px) {
+  .MCreatePost {
+    grid-template-columns: 1fr;
+  }
+  .MCreatePost img {
+    display: none;
+  }
   .fa-chevron-down {
     display: none;
   }
@@ -1060,18 +1282,5 @@ img {
   }
   .LowerConnect {
     grid-template-columns: 1fr;
-  }
-}
-
-@media only screen and (max-width: 925px) {
-  .Layout-Main {
-    grid-template-columns: 1fr;
-  }
-  .main-side {
-    display: none;
-  }
-
-  .Posts {
-    width: 100%;
   }
 }

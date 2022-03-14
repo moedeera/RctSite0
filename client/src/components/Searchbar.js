@@ -66,7 +66,7 @@ const Searchbar = ({ setAuth }) => {
     // navigate("../Friends");
   };
   return (
-    <div>
+    <div className="TopNav">
       {user?.login && (
         <div className="upper-sect">
           <div>
@@ -82,7 +82,10 @@ const Searchbar = ({ setAuth }) => {
           <div className="notifications">
             <Link to="/Notifications">
               <div className="internal">
-                <i className="fas fa-bell fa-2x"></i>
+                <i
+                  className="fas fa-bell fa-2x"
+                  style={{ color: "goldenrod" }}
+                ></i>
                 <div className="number">
                   {user && user.Notifications !== 0 ? user.Notifications : ""}
                 </div>

@@ -9,6 +9,8 @@ export const PostFeed = ({ Posts, LikeUpdate, CommentUpdate }) => {
   const { user, setPostpage } = useContext(UserContext);
   const [formComment, setFormComment] = useState([]);
 
+  useEffect(() => {}, [Posts]);
+
   const [postID, setPostID] = useState([]);
 
   const onCommentChange = (e, id) => {
@@ -39,8 +41,9 @@ export const PostFeed = ({ Posts, LikeUpdate, CommentUpdate }) => {
     <div className="Feed">
       <div className="Post-Feed">
         {Posts.map((Post) => (
-          <div key={Post && Post.id} className="Posts">
+          <div className="Posts">
             <Link
+              key={Post && Post.id}
               onClick={() => {
                 onLinkClick(Post.id);
               }}
@@ -58,17 +61,9 @@ export const PostFeed = ({ Posts, LikeUpdate, CommentUpdate }) => {
                 <img src={Post && Post.PosterPic} alt="" />
                 {Post.PosterName}
               </div>
-              <Link
-                to="/Posts"
-                style={{ color: "black" }}
-                onClick={() => {
-                  onLinkClick(Post.id);
-                }}
-              >
-                {Post.text}
-              </Link>
+              {Post.text}
             </div>
-            <div className="Interactions">
+            <div className="Interactions" style={{ color: "black" }}>
               <div>{Post && Post.date}</div>
               <div onClick={() => LikeUpdate(Post.id, user.id)}>
                 {Post.likers.length}{" "}

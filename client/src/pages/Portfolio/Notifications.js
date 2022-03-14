@@ -13,7 +13,10 @@ export const Notifications = ({ Friend, SetFriend }) => {
   return (
     <div className="main-prof">
       <Searchbar setAuth={SetFriend} />
-      <div className="MainCard">
+      <div
+        className="MainCard"
+        style={{ marginTop: "120px", background: "whitesmoke" }}
+      >
         <div style={{ fontWeight: "bold" }}>
           {user.Notices.length > 1
             ? "You have some notifications!"
